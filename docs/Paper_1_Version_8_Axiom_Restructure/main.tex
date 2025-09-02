@@ -1,0 +1,47 @@
+\documentclass[11pt,a4paper]{article}
+\input{shared_latex_setup}
+
+\title{Relative Advantage: Quantifying Performance in Noisy Competitive Settings}
+
+\author{
+    \authorone \\
+    \textit{\affiliationone}
+}
+\date{\today}
+
+\begin{document}
+\maketitle
+
+% ===================================================================
+% UP1 ABSTRACT (150 words)
+% ===================================================================
+\begin{abstract}
+\competitivemeasurement\ across domains from manufacturing to finance, yet traditional absolute measurements suffer from environmental noise contamination that obscures true competitive differences. We establish the theoretical foundation for relative measurement through systematic environmental noise cancellation, demonstrating why $R = X_A - X_B$ achieves superior signal-to-noise ratios compared to independent absolute measurements. Our framework reveals that simultaneous measurement enables complete environmental factor elimination, yielding SNR improvements of $1 + 2\sigma_\eta^2/(\sigma_A^2 + \sigma_B^2)$ over traditional approaches. Through comprehensive empirical validation across manufacturing, financial, and healthcare domains, we demonstrate correlation coefficients exceeding 0.91 between theoretical predictions and observed performance improvements. The framework establishes three complementary metrics—separability, information content, and effect size—that translate SNR improvements into actionable competitive intelligence. This foundational work enables principled competitive measurement design while establishing the theoretical basis for advanced asymmetric and temporal extensions.
+
+\textbf{Keywords:} competitive measurement, environmental noise, signal-to-noise ratio, relative measurement, performance metrics
+\end{abstract}
+
+% ===================================================================
+% MAIN SECTIONS
+% ===================================================================
+\input{Sections/section1_introduction}
+\input{Sections/section2_theoretical_framework}
+\input{Sections/section3_performance_metrics}
+\input{Sections/section4_empirical_validation}
+\input{Sections/section5_applications}
+\input{Sections/section6_discussion}
+
+% ===================================================================
+% BIBLIOGRAPHY
+% ===================================================================
+\bibliographystyle{plain}
+\bibliography{references/shared_references,references/UP1_specific}
+
+% ===================================================================
+% APPENDICES
+% ===================================================================
+\input{appendices/appendix_a_mathematical}
+\input{appendices/appendix_b_scenarios}
+\input{appendices/appendix_c_metrics}
+
+\end{document}

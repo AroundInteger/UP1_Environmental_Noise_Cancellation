@@ -1,0 +1,260 @@
+% SHARED LaTeX SETUP FOR UP2 & UP3 PARALLEL WRITING
+% This file contains all shared packages, macros, and notation for consistency
+
+% ===================================================================
+% ESSENTIAL PACKAGES (Identical for both papers)
+% ===================================================================
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{geometry}
+\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{enumitem}
+\usepackage{booktabs}
+\usepackage{graphicx}
+\usepackage{natbib}
+\usepackage{array}
+\usepackage{multicol}
+\usepackage{algorithm}
+\usepackage{algpseudocode}
+\usepackage{xcolor}
+
+% Page geometry (consistent across papers)
+\geometry{margin=1in}
+
+% ===================================================================
+% SHARED THEOREM ENVIRONMENTS
+% ===================================================================
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{principle}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{remark}[theorem]{Remark}
+\newtheorem{assumption}[theorem]{Assumption}
+\newtheorem{example}[theorem]{Example}
+\newtheorem{hypothesis}[theorem]{Hypothesis}
+
+% ===================================================================
+% UNIFIED MATHEMATICAL NOTATION (CRITICAL FOR CONSISTENCY)
+% ===================================================================
+
+% Core competitive measurement parameters
+\newcommand{\deltaval}{\delta}           % Performance difference (μ_A - μ_B)/σ_A
+\newcommand{\kappaval}{\kappa}           % Variance ratio σ_B/σ_A  
+\newcommand{\etaval}{\eta}               % Environmental noise ratio σ_η/σ_A
+
+% Mahalanobis distance variants
+\newcommand{\DM}{D_{\text{M}}}           % Basic Mahalanobis distance
+\newcommand{\DMenv}{D_{\text{M}}^{(\text{env})}} % Environmental Mahalanobis distance
+
+% Quadrant notation (consistent Q1-Q4 across papers)
+\newcommand{\QOne}{Q_1}                  % Optimal quadrant
+\newcommand{\QTwo}{Q_2}                  % Transitional quadrant  
+\newcommand{\QThree}{Q_3}                % Inverse quadrant
+\newcommand{\QFour}{Q_4}                 % Crisis/Extinct quadrant
+
+% Performance measures
+\newcommand{\Sth}{S_{\text{th}}}         % Theoretical separability
+\newcommand{\Semp}{S_{\text{emp}}}       % Empirical separability
+\newcommand{\Sabs}{S_{\text{abs}}}       % Absolute measure separability
+\newcommand{\Srel}{S_{\text{rel}}}       % Relative measure separability
+
+% Information and effect size measures
+\newcommand{\Icontent}{I}                % Information content
+\newcommand{\effectsize}{d}              % Effect size (Cohen's d relationship)
+
+% Evolutionary fitness function (UP3 specific but referenced in UP2)
+\newcommand{\Fitness}{F(\deltaval, \kappaval)} % Evolutionary fitness function
+\newcommand{\FitnessQ}[1]{F_{Q_{#1}}}    % Quadrant-specific fitness
+
+% Environmental integration formula (UP2 specific but referenced in UP3)
+\newcommand{\SNRimprovement}{\text{SNR}_{\text{improvement}}}
+\newcommand{\SNRformula}{\frac{1}{\sqrt{1 + \frac{2\etaval^2}{1 + \kappaval^2}}}}
+
+% Statistical operators
+\DeclareMathOperator{\sign}{sign}
+\DeclareMathOperator{\Var}{Var}
+\DeclareMathOperator{\Cov}{Cov}
+\DeclareMathOperator{\E}{\mathbb{E}}
+\DeclareMathOperator{\Prob}{\mathbb{P}}
+\DeclareMathOperator*{\argmax}{arg\,max}
+\DeclareMathOperator*{\argmin}{arg\,min}
+
+% ===================================================================
+% SHARED COLOR SCHEME (For consistent figures)
+% ===================================================================
+\definecolor{Q1color}{RGB}{0, 128, 0}    % Green for Q1 (Optimal)
+\definecolor{Q2color}{RGB}{255, 165, 0}  % Orange for Q2 (Transitional)
+\definecolor{Q3color}{RGB}{255, 0, 0}    % Red for Q3 (Inverse)
+\definecolor{Q4color}{RGB}{128, 128, 128} % Gray for Q4 (Extinct)
+\definecolor{envcolor}{RGB}{0, 0, 255}   % Blue for environmental effects
+
+% ===================================================================
+% CROSS-PAPER REFERENCE COMMANDS
+% ===================================================================
+% These will be updated with actual paper references once submitted
+\newcommand{\paperone}{UP1}          % Reference to empirical relative measures paper
+\newcommand{\papertwo}{UP2}        % Self-reference for UP2
+\newcommand{\paperthree}{UP3}      % Self-reference for UP3
+\newcommand{\paperfour}{UP4}       % Forward reference to temporal dynamics
+
+% Cross-paper equation references (to be updated)
+\newcommand{\DMformula}{\DM = \frac{|\deltaval|}{\sqrt{1 + \kappaval^2}}}
+\newcommand{\DMenvformula}{\DMenv = \frac{|\deltaval|}{\sqrt{1 + \kappaval^2 + 2\etaval^2}}}
+\newcommand{\Fitnessformula}{\Fitness = \begin{cases} 
+    \deltaval \times (1 - \kappaval) & \text{if } \kappaval < 1 \\
+    \deltaval \times (\kappaval - 1) & \text{if } \kappaval > 1 
+\end{cases}}
+
+% ===================================================================
+% SHARED MACROS FOR RESULTS PRESENTATION
+% ===================================================================
+\newcommand{\correlationUPTwo}{r = 0.973}        % UP2 SVM correlation
+\newcommand{\correlationUPThree}{r = 0.912}      % UP3 theory-data correlation
+\newcommand{\SNRresult}{53.2\%}                  % UP2 SNR improvement result
+\newcommand{\QFourextinction}{0}                 % UP3 Q4 extinction result (0 datasets)
+\newcommand{\parametercount}{644}                % Total parameter combinations tested
+\newcommand{\domaincount}{5}                     % Cross-domain validation count
+
+% ===================================================================
+% FIGURE AND TABLE FORMATTING (Consistent style)
+% ===================================================================
+% Standard figure width for consistency
+\newcommand{\figwidth}{0.8\textwidth}
+\newcommand{\smallfigwidth}{0.6\textwidth}
+
+% Table formatting for results
+\newcommand{\resultscaption}[1]{\caption{#1}}
+\newcommand{\validationtable}{\begin{tabular}{lccc} \toprule}
+%\newcommand{\endvalidationtable}{\bottomrule \end{tabular}}
+
+% ===================================================================
+% JOURNAL-SPECIFIC FORMATTING FLAGS
+% ===================================================================
+% These can be toggled based on target journal requirements
+\newif\ifNatureformat\Natureformatfalse       % Nature family journals
+\newif\ifIEEEformat\IEEEformatfalse           % IEEE journals
+\newif\ifJMLRformat\JMLRformatfalse           % JMLR format
+\newif\ifPLOSformat\PLOSformatfalse           % PLOS family
+
+% ===================================================================
+% SHARED ABSTRACT COMPONENTS
+% ===================================================================
+% Keywords that should appear in both papers for consistency
+\newcommand{\sharedkeywords}{competitive measurement, Mahalanobis distance, asymmetric analysis, quadrant classification}
+
+% Common background statement for both papers
+\newcommand{\competitivemeasurement}{Competitive measurement between entities A and B represents a fundamental challenge across domains from financial analysis to clinical research}
+
+% Common framework reference
+\newcommand{\frameworkfoundation}{Building on the empirical success of relative measures $R = X_A - X_B$ established in \paperone}
+
+% ===================================================================
+% VALIDATION RESULT FORMATTING
+% ===================================================================
+\newcommand{\validationresult}[3]{%
+  \textbf{#1}: #2 (#3)%
+}
+
+\newcommand{\quadrantresult}[4]{%
+  \textbf{#1} ($\deltaval #2 0, \kappaval #3 1$): #4%
+}
+
+% ===================================================================
+% MANUSCRIPT STRUCTURE CONSISTENCY
+% ===================================================================
+% Ensure both papers follow the same high-level structure
+\newcommand{\abstractlength}{150 words}
+\newcommand{\introductionlength}{1.5 pages}
+\newcommand{\theorylength}{3 pages}
+\newcommand{\resultslength}{2.5 pages}
+\newcommand{\discussionlength}{1 page}
+
+% ===================================================================
+% DEBUGGING AND CONSISTENCY CHECKS
+% ===================================================================
+% Commands to verify cross-paper consistency during writing
+\newcommand{\consistencycheck}[1]{\textcolor{red}{CHECK: #1}}
+\newcommand{\crossref}[1]{\textcolor{blue}{CROSSREF: #1}}
+\newcommand{\needsupdate}[1]{\textcolor{orange}{UPDATE: #1}}
+
+% Remove these in final version by redefining as empty
+% \renewcommand{\consistencycheck}[1]{}
+% \renewcommand{\crossref}[1]{}
+% \renewcommand{\needsupdate}[1]{}
+
+% ===================================================================
+% AUTHOR INFORMATION TEMPLATE
+% ===================================================================
+\newcommand{\authorone}{M.R. Brown\thanks{Corresponding author. Email: m.r.brown@swansea.ac.uk}}
+\newcommand{\authortwo}{Author 2}
+\newcommand{\authorthree}{Author 3}
+
+\newcommand{\affiliationone}{Department of Applied Mathematics, Swansea University}
+\newcommand{\affiliationtwo}{Department of Statistics, University Name}  
+\newcommand{\affiliationthree}{Department of Business Analytics, University Name}
+
+% ===================================================================
+% USAGE INSTRUCTIONS
+% ===================================================================
+% Include this file in both UP2 and UP3 manuscripts with:
+% \input{shared_latex_setup}
+% 
+% This ensures perfect consistency in:
+% - Mathematical notation (δ, κ, η, D_M, etc.)
+% - Quadrant references (Q1, Q2, Q3, Q4)
+% - Cross-paper citations
+% - Figure and table formatting
+% - Color schemes for visualizations
+% - Statistical result presentation
+%
+% Update the cross-references and journal formatting flags as needed
+% for specific submission targets.
+
+
+
+% ===================================================================
+% PAPER-SPECIFIC METADATA (Add to existing file)
+% ===================================================================
+\newcommand{\UPOneTitle}{Environmental Noise Cancellation in Competitive Measurement}
+\newcommand{\UPTwoTitle}{Asymmetric Mahalanobis Framework for Competitive Measurement}
+\newcommand{\UPThreeTitle}{Evolutionary Extinction Theory in Competitive Measurement}
+\newcommand{\UPFourTitle}{Temporal Dynamics in Competitive Measurement}
+
+% Abstract word counts for consistency checking
+\newcommand{\abstractwordcount}{150}
+\newcommand{\checkabstractlength}[1]{%
+  \immediate\write16{Abstract length: #1 words (target: \abstractwordcount)}%
+}
+
+% ===================================================================
+% CROSS-PAPER CITATION COMMANDS
+% ===================================================================
+\newcommand{\citeUPOne}{\cite{UP1}}      % Will be updated with actual citations
+\newcommand{\citeUPTwo}{\cite{UP2}}
+\newcommand{\citeUPThree}{\cite{UP3}}
+\newcommand{\citeUPFour}{\cite{UP4}}
+
+% Equation references across papers
+\newcommand{\eqnSNRimprovement}{Equation (17) in \paperone}
+\newcommand{\eqnMahalanobis}{Equation (12) in \papertwo}
+\newcommand{\eqnFitness}{Equation (8) in \paperthree}
+
+% ===================================================================
+% RESULT FORMATTING CONSISTENCY
+% ===================================================================
+\newcommand{\resultformat}[2]{\textbf{#1:} #2}
+\newcommand{\correlationformat}[1]{$r = #1$}
+\newcommand{\percentformat}[1]{#1\%}
+\newcommand{\significanceformat}[1]{$p < #1$}
+
+% ===================================================================
+% FIGURE CAPTION TEMPLATES
+% ===================================================================
+\newcommand{\quadrantfigcaption}{Four-quadrant classification of competitive scenarios showing the relationship between performance difference ($\deltaval$) and variance asymmetry ($\kappaval$)}
+
+\newcommand{\validationfigcaption}{Theoretical vs. empirical validation showing strong correlation between framework predictions and observed results across multiple domains}

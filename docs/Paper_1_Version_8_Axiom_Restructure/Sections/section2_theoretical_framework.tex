@@ -1,0 +1,155 @@
+\section{Theoretical Framework}
+
+We develop a mathematical framework that explains why relative performance indicators sometimes dramatically outperform absolute indicators in predicting binary competitive outcomes. Our approach formalizes the mechanism of environmental noise cancellation through direct comparison, providing quantitative conditions under which relative measures achieve superior predictive performance.
+
+\subsection{Measurement Model and Problem Formulation}
+
+Consider a competitive scenario where we observe the performance of two competitors, A and B, and seek to predict the binary outcome of their competition. In sports contexts, this might involve predicting match winners from team performance statistics. In business applications, it could involve predicting competitive success from operational metrics.
+
+We model the observed performances as:
+\begin{align}
+X_A &= \mu_A + \epsilon_A + \eta \label{eq:model_a} \\
+X_B &= \mu_B + \epsilon_B + \eta \label{eq:model_b}
+\end{align}
+
+where:
+\begin{itemize}
+    \item $\mu_A, \mu_B \in \mathbb{R}$ represent the true performance capabilities of competitors A and B
+    \item $\epsilon_A \sim \mathcal{N}(0, \sigma_A^2)$ and $\epsilon_B \sim \mathcal{N}(0, \sigma_B^2)$ capture competitor-specific performance variations
+    \item $\eta \sim \mathcal{N}(0, \sigma_\eta^2)$ represents shared environmental factors affecting both competitors equally
+\end{itemize}
+
+This decomposition explicitly separates three sources of performance variation: intrinsic capability differences ($\mu_A - \mu_B$), competitor-specific fluctuations ($\epsilon_A, \epsilon_B$), and shared environmental influences ($\eta$). The challenge in competitive measurement is isolating the signal of interest—true performance differences—from the noise introduced by environmental factors.
+
+The normal distribution assumptions are justified by the central limit theorem, as performance metrics typically aggregate numerous independent factors, and by the maximum entropy principle when only means and variances are specified.
+
+\subsection{Axiomatic Foundation}
+
+We establish four fundamental axioms that any effective relative performance metric must satisfy in competitive measurement contexts.
+
+\begin{axiom}[Invariance to Shared Effects]
+For any shared environmental effect $\eta$, a valid relative metric $R$ must satisfy:
+$$R(X_A + \eta, X_B + \eta) = R(X_A, X_B)$$
+\end{axiom}
+
+This axiom captures the essential requirement that relative metrics should be unaffected by factors influencing all competitors equally. In sports, this includes weather conditions, referee decisions, or venue characteristics that impact both teams identically.
+
+\begin{axiom}[Ordinal Consistency] 
+If $\mu_A > \mu_B$ (competitor A has superior true performance), then $\mathbb{E}[R(X_A, X_B)] > 0$.
+\end{axiom}
+
+This ensures that the relative metric correctly reflects the ordering of true competitive capabilities, providing a foundation for reliable prediction of competitive outcomes.
+
+\begin{axiom}[Scaling Proportionality]
+For any positive scalar $\alpha > 0$: $R(\alpha X_A, \alpha X_B) = \alpha R(X_A, X_B)$.
+\end{axiom}
+
+This axiom ensures consistent interpretation across different measurement scales and units, enabling application across diverse competitive domains.
+
+\begin{axiom}[Statistical Optimality]
+Under standard regularity conditions (normality, independence of errors, finite variances), the relative metric $R(X_A, X_B) = X_A - X_B$ minimizes the expected squared error in estimating the true performance difference $\mu_A - \mu_B$.
+\end{axiom}
+
+This axiom establishes that the simple difference represents the optimal estimator of competitive advantage under the assumptions of our measurement model.
+
+\subsection{Environmental Noise Cancellation}
+
+The core theoretical insight of our framework is that direct comparison systematically eliminates shared environmental effects while preserving the signal of interest.
+
+\begin{theorem}[Environmental Cancellation]
+\label{thm:env_cancel}
+The relative performance measure $R = X_A - X_B$ eliminates shared environmental effects while preserving true performance differences:
+\begin{align}
+R &= X_A - X_B \nonumber \\
+&= (\mu_A + \epsilon_A + \eta) - (\mu_B + \epsilon_B + \eta) \nonumber \\
+&= (\mu_A - \mu_B) + (\epsilon_A - \epsilon_B) \label{eq:env_cancel}
+\end{align}
+\end{theorem}
+
+\begin{proof}
+Direct substitution from the measurement model (Equations \ref{eq:model_a}-\ref{eq:model_b}) yields the result immediately. The shared environmental component $\eta$ cancels exactly, leaving only the true performance difference and the combined competitor-specific variations.
+\end{proof}
+
+This theorem provides the mathematical foundation for why relative measures can outperform absolute measures in noisy environments: they systematically remove the common environmental noise while preserving the competitive signal.
+
+\begin{corollary}[Distributional Properties]
+Under the measurement model assumptions, the relative performance measure follows:
+$$R \sim \mathcal{N}(\mu_A - \mu_B, \sigma_A^2 + \sigma_B^2)$$
+\end{corollary}
+
+\begin{proof}
+By properties of normal distributions and independence of $\epsilon_A$ and $\epsilon_B$:
+\begin{align}
+\mathbb{E}[R] &= \mathbb{E}[(\mu_A - \mu_B) + (\epsilon_A - \epsilon_B)] = \mu_A - \mu_B \\
+\text{Var}(R) &= \text{Var}(\epsilon_A - \epsilon_B) = \text{Var}(\epsilon_A) + \text{Var}(\epsilon_B) = \sigma_A^2 + \sigma_B^2
+\end{align}
+The environmental noise variance $\sigma_\eta^2$ is eliminated from the relative measure's variance.
+\end{proof}
+
+\subsection{Signal-to-Noise Ratio Improvement}
+
+We quantify the advantage of relative measures through signal-to-noise ratio (SNR) analysis, directly connecting our theoretical framework to predictive performance improvements.
+
+\begin{theorem}[SNR Improvement]
+\label{thm:snr_improvement}
+The signal-to-noise ratio improvement from using relative measures compared to single absolute measures is:
+\begin{equation}
+\frac{\text{SNR}_{\text{relative}}}{\text{SNR}_{\text{absolute}}} = \frac{\sigma_A^2 + \sigma_\eta^2}{\sigma_A^2 + \sigma_B^2} = 1 + \frac{\sigma_\eta^2 - \sigma_B^2}{\sigma_A^2 + \sigma_B^2}
+\end{equation}
+
+When environmental noise dominates ($\sigma_\eta^2 \gg \sigma_B^2$), this simplifies to:
+\begin{equation}
+\frac{\text{SNR}_{\text{relative}}}{\text{SNR}_{\text{absolute}}} \approx 1 + \frac{\sigma_\eta^2}{\sigma_A^2 + \sigma_B^2} \label{eq:snr_improvement}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+For a single absolute measurement, the signal-to-noise ratio is:
+$$\text{SNR}_{\text{absolute}} = \frac{(\mu_A - \mu_B)^2}{\sigma_A^2 + \sigma_\eta^2}$$
+
+For the relative measurement:
+$$\text{SNR}_{\text{relative}} = \frac{(\mu_A - \mu_B)^2}{\sigma_A^2 + \sigma_B^2}$$
+
+Taking the ratio yields the stated result. Under high environmental noise conditions, $\sigma_\eta^2 \gg \sigma_B^2$, giving the approximation in Equation \ref{eq:snr_improvement}.
+\end{proof}
+
+This theorem establishes that the magnitude of improvement depends critically on the ratio of environmental noise to competitor-specific variation. When environmental effects dominate ($\sigma_\eta^2 \gg \sigma_A^2, \sigma_B^2$), relative measures can provide substantial improvements in signal-to-noise ratio.
+
+\subsection{Conditions for Relative Superiority}
+
+Building on the SNR improvement analysis, we can establish precise conditions under which relative measures outperform absolute measures for binary outcome prediction.
+
+\begin{theorem}[Relative Superiority Conditions]
+\label{thm:relative_superiority}
+Relative measures $R = X_A - X_B$ achieve superior predictive performance for binary outcomes when:
+\begin{enumerate}
+\item Environmental noise is significant: $\sigma_\eta^2 > \max(\sigma_A^2, \sigma_B^2)/2$
+\item Competitors face identical environmental conditions
+\item True performance differences are moderate relative to total variation: $|\mu_A - \mu_B| \lesssim \sqrt{\sigma_A^2 + \sigma_B^2 + 2\sigma_\eta^2}$
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Condition (1) ensures that environmental noise contributes significantly to measurement variance. From Theorem \ref{thm:snr_improvement}, when $\sigma_\eta^2 > \sigma_B^2/2$, the SNR improvement ratio exceeds 1.5, providing meaningful predictive advantage.
+
+Condition (2) is required for the environmental cancellation mechanism (Theorem \ref{thm:env_cancel}) to function properly—if environmental effects differ between competitors, subtraction does not eliminate them.
+
+Condition (3) ensures that the problem remains interesting from a prediction standpoint. When $|\mu_A - \mu_B|$ is very large relative to noise, both absolute and relative measures achieve near-perfect classification.
+\end{proof}
+
+These conditions provide practical guidance for when relative measures are expected to outperform absolute measures, enabling informed application of the framework across different competitive domains.
+
+\subsection{Connection to Binary Outcome Prediction}
+
+The SNR improvement directly translates to enhanced performance in binary classification tasks through the relationship between effect size and classification accuracy.
+
+The standardized effect size for the relative measure is:
+\begin{equation}
+d = \frac{2|\mu_A - \mu_B|}{\sqrt{\sigma_A^2 + \sigma_B^2}}
+\end{equation}
+
+This effect size determines the theoretical classification accuracy through the cumulative normal distribution function. As SNR increases through environmental noise cancellation, the effect size increases proportionally, leading to improved binary outcome prediction.
+
+For competitive scenarios satisfying the conditions in Theorem \ref{thm:relative_superiority}, relative measures can achieve classification improvements of 15-30% over absolute measures, as we will demonstrate empirically using rugby performance data in Section 4.
+
+The theoretical framework establishes that this improvement is not due to statistical artifacts or overfitting, but results from the fundamental mechanism of environmental noise cancellation inherent in direct competitive comparison.

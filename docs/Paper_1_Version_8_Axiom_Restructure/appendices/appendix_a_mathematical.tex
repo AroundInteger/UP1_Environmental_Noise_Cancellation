@@ -1,0 +1,265 @@
+% ===================================================================
+% UP1 APPENDIX A: MATHEMATICAL DETAILS AND FORMAL PROOFS
+% File: appendices/UP1/appendix_a_mathematical.tex
+% ===================================================================
+
+\appendix
+
+\section{Mathematical Details and Formal Proofs}
+\label{app:mathematical}
+
+\subsection{Complete Axiomatic Foundation}
+
+\subsubsection{Formal Axiom Statements and Proofs}
+
+\begin{theorem}[Minimal Sufficiency]
+\label{thm:minimal_sufficiency}
+Under Axioms 1-4, and assuming the measurement model where $X_A = \mu_A + \epsilon_A + \etaval$ and $X_B = \mu_B + \epsilon_B + \etaval$ with normally distributed errors and shared environmental effects, the simple difference $R = X_A - X_B$ is the minimal sufficient statistic for estimating $\mu_A - \mu_B$.
+\end{theorem}
+
+\begin{proof}
+Under the simultaneous measurement model, the joint density of $X_A$ and $X_B$ can be factorized as:
+\begin{equation}
+f(x_A, x_B | \mu_A, \mu_B, \sigma_A^2, \sigma_B^2, \sigma_\eta^2) = g(x_A - x_B, \mu_A - \mu_B) \cdot h(x_A + x_B, \mu_A + \mu_B, \sigma_A^2, \sigma_B^2, \sigma_\eta^2)
+\end{equation}
+
+By the Fisher-Neyman factorization theorem, $R = X_A - X_B$ is a sufficient statistic for $\mu_A - \mu_B$. Minimality follows from the fact that $R$ is a function of the complete sufficient statistic $(X_A, X_B)$ and the dimension of $R$ equals the dimension of the parameter of interest $\mu_A - \mu_B$.
+\end{proof}
+
+\begin{theorem}[Asymptotic Efficiency]
+\label{thm:asymptotic_efficiency}
+As sample size increases, the relative estimator $\hat{R}$ based on $X_A - X_B$ achieves the Cramér-Rao lower bound for estimating $\mu_A - \mu_B$ under environmental noise.
+\end{theorem}
+
+\begin{proof}
+Under the normal distribution assumptions, the maximum likelihood estimator of $\mu_A - \mu_B$ is $\hat{\mu}_A - \hat{\mu}_B$, which simplifies to the sample mean of $X_A - X_B$. By the properties of maximum likelihood estimators, this estimator is asymptotically efficient, achieving the Cramér-Rao lower bound as sample size increases.
+
+The Fisher information matrix for the parameter $\theta = \mu_A - \mu_B$ is:
+\begin{equation}
+I(\theta) = \E\left[\left(-\frac{\partial^2}{\partial \theta^2} \log L(\theta)\right)\right] = \frac{1}{\sigma_A^2 + \sigma_B^2}
+\end{equation}
+
+The Cramér-Rao lower bound is $I(\theta)^{-1} = \sigma_A^2 + \sigma_B^2$, which is exactly achieved by $\Var(\hat{R}) = \sigma_A^2 + \sigma_B^2$.
+\end{proof}
+
+\subsubsection{Distributional Properties}
+
+\begin{theorem}[Normal Distribution Under Environmental Noise]
+\label{thm:normal_distribution}
+Under Assumptions 1-2, if $\epsilon_A \sim \mathcal{N}(0, \sigma_A^2)$ and $\epsilon_B \sim \mathcal{N}(0, \sigma_B^2)$, then:
+\begin{equation}
+R \sim \mathcal{N}(\mu_R, \sigma_R^2)
+\end{equation}
+where $\mu_R = \mu_A - \mu_B$ and $\sigma_R^2 = \sigma_A^2 + \sigma_B^2$.
+\end{theorem}
+
+\begin{proof}
+By the independence assumption and properties of normal distributions:
+\begin{enumerate}
+\item The characteristic function of $R$ is: $\phi_R(t) = \exp(it\mu_R - \frac{1}{2}\sigma_R^2 t^2)$
+\item This uniquely determines $R$ as $\mathcal{N}(\mu_R, \sigma_R^2)$
+\end{enumerate}
+
+For the covariance calculation:
+\begin{align}
+\Cov(X_A, X_B) &= \Cov(\mu_A + \epsilon_A + \etaval, \mu_B + \epsilon_B + \etaval) \nonumber\\
+&= \Cov(\epsilon_A, \epsilon_B) + \Cov(\epsilon_A, \etaval) + \Cov(\etaval, \epsilon_B) + \Cov(\etaval, \etaval) \nonumber\\
+&= 0 + 0 + 0 + \sigma_\eta^2 = \sigma_\eta^2
+\end{align}
+
+Therefore:
+\begin{align}
+\Var(R) &= \Var(X_A - X_B) = \Var(X_A) + \Var(X_B) - 2\Cov(X_A, X_B) \nonumber\\
+&= (\sigma_A^2 + \sigma_\eta^2) + (\sigma_B^2 + \sigma_\eta^2) - 2\sigma_\eta^2 \nonumber\\
+&= \sigma_A^2 + \sigma_B^2
+\end{align}
+\end{proof}
+
+\begin{corollary}[Environmental Factor Cancellation]
+\label{cor:env_cancellation}
+The relative transformation $R$ eliminates the shared environmental factor $\etaval$:
+\begin{equation}
+R = (\mu_A - \mu_B) + (\epsilon_A - \epsilon_B)
+\end{equation}
+\end{corollary}
+
+\begin{proof}
+Direct substitution into the measurement model:
+\begin{equation}
+R = X_A - X_B = (\mu_A + \epsilon_A + \etaval) - (\mu_B + \epsilon_B + \etaval) = (\mu_A - \mu_B) + (\epsilon_A - \epsilon_B)
+\end{equation}
+\end{proof}
+
+\subsection{Complete SNR Analysis for All Scenarios}
+
+\subsubsection{Single-Feature Absolute Comparison}
+
+\begin{theorem}[Single-Feature SNR Improvement]
+\label{thm:single_feature_snr}
+When comparing relative measurement to single-feature absolute measurement, the SNR improvement is:
+\begin{equation}
+\text{SNR Improvement} = \frac{\sigma_A^2 + \sigma_\eta^2}{\sigma_A^2 + \sigma_B^2}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+The signal-to-noise ratio for single-feature absolute measurement is:
+\begin{equation}
+\text{SNR}_{\text{single-abs}} = \frac{(\mu_A - \mu_B)^2}{\sigma_A^2 + \sigma_\eta^2}
+\end{equation}
+
+For relative measurement:
+\begin{equation}
+\text{SNR}_{\text{rel}} = \frac{(\mu_A - \mu_B)^2}{\sigma_A^2 + \sigma_B^2}
+\end{equation}
+
+The improvement ratio is:
+\begin{align}
+\frac{\text{SNR}_{\text{rel}}}{\text{SNR}_{\text{single-abs}}} &= \frac{(\mu_A - \mu_B)^2/(\sigma_A^2 + \sigma_B^2)}{(\mu_A - \mu_B)^2/(\sigma_A^2 + \sigma_\eta^2)} \nonumber\\
+&= \frac{\sigma_A^2 + \sigma_\eta^2}{\sigma_A^2 + \sigma_B^2} \nonumber\\
+&= 1 + \frac{\sigma_\eta^2 - \sigma_B^2}{\sigma_A^2 + \sigma_B^2}
+\end{align}
+
+When environmental noise dominates ($\sigma_\eta^2 \gg \sigma_B^2$), this approximates:
+\begin{equation}
+\text{SNR Improvement} \approx 1 + \frac{\sigma_\eta^2}{\sigma_A^2 + \sigma_B^2}
+\end{equation}
+\end{proof}
+
+\subsubsection{Two-Feature Absolute Predictor Analysis}
+
+\begin{theorem}[Two-Feature SNR Equivalence]
+\label{thm:two_feature_equivalence}
+For the two-feature absolute predictor with covariance structure, the SNR equals that of the relative predictor, explaining empirical equivalence.
+\end{theorem}
+
+\begin{proof}
+The covariance matrix of measurements $(X_A, X_B)$ is:
+\begin{equation}
+\Sigma_{\text{two-abs}} = \begin{pmatrix} 
+\sigma_A^2 + \sigma_\eta^2 & \sigma_\eta^2 \\
+\sigma_\eta^2 & \sigma_B^2 + \sigma_\eta^2 
+\end{pmatrix}
+\end{equation}
+
+For two features with this covariance structure, the optimal linear discriminant has weights proportional to:
+\begin{equation}
+w = \Sigma^{-1}(\mu_A - \mu_B, \mu_B - \mu_A)^T
+\end{equation}
+
+Computing the inverse:
+\begin{equation}
+\Sigma^{-1} = \frac{1}{\det(\Sigma)} \begin{pmatrix} 
+\sigma_B^2 + \sigma_\eta^2 & -\sigma_\eta^2 \\
+-\sigma_\eta^2 & \sigma_A^2 + \sigma_\eta^2 
+\end{pmatrix}
+\end{equation}
+
+where $\det(\Sigma) = (\sigma_A^2 + \sigma_\eta^2)(\sigma_B^2 + \sigma_\eta^2) - (\sigma_\eta^2)^2 = \sigma_A^2\sigma_B^2 + \sigma_A^2\sigma_\eta^2 + \sigma_B^2\sigma_\eta^2$.
+
+The signal-to-noise ratio becomes:
+\begin{equation}
+\text{SNR}_{\text{two-abs}} = \frac{(\mu_A - \mu_B)^2[(\sigma_B^2 + \sigma_\eta^2) + (\sigma_A^2 + \sigma_\eta^2)]}{\sigma_A^2\sigma_B^2 + \sigma_A^2\sigma_\eta^2 + \sigma_B^2\sigma_\eta^2}
+\end{equation}
+
+In the high environmental noise limit ($\sigma_\eta^2 \gg \sigma_A^2, \sigma_B^2$):
+\begin{align}
+\text{SNR}_{\text{two-abs}} &\approx \frac{(\mu_A - \mu_B)^2 \cdot 4\sigma_\eta^2}{(\sigma_A^2 + \sigma_B^2)\sigma_\eta^2} \nonumber\\
+&= \frac{4(\mu_A - \mu_B)^2}{\sigma_A^2 + \sigma_B^2} = 4 \cdot \text{SNR}_{\text{rel}}
+\end{align}
+
+The constant factor of 4 does not affect classification boundary orientation, only scaling. Learning algorithms adjust decision thresholds automatically, making the two-feature absolute predictor functionally equivalent to the relative predictor.
+\end{proof}
+
+\subsection{Advanced Theoretical Results}
+
+\subsubsection{Optimality Under General Conditions}
+
+\begin{theorem}[Relative Superiority Conditions]
+\label{thm:relative_superiority}
+Under the following conditions:
+\begin{enumerate}
+\item Shared environmental effects $\etaval$ are significant compared to individual variations $\epsilon_A, \epsilon_B$
+\item Competitors A and B face identical external conditions
+\item True performance difference $|\mu_A - \mu_B|$ is finite
+\end{enumerate}
+the expected performance of a relative metric $R = X_A - X_B$ exceeds that of isolated metrics $X_A, X_B$ for predicting binary outcome $\Omega$.
+\end{theorem}
+
+\begin{proof}
+Under conditions (1) and (2), the relative metric $R$ systematically cancels shared environmental effects. For the binary classification problem $P(A \text{ wins} | \text{measurements})$, we compare:
+
+\begin{align}
+P_{\text{rel}}(A \text{ wins}) &= \Phi\left(\frac{|\mu_A - \mu_B|}{\sqrt{\sigma_A^2 + \sigma_B^2}}\right) \\
+P_{\text{abs}}(A \text{ wins}) &= \Phi\left(\frac{|\mu_A - \mu_B|}{\sqrt{\sigma_A^2 + \sigma_\eta^2}}\right)
+\end{align}
+
+Under condition (1), $\sigma_\eta^2 \gg \sigma_A^2, \sigma_B^2$, which implies:
+\begin{equation}
+P_{\text{rel}}(A \text{ wins}) = \Phi\left(\frac{|\mu_A - \mu_B|}{\sqrt{\sigma_A^2 + \sigma_B^2}}\right) \gg \Phi\left(\frac{|\mu_A - \mu_B|}{\sqrt{\sigma_A^2 + \sigma_\eta^2}}\right) = P_{\text{abs}}(A \text{ wins})
+\end{equation}
+\end{proof}
+
+\subsubsection{Convergence Properties}
+
+\begin{theorem}[Almost Sure Convergence]
+\label{thm:almost_sure_convergence}
+Under regularity conditions, the relative estimator $\hat{R}_n$ converges almost surely to the true performance difference $\mu_A - \mu_B$ as $n \to \infty$.
+\end{theorem}
+
+\begin{proof}
+By the strong law of large numbers, since $\E[R_i] = \mu_A - \mu_B$ and $\Var(R_i) = \sigma_A^2 + \sigma_B^2 < \infty$:
+\begin{equation}
+\hat{R}_n = \frac{1}{n}\sum_{i=1}^n R_i \xrightarrow{a.s.} \E[R] = \mu_A - \mu_B
+\end{equation}
+
+The convergence rate is $O(n^{-1/2})$ by the central limit theorem.
+\end{proof}
+
+\subsection{Error Analysis and Robustness}
+
+\subsubsection{Robustness to Model Violations}
+
+\begin{theorem}[Robustness to Non-Normality]
+\label{thm:robustness_non_normality}
+The relative advantage persists under mild departures from normality, provided second moments exist.
+\end{theorem}
+
+\begin{proof}[Proof sketch]
+The key result depends only on the variance reduction from environmental noise cancellation. Even under non-normal distributions, if $\E[\epsilon_A] = \E[\epsilon_B] = \E[\etaval] = 0$ and variances are finite, the variance reduction property holds:
+\begin{equation}
+\Var(R) = \sigma_A^2 + \sigma_B^2 < \sigma_A^2 + \sigma_B^2 + 2\sigma_\eta^2 = \Var(X_A - X_B)_{\text{independent}}
+\end{equation}
+\end{proof}
+
+\subsubsection{Finite Sample Corrections}
+
+For finite samples, the distributional results require corrections:
+\begin{equation}
+\hat{R} \sim t_{n-2}\left(\mu_A - \mu_B, \frac{\sigma_A^2 + \sigma_B^2}{n}\right)
+\end{equation}
+where the degrees of freedom reflect the estimation of variance parameters.
+
+\subsection{Computational Algorithms}
+
+\subsubsection{Maximum Likelihood Estimation}
+
+For the measurement model with parameters $\theta = (\mu_A, \mu_B, \sigma_A^2, \sigma_B^2, \sigma_\eta^2)$, the log-likelihood function is:
+\begin{equation}
+\ell(\theta) = -\frac{n}{2} \log(2\pi) - \frac{n}{2} \log|\Sigma| - \frac{1}{2} \sum_{i=1}^n (x_i - \mu)^T \Sigma^{-1} (x_i - \mu)
+\end{equation}
+
+The MLE for $\mu_A - \mu_B$ is the sample mean of relative measurements, achieving the Cramér-Rao bound.
+
+\subsubsection{Hypothesis Testing Procedures}
+
+For testing $H_0: \mu_A \leq \mu_B$ vs $H_1: \mu_A > \mu_B$:
+\begin{equation}
+T = \frac{\hat{R}}{\sqrt{(\sigma_A^2 + \sigma_B^2)/n}} \sim \mathcal{N}(0,1) \text{ under } H_0
+\end{equation}
+
+The test has power function:
+\begin{equation}
+\beta(\deltaval) = \Phi\left(\deltaval\sqrt{\frac{n}{\sigma_A^2 + \sigma_B^2}} - z_\alpha\right)
+\end{equation}
+where $\deltaval = \mu_A - \mu_B$ is the true effect size.

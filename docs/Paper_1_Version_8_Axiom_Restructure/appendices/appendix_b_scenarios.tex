@@ -1,0 +1,308 @@
+% ===================================================================
+% UP1 APPENDIX B: ALTERNATIVE MEASUREMENT SCENARIOS
+% File: appendices/UP1/appendix_b_scenarios.tex
+% ===================================================================
+
+\section{Alternative Measurement Scenarios}
+\label{app:scenarios}
+
+\subsection{Single-Feature Absolute Measurement Analysis}
+
+\subsubsection{Scenario Description}
+
+Single-feature absolute measurement represents the traditional approach where competitors are evaluated in isolation against fixed benchmarks or thresholds. This scenario arises commonly in:
+
+\begin{itemize}
+\item \textbf{Quality control}: Comparing process performance to specification limits
+\item \textbf{Performance evaluation}: Assessing individual metrics against targets
+\item \textbf{Threshold decisions}: Binary classification based on absolute performance levels
+\end{itemize}
+
+\subsubsection{Mathematical Framework}
+
+\textbf{Measurement Model:}
+\begin{align}
+X_A &= \mu_A + \epsilon_A + \eta_A \quad \text{(Competitor A measured independently)} \\
+\tau &= \text{Reference threshold (Fixed comparison point)}
+\end{align}
+
+\textbf{Decision Rule:}
+\begin{equation}
+\text{Choose A if } X_A > \tau, \text{ otherwise choose alternative}
+\end{equation}
+
+\textbf{Signal-to-Noise Analysis:}
+\begin{equation}
+\text{SNR}_{\text{single-abs}} = \frac{(\mu_A - \tau)^2}{\sigma_A^2 + \sigma_\eta^2}
+\end{equation}
+
+\subsubsection{Comparison with Relative Measurement}
+
+When both competitors are available for simultaneous measurement, the relative approach provides:
+\begin{equation}
+\text{SNR}_{\text{rel}} = \frac{(\mu_A - \mu_B)^2}{\sigma_A^2 + \sigma_B^2}
+\end{equation}
+
+\textbf{Improvement Ratio:}
+\begin{equation}
+\frac{\text{SNR}_{\text{rel}}}{\text{SNR}_{\text{single-abs}}} = \frac{(\mu_A - \mu_B)^2/(\sigma_A^2 + \sigma_B^2)}{(\mu_A - \tau)^2/(\sigma_A^2 + \sigma_\eta^2)}
+\end{equation}
+
+When $\tau \approx \mu_B$ (threshold approximates competitor B's performance):
+\begin{equation}
+\text{Improvement} \approx \frac{\sigma_A^2 + \sigma_\eta^2}{\sigma_A^2 + \sigma_B^2} = 1 + \frac{\sigma_\eta^2 - \sigma_B^2}{\sigma_A^2 + \sigma_B^2}
+\end{equation}
+
+\subsubsection{Practical Implications}
+
+\textbf{Environmental Noise Dominance:} When $\sigma_\eta^2 \gg \sigma_B^2$, the improvement becomes:
+\begin{equation}
+\text{Improvement} \approx 1 + \frac{\sigma_\eta^2}{\sigma_A^2 + \sigma_B^2}
+\end{equation}
+
+This explains why single-feature absolute measurements perform poorly in high-noise environments, as observed in empirical validation studies.
+
+\textbf{Optimal Threshold Selection:} The optimal threshold for single-feature measurement is:
+\begin{equation}
+\tau^* = \frac{\mu_A + \mu_B}{2}
+\end{equation}
+
+However, this requires knowledge of both competitors' true performance, making relative measurement the more practical approach.
+
+\subsection{Two-Feature Absolute Predictor Analysis}
+
+\subsubsection{Scenario Description and Motivation}
+
+The two-feature absolute predictor uses both $X_A$ and $X_B$ as separate input features to a machine learning model. This scenario is particularly relevant for understanding why relative measurement and two-feature absolute approaches achieve similar empirical performance despite different formulations.
+
+\textbf{Key Characteristics:}
+\begin{itemize}
+\item Both measurements available simultaneously
+\item Machine learning algorithm learns optimal combination
+\item Environmental noise correlation can be exploited implicitly
+\item Represents modern data-driven competitive analysis
+\end{itemize}
+
+\subsubsection{Covariance Structure Analysis}
+
+\textbf{Joint Measurement Distribution:}
+\begin{equation}
+\begin{pmatrix} X_A \\ X_B \end{pmatrix} \sim \mathcal{N}\left(\begin{pmatrix} \mu_A \\ \mu_B \end{pmatrix}, \begin{pmatrix} \sigma_A^2 + \sigma_\eta^2 & \sigma_\eta^2 \\ \sigma_\eta^2 & \sigma_B^2 + \sigma_\eta^2 \end{pmatrix}\right)
+\end{equation}
+
+\textbf{Critical Insight:} The non-zero covariance $\Cov(X_A, X_B) = \sigma_\eta^2$ arises from shared environmental effects. This correlation structure enables implicit environmental noise cancellation.
+
+\subsubsection{Optimal Linear Discriminant Analysis}
+
+For two-feature classification with covariance matrix $\Sigma$, the optimal linear discriminant has direction:
+\begin{equation}
+w = \Sigma^{-1}(\mu_A - \mu_B, \mu_B - \mu_A)^T
+\end{equation}
+
+\textbf{Matrix Inversion:}
+\begin{equation}
+\Sigma^{-1} = \frac{1}{\det(\Sigma)} \begin{pmatrix} \sigma_B^2 + \sigma_\eta^2 & -\sigma_\eta^2 \\ -\sigma_\eta^2 & \sigma_A^2 + \sigma_\eta^2 \end{pmatrix}
+\end{equation}
+
+where $\det(\Sigma) = \sigma_A^2\sigma_B^2 + \sigma_A^2\sigma_\eta^2 + \sigma_B^2\sigma_\eta^2$.
+
+\textbf{Optimal Weights:}
+After normalization, the optimal linear combination approaches:
+\begin{equation}
+w_A \approx 1, \quad w_B \approx -1
+\end{equation}
+
+This demonstrates that the optimal two-feature predictor implicitly learns to perform the relativization operation $R = X_A - X_B$.
+
+\subsubsection{Signal-to-Noise Equivalence}
+
+\textbf{Two-Feature SNR Calculation:}
+\begin{equation}
+\text{SNR}_{\text{two-abs}} = (\mu_A - \mu_B)^T \Sigma^{-1} (\mu_A - \mu_B)
+\end{equation}
+
+Expanding this expression:
+\begin{equation}
+\text{SNR}_{\text{two-abs}} = \frac{(\mu_A - \mu_B)^2 [(\sigma_B^2 + \sigma_\eta^2) + (\sigma_A^2 + \sigma_\eta^2) - 2\sigma_\eta^2]}{\det(\Sigma)} = \frac{(\mu_A - \mu_B)^2 (\sigma_A^2 + \sigma_B^2)}{\det(\Sigma)}
+\end{equation}
+
+\textbf{High Environmental Noise Limit:}
+When $\sigma_\eta^2 \gg \sigma_A^2, \sigma_B^2$:
+\begin{align}
+\det(\Sigma) &\approx (\sigma_A^2 + \sigma_B^2)\sigma_\eta^2 \\
+\text{SNR}_{\text{two-abs}} &\approx \frac{(\mu_A - \mu_B)^2}{\sigma_\eta^2} \times \frac{\sigma_\eta^2}{\sigma_A^2 + \sigma_B^2} = \frac{(\mu_A - \mu_B)^2}{\sigma_A^2 + \sigma_B^2} = \text{SNR}_{\text{rel}}
+\end{align}
+
+This mathematical equivalence explains the empirical observation that two-feature absolute and relative predictors achieve similar performance.
+
+\subsubsection{Learning Algorithm Perspective}
+
+\textbf{Gradient-Based Optimization:} Machine learning algorithms automatically discover the noise-canceling linear combination through gradient descent:
+\begin{equation}
+\nabla_w \text{Loss} \propto -\Sigma^{-1}(\mu_A - \mu_B)
+\end{equation}
+
+The gradient naturally points toward the relativization direction $w = (1, -1)$.
+
+\textbf{Regularization Effects:} L2 regularization slightly favors the relativization solution:
+\begin{equation}
+w_{\text{regularized}} = (\Sigma + \lambda I)^{-1}(\mu_A - \mu_B)
+\end{equation}
+
+Small $\lambda$ values preserve the noise-canceling properties while improving numerical stability.
+
+\subsection{Multivariate Extensions}
+
+\subsubsection{Multi-Dimensional Performance Spaces}
+
+When competitors are evaluated across multiple performance dimensions, the measurement model extends to:
+\begin{align}
+\mathbf{X}_A &= \boldsymbol{\mu}_A + \boldsymbol{\epsilon}_A + \boldsymbol{\etaval} \quad \text{(p-dimensional vectors)} \\
+\mathbf{X}_B &= \boldsymbol{\mu}_B + \boldsymbol{\epsilon}_B + \boldsymbol{\etaval} \quad \text{(p-dimensional vectors)}
+\end{align}
+
+\textbf{Relative Measurement:}
+\begin{equation}
+\mathbf{R} = \mathbf{X}_A - \mathbf{X}_B = (\boldsymbol{\mu}_A - \boldsymbol{\mu}_B) + (\boldsymbol{\epsilon}_A - \boldsymbol{\epsilon}_B)
+\end{equation}
+
+Environmental noise cancellation operates dimension-wise, providing benefits across all performance measures simultaneously.
+
+\subsubsection{Mahalanobis Distance Framework}
+
+The multivariate generalization uses Mahalanobis distance:
+\begin{equation}
+\DM = \sqrt{(\boldsymbol{\mu}_A - \boldsymbol{\mu}_B)^T \boldsymbol{\Sigma}^{-1} (\boldsymbol{\mu}_A - \boldsymbol{\mu}_B)}
+\end{equation}
+
+where $\boldsymbol{\Sigma} = (\boldsymbol{\Sigma}_A + \boldsymbol{\Sigma}_B)/2$ is the pooled covariance matrix.
+
+\textbf{Environmental Noise Integration:}
+\begin{align}
+\boldsymbol{\Sigma}_{\text{noisy}} &= \boldsymbol{\Sigma} + \boldsymbol{\Sigma}_\eta \quad \text{(with environmental noise)} \\
+\boldsymbol{\Sigma}_{\text{clean}} &= \boldsymbol{\Sigma} \quad \text{(relative measurement)}
+\end{align}
+
+The improvement ratio becomes:
+\begin{equation}
+\frac{\DM_{\text{rel}}}{\DM_{\text{abs}}} = \sqrt{\frac{\det(\boldsymbol{\Sigma} + \boldsymbol{\Sigma}_\eta)}{\det(\boldsymbol{\Sigma})}}
+\end{equation}
+
+\subsubsection{Asymmetric Competitive Framework Preview}
+
+The multivariate extension naturally leads to the asymmetric competitive framework developed in \papertwo:
+
+\textbf{Variance Asymmetry Parameter:}
+\begin{align}
+\kappaval &= \frac{\sigma_B^2}{\sigma_A^2} \quad \text{(univariate case)} \\
+\kappaval &= \frac{\det(\boldsymbol{\Sigma}_B)}{\det(\boldsymbol{\Sigma}_A)} \quad \text{(multivariate case)}
+\end{align}
+
+\textbf{Environmental Integration:}
+\begin{equation}
+\etaval = \frac{\sigma_\eta^2}{\sigma_A^2 + \sigma_B^2} \quad \text{(environmental noise ratio)}
+\end{equation}
+
+This framework enables analysis of competitive scenarios where competitors have different variance profiles, extending beyond the symmetric case analyzed in this paper.
+
+\subsection{Temporal and Dynamic Extensions}
+
+\subsubsection{Time-Varying Environmental Effects}
+
+When environmental conditions change over time, the measurement model becomes:
+\begin{align}
+X_A(t) &= \mu_A + \epsilon_A(t) + \eta(t) \\
+X_B(t) &= \mu_B + \epsilon_B(t) + \eta(t)
+\end{align}
+
+\textbf{Relative Measurement Advantage:}
+\begin{equation}
+R(t) = X_A(t) - X_B(t) = (\mu_A - \mu_B) + [\epsilon_A(t) - \epsilon_B(t)]
+\end{equation}
+
+Environmental effects $\eta(t)$ continue to cancel regardless of their temporal evolution, providing robust competitive measurement under dynamic conditions.
+
+\subsubsection{Regime Switching Models}
+
+For environments with discrete regime changes:
+\begin{equation}
+\eta(t) = \eta_k \text{ when in regime } k
+\end{equation}
+
+The relative measurement maintains its advantage across all regimes:
+\begin{equation}
+R(t) = (\mu_A - \mu_B) + [\epsilon_A(t) - \epsilon_B(t)] \quad \forall \text{ regimes } k
+\end{equation}
+
+This temporal robustness motivates the dynamic competitive measurement framework developed in \paperfour.
+
+\subsection{Experimental Design Implications}
+
+\subsubsection{Measurement Protocol Design}
+
+The theoretical analysis provides clear guidance for experimental design:
+\begin{itemize}
+\item \textbf{Simultaneous measurement}: Enables environmental noise cancellation
+\item \textbf{Sequential measurement}: Requires environmental noise modeling
+\item \textbf{Matched conditions}: Approximates simultaneous measurement benefits
+\end{itemize}
+
+\subsubsection{Sample Size Requirements}
+
+\textbf{Relative Measurement:}
+\begin{equation}
+n_{\text{rel}} = \frac{2(z_\alpha + z_\beta)^2 (\sigma_A^2 + \sigma_B^2)}{(\mu_A - \mu_B)^2}
+\end{equation}
+
+\textbf{Independent Measurement:}
+\begin{equation}
+n_{\text{indep}} = \frac{2(z_\alpha + z_\beta)^2 (\sigma_A^2 + \sigma_B^2 + 2\sigma_\eta^2)}{(\mu_A - \mu_B)^2}
+\end{equation}
+
+\textbf{Sample Size Reduction:}
+\begin{equation}
+\frac{n_{\text{rel}}}{n_{\text{indep}}} = \frac{\sigma_A^2 + \sigma_B^2}{\sigma_A^2 + \sigma_B^2 + 2\sigma_\eta^2}
+\end{equation}
+
+This relationship quantifies the experimental efficiency gains from proper measurement design.
+
+\subsection{Robustness and Sensitivity Analysis}
+
+\subsubsection{Violations of Normality Assumptions}
+
+The relative advantage persists under various distributional assumptions:
+
+\textbf{Heavy-Tailed Distributions:} The variance reduction property holds for any distribution with finite second moments.
+
+\textbf{Skewed Distributions:} Environmental noise cancellation operates on location-scale families regardless of skewness.
+
+\textbf{Discrete Distributions:} The principle extends to discrete competitive scenarios with appropriate modifications.
+
+\subsubsection{Partial Environmental Correlation}
+
+When environmental effects are only partially correlated:
+\begin{equation}
+\Cov(\eta_A, \eta_B) = \rho \sigma_\eta^2 \quad \text{where } 0 \leq \rho \leq 1
+\end{equation}
+
+The variance reduction becomes:
+\begin{equation}
+\Var(R) = \sigma_A^2 + \sigma_B^2 + 2(1-\rho)\sigma_\eta^2
+\end{equation}
+
+Even partial correlation ($\rho > 0$) provides benefits, with full benefit achieved at $\rho = 1$ (perfect correlation/shared effects).
+
+This analysis explains why approximate simultaneous measurement (high $\rho$) can provide substantial benefits even without perfect synchronization.
+
+\subsection{Connection to Main Paper and Future Work}
+
+The alternative measurement scenarios analyzed in this appendix provide several key insights:
+
+\begin{enumerate}
+\item \textbf{Empirical Validation}: Explains the observed equivalence between two-feature absolute and relative predictors in Section 4
+\item \textbf{Practical Guidance}: Clarifies when different measurement approaches are optimal
+\item \textbf{Theoretical Completeness}: Provides comprehensive analysis of all relevant competitive measurement scenarios
+\item \textbf{Future Directions}: Establishes foundation for the multivariate and temporal frameworks in \papertwo, \paperthree, and \paperfour
+\end{enumerate}
+
+These analyses demonstrate that the relative measurement principle generalizes broadly while maintaining its fundamental advantage: systematic elimination of environmental noise through appropriate measurement design and statistical analysis.

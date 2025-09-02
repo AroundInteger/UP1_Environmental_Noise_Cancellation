@@ -1,0 +1,40 @@
+UP1 Rugby Data Preprocessing Report
+Generated: 02-Sep-2025 10:56:34
+
+DATASET OVERVIEW:
+  Total matches: 1128
+  Seasons: 21/22, 22/23, 23/24, 24/25
+  Total teams: 16
+  Overall win rate: 50.0%
+
+FEATURE MATRICES:
+  Absolute features: 24 metrics
+  Relative features: 24 metrics
+
+METRIC CATEGORIES:
+  carries
+  metres_made
+  defenders_beaten
+  clean_breaks
+  offloads
+  passes
+  turnovers_conceded
+  turnovers_won
+  kicks_from_hand
+  kick_metres
+  scrums_won
+  rucks_won
+  lineout_throws_lost
+  lineout_throws_won
+  tackles
+  missed_tackles
+  penalties_conceded
+  scrum_pens_conceded
+  lineout_pens_conceded
+  general_play_pens_conceded
+  free_kicks_conceded
+  ruck_maul_tackle_pen_con
+  red_cards
+  yellow_cards
+
+DATA QUALITY:
