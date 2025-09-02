@@ -1,0 +1,39 @@
+ENVIRONMENTAL ESTIMATION FIX REPORT
+Generated: 02-Sep-2025 17:07:09
+
+PROBLEM IDENTIFIED:
+The original environmentalEstimation.m function was using fallback method
+for ALL metrics due to missing season/team grouping variables.
+This caused a 50/50 split assumption instead of proper environmental estimation.
+
+SOLUTION IMPLEMENTED:
+Correlation-based environmental estimation using cross-team correlation
+to estimate environmental variance components.
+
+CORRECTED RESULTS:
+KPI                  | σ_η | σ_indiv | Env Ratio | SNR Imp
+------------------------------------------------------------
+carries              |  0.0 |    28.2 |    0.000 |   1.00
+metres_made          |  0.0 |   115.4 |    0.000 |   1.00
+defenders_beaten     |  0.0 |     7.4 |    0.000 |   1.00
+clean_breaks         |  0.0 |     2.9 |    0.000 |   1.00
+offloads             |  0.0 |     5.1 |    0.000 |   1.00
+passes               |  0.0 |    40.1 |    0.000 |   1.00
+turnovers_conceded   |  0.0 |     3.6 |    0.000 |   1.00
+turnovers_won        |  0.0 |     2.5 |    0.000 |   1.00
+kicks_from_hand      |  1.7 |     5.8 |    0.076 |   1.08
+kick_metres          | 75.8 |   188.5 |    0.139 |   1.16
+scrums_won           |  0.0 |     2.4 |    0.000 |   1.00
+rucks_won            | 20.6 |    17.9 |    0.570 |   2.33
+lineout_throws_lost  |  0.0 |     1.5 |    0.000 |   1.00
+lineout_throws_won   |  0.0 |     3.5 |    0.000 |   1.00
+tackles              |  0.0 |    37.7 |    0.000 |   1.00
+missed_tackles       |  0.0 |     7.4 |    0.000 |   1.00
+penalties_conceded   |  0.0 |     3.3 |    0.000 |   1.00
+scrum_pens_conceded  |  0.0 |     1.7 |    0.000 |   1.00
+lineout_pens_conceded |  0.0 |     0.7 |    0.000 |   1.00
+general_play_pens_conceded |  0.0 |     1.7 |    0.000 |   1.00
+free_kicks_conceded  |  0.0 |     0.8 |    0.000 |   1.00
+ruck_maul_tackle_pen_con |  0.0 |     1.5 |    0.000 |   1.00
+red_cards            |  0.0 |     0.2 |    0.000 |   1.00
+yellow_cards         |  0.0 |     0.7 |    0.000 |   1.00

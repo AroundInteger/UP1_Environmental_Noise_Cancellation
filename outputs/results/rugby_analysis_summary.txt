@@ -1,11 +1,11 @@
 UP1 Environmental Noise Cancellation: Rugby Analysis Results
-Generated: 02-Sep-2025 13:17:28
+Generated: 02-Sep-2025 17:05:20
 
 KEY FINDINGS:
   Environmental noise ratio: 0.568
   Theoretical SNR improvement: 2.315
   Empirical AUC improvement: 12.2%
-  Statistical significance: YES
+  Statistical significance: NO
 
 ANALYSIS SUMMARY:
   Total metrics analyzed: 24
@@ -13,6 +13,6 @@ ANALYSIS SUMMARY:
   Confidence level: 95%
 
 CONCLUSIONS:
-  Environmental cancellation: CONFIRMED
-  Performance improvement: SIGNIFICANT
-  Theoretical validation: SUCCESSFUL
+  Environmental cancellation: NOT CONFIRMED
+  Performance improvement: NOT SIGNIFICANT
+  Theoretical validation: INCONCLUSIVE

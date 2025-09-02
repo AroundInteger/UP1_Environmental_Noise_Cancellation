@@ -1,0 +1,837 @@
+%% Rugby Data Empirical Distribution Characterization
+% Phase 1: Comprehensive analysis of actual rugby KPI distributions
+% Foundation for environmental noise estimation validation
+
+clear; close all; clc;
+
+fprintf('=== RUGBY DATA EMPIRICAL CHARACTERIZATION ===\n');
+fprintf('Analyzing actual rugby performance data distributions\n');
+fprintf('Timestamp: %s\n\n', datestr(now));
+
+%% Data Loading and Preprocessing
+% Load actual rugby dataset
+% Adjust path and format based on your actual data structure
+
+try
+    % Option 1: CSV file
+    if exist('rugby_4_seasons.csv', 'file')
+        data_raw = readtable('rugby_4_seasons.csv');
+        fprintf('Loaded CSV data: %d rows, %d columns\n', height(data_raw), width(data_raw));
+    
+    % Option 2: MAT file  
+    elseif exist('rugby_data.mat', 'file')
+        load('rugby_data.mat');
+        fprintf('Loaded MAT data\n');
+        
+    % Option 3: Excel file
+    elseif exist('rugby_data.xlsx', 'file')
+        data_raw = readtable('rugby_data.xlsx');
+        fprintf('Loaded Excel data: %d rows, %d columns\n', height(data_raw), width(data_raw));
+        
+    else
+        error('No rugby data file found. Please ensure data file exists.');
+    end
+    
+catch ME
+    fprintf('Data loading failed: %s\n', ME.message);
+    fprintf('Creating sample data for demonstration...\n');
+    data_raw = create_sample_rugby_data();
+end
+
+%% Data Structure Analysis
+fprintf('\n--- DATA STRUCTURE ANALYSIS ---\n');
+
+% Identify KPI columns (assuming naming convention)
+variable_names = data_raw.Properties.VariableNames;
+
+% Find Team A and Team B columns
+team_A_cols = variable_names(contains(variable_names, '_A', 'IgnoreCase', true) | ...
+                            contains(variable_names, '_home', 'IgnoreCase', true));
+team_B_cols = variable_names(contains(variable_names, '_B', 'IgnoreCase', true) | ...
+                            contains(variable_names, '_away', 'IgnoreCase', true));
+
+% Extract KPI base names
+kpi_base_names = {};
+for i = 1:length(team_A_cols)
+    col_name = team_A_cols{i};
+    % Remove team identifier suffixes
+    base_name = regexprep(col_name, {'_A$', '_home$', '_H$'}, '', 'ignorecase');
+    kpi_base_names{end+1} = base_name;
+end
+
+% Remove duplicates and focus on key performance indicators
+kpi_base_names = unique(kpi_base_names);
+
+% From your empirical results, focus on the top-performing KPIs
+priority_kpis = {'kicks_from_hand', 'clean_breaks', 'metres_made', ...
+                'scrum_pens_conceded', 'scrums_won'};
+
+% Find which priority KPIs exist in data
+available_kpis = {};
+for i = 1:length(priority_kpis)
+    kpi = priority_kpis{i};
+    if any(contains(kpi_base_names, kpi, 'IgnoreCase', true))
+        available_kpis{end+1} = kpi;
+    end
+end
+
+if isempty(available_kpis)
+    fprintf('Priority KPIs not found, analyzing first %d available KPIs\n', min(5, length(kpi_base_names)));
+    available_kpis = kpi_base_names(1:min(5, length(kpi_base_names)));
+end
+
+fprintf('KPIs to analyze: %s\n', strjoin(available_kpis, ', '));
+fprintf('Total matches: %d\n', height(data_raw));
+
+%% Extract and Clean KPI Data
+rugby_data = struct();
+data_quality_report = struct();
+
+for i = 1:length(available_kpis)
+    kpi = available_kpis{i};
+    fprintf('\nProcessing %s...\n', kpi);
+    
+    % Find corresponding Team A and Team B columns
+    [X_A, X_B, quality_info] = extract_kpi_data(data_raw, kpi, variable_names);
+    
+    if ~isempty(X_A) && ~isempty(X_B)
+        rugby_data.(kpi).X_A = X_A;
+        rugby_data.(kpi).X_B = X_B;
+        rugby_data.(kpi).n_matches = length(X_A);
+        
+        data_quality_report.(kpi) = quality_info;
+        
+        fprintf('  Successfully extracted: %d matches\n', length(X_A));
+        fprintf('  Missing values: A=%d, B=%d\n', quality_info.missing_A, quality_info.missing_B);
+        
+    else
+        fprintf('  WARNING: Could not extract data for %s\n', kpi);
+    end
+end
+
+%% Comprehensive Distributional Analysis
+fprintf('\n=== DISTRIBUTIONAL ANALYSIS ===\n');
+
+distribution_results = struct();
+
+for i = 1:length(available_kpis)
+    kpi = available_kpis{i};
+    
+    if ~isfield(rugby_data, kpi)
+        continue;
+    end
+    
+    fprintf('\n--- ANALYZING %s ---\n', upper(kpi));
+    
+    X_A = rugby_data.(kpi).X_A;
+    X_B = rugby_data.(kpi).X_B;
+    
+    % Comprehensive characterization
+    char_results = comprehensive_distribution_analysis(X_A, X_B, kpi);
+    distribution_results.(kpi) = char_results;
+end
+
+%% Generate Comprehensive Report
+generate_characterization_report(available_kpis, distribution_results, data_quality_report);
+
+%% Create Visualization Dashboard
+create_distribution_dashboard(available_kpis, distribution_results);
+
+%% Export Results for Validation Framework
+export_characterization_results(available_kpis, distribution_results, rugby_data);
+
+%% HELPER FUNCTIONS
+
+function [X_A, X_B, quality_info] = extract_kpi_data(data_raw, kpi_base, variable_names)
+    %EXTRACT_KPI_DATA Extract Team A and Team B data for specific KPI
+    
+    % Initialize outputs
+    X_A = []; X_B = []; 
+    quality_info = struct('missing_A', 0, 'missing_B', 0, 'outliers_A', 0, 'outliers_B', 0);
+    
+    % Find Team A column
+    team_A_patterns = {[kpi_base '_A'], [kpi_base '_home'], [kpi_base '_H'], [kpi_base '_1']};
+    team_A_col = '';
+    
+    for pattern = team_A_patterns
+        matches = variable_names(contains(variable_names, pattern{1}, 'IgnoreCase', true));
+        if ~isempty(matches)
+            team_A_col = matches{1};
+            break;
+        end
+    end
+    
+    % Find Team B column
+    team_B_patterns = {[kpi_base '_B'], [kpi_base '_away'], [kpi_base '_A'], [kpi_base '_2']};
+    team_B_col = '';
+    
+    for pattern = team_B_patterns
+        matches = variable_names(contains(variable_names, pattern{1}, 'IgnoreCase', true));
+        if ~isempty(matches)
+            % Make sure it's not the same as Team A
+            if ~strcmp(matches{1}, team_A_col)
+                team_B_col = matches{1};
+                break;
+            end
+        end
+    end
+    
+    % Extract data if columns found
+    if ~isempty(team_A_col) && ~isempty(team_B_col)
+        try
+            X_A_raw = data_raw.(team_A_col);
+            X_B_raw = data_raw.(team_B_col);
+            
+            % Handle different data types
+            if iscell(X_A_raw)
+                X_A_raw = cell2mat(X_A_raw);
+            end
+            if iscell(X_B_raw)
+                X_B_raw = cell2mat(X_B_raw);
+            end
+            
+            % Convert to numeric if needed
+            X_A_raw = double(X_A_raw);
+            X_B_raw = double(X_B_raw);
+            
+            % Quality checks and cleaning
+            [X_A, X_B, quality_info] = clean_kpi_data(X_A_raw, X_B_raw);
+            
+        catch ME
+            fprintf('    Error extracting %s: %s\n', kpi_base, ME.message);
+        end
+    else
+        fprintf('    Could not find columns for %s\n', kpi_base);
+        fprintf('    Team A pattern attempts: %s\n', strjoin(team_A_patterns, ', '));
+        fprintf('    Team B pattern attempts: %s\n', strjoin(team_B_patterns, ', '));
+    end
+end
+
+function [X_A_clean, X_B_clean, quality_info] = clean_kpi_data(X_A_raw, X_B_raw)
+    %CLEAN_KPI_DATA Clean and validate KPI data
+    
+    quality_info = struct();
+    
+    % Count missing values
+    missing_A = sum(isnan(X_A_raw) | isinf(X_A_raw));
+    missing_B = sum(isnan(X_B_raw) | isinf(X_B_raw));
+    
+    quality_info.missing_A = missing_A;
+    quality_info.missing_B = missing_B;
+    quality_info.original_length = length(X_A_raw);
+    
+    % Remove rows with missing values in either team
+    valid_rows = ~isnan(X_A_raw) & ~isnan(X_B_raw) & ...
+                 ~isinf(X_A_raw) & ~isinf(X_B_raw);
+    
+    X_A_valid = X_A_raw(valid_rows);
+    X_B_valid = X_B_raw(valid_rows);
+    
+    % Outlier detection (IQR method)
+    [X_A_clean, outliers_A] = remove_outliers(X_A_valid);
+    [X_B_clean, outliers_B] = remove_outliers(X_B_valid);
+    
+    % Ensure same length (conservative approach)
+    min_length = min(length(X_A_clean), length(X_B_clean));
+    X_A_clean = X_A_clean(1:min_length);
+    X_B_clean = X_B_clean(1:min_length);
+    
+    quality_info.outliers_A = outliers_A;
+    quality_info.outliers_B = outliers_B;
+    quality_info.final_length = min_length;
+    quality_info.data_retention = min_length / quality_info.original_length;
+end
+
+function [X_clean, n_outliers] = remove_outliers(X)
+    %REMOVE_OUTLIERS Remove outliers using IQR method
+    
+    if length(X) < 10
+        X_clean = X;
+        n_outliers = 0;
+        return;
+    end
+    
+    Q1 = quantile(X, 0.25);
+    Q3 = quantile(X, 0.75);
+    IQR = Q3 - Q1;
+    
+    % Define outlier bounds (1.5 * IQR is standard)
+    lower_bound = Q1 - 1.5 * IQR;
+    upper_bound = Q3 + 1.5 * IQR;
+    
+    % For sports data, we typically don't expect negative values
+    if min(X) >= 0
+        lower_bound = max(0, lower_bound);
+    end
+    
+    outliers = X < lower_bound | X > upper_bound;
+    X_clean = X(~outliers);
+    n_outliers = sum(outliers);
+end
+
+function results = comprehensive_distribution_analysis(X_A, X_B, kpi_name)
+    %COMPREHENSIVE_DISTRIBUTION_ANALYSIS Detailed distributional characterization
+    
+    results = struct();
+    results.kpi_name = kpi_name;
+    results.n_matches = length(X_A);
+    
+    % Basic statistics for each team
+    results.stats_A = calculate_descriptive_stats(X_A, 'Team_A');
+    results.stats_B = calculate_descriptive_stats(X_B, 'Team_B');
+    
+    % Combined analysis
+    X_combined = [X_A; X_B];
+    results.stats_combined = calculate_descriptive_stats(X_combined, 'Combined');
+    
+    % Relative measure analysis (CRITICAL)
+    R = X_A - X_B;
+    results.stats_relative = calculate_descriptive_stats(R, 'Relative');
+    
+    % Distributional tests
+    results.normality_tests = conduct_normality_tests(X_A, X_B, R);
+    
+    % Distribution fitting
+    results.fitted_distributions = fit_distribution_models(X_A, X_B, R);
+    
+    % Environmental noise estimation
+    results.environmental_analysis = estimate_environmental_components(X_A, X_B);
+    
+    % Data type classification
+    results.data_characteristics = classify_data_type(X_A, X_B);
+    
+    % Print summary
+    print_kpi_summary(results);
+end
+
+function stats = calculate_descriptive_stats(X, label)
+    %CALCULATE_DESCRIPTIVE_STATS Comprehensive descriptive statistics
+    
+    stats = struct();
+    stats.label = label;
+    stats.n = length(X);
+    stats.mean = mean(X);
+    stats.median = median(X);
+    stats.std = std(X);
+    stats.var = var(X);
+    stats.min = min(X);
+    stats.max = max(X);
+    stats.range = range(X);
+    stats.skewness = skewness(X);
+    stats.kurtosis = kurtosis(X);
+    stats.excess_kurtosis = kurtosis(X) - 3;
+    
+    % Quartiles
+    stats.q25 = quantile(X, 0.25);
+    stats.q75 = quantile(X, 0.75);
+    stats.iqr = stats.q75 - stats.q25;
+    
+    % Coefficient of variation
+    stats.cv = stats.std / stats.mean;
+    
+    % Zero proportion (relevant for count data)
+    stats.prop_zeros = sum(X == 0) / length(X);
+    stats.prop_integers = sum(X == round(X)) / length(X);
+end
+
+function norm_tests = conduct_normality_tests(X_A, X_B, R)
+    %CONDUCT_NORMALITY_TESTS Comprehensive normality testing
+    
+    norm_tests = struct();
+    
+    % Test each dataset
+    datasets = struct('X_A', X_A, 'X_B', X_B, 'Relative', R);
+    dataset_names = fieldnames(datasets);
+    
+    for i = 1:length(dataset_names)
+        name = dataset_names{i};
+        data = datasets.(name);
+        
+        if length(data) < 3
+            continue;
+        end
+        
+        % Shapiro-Wilk test (if available and data size appropriate)
+        if length(data) >= 4 && length(data) <= 5000
+            try
+                [h_sw, p_sw] = swtest(data, 0.05);
+                norm_tests.([name '_shapiro_h']) = h_sw;
+                norm_tests.([name '_shapiro_p']) = p_sw;
+            catch
+                norm_tests.([name '_shapiro_h']) = NaN;
+                norm_tests.([name '_shapiro_p']) = NaN;
+            end
+        end
+        
+        % Lilliefors test
+        try
+            [h_lf, p_lf] = lillietest(data, 'Alpha', 0.05);
+            norm_tests.([name '_lillie_h']) = h_lf;
+            norm_tests.([name '_lillie_p']) = p_lf;
+        catch
+            norm_tests.([name '_lillie_h']) = NaN;
+            norm_tests.([name '_lillie_p']) = NaN;
+        end
+        
+        % Anderson-Darling test
+        try
+            [h_ad, p_ad] = adtest(data, 'Alpha', 0.05);
+            norm_tests.([name '_anderson_h']) = h_ad;
+            norm_tests.([name '_anderson_p']) = p_ad;
+        catch
+            norm_tests.([name '_anderson_h']) = NaN;
+            norm_tests.([name '_anderson_p']) = NaN;
+        end
+        
+        % Q-Q correlation
+        if length(data) >= 10
+            sorted_data = sort(data);
+            theoretical_quantiles = norminv((1:length(data)) / (length(data) + 1));
+            empirical_quantiles = (sorted_data - mean(sorted_data)) / std(sorted_data);
+            qq_corr = corr(theoretical_quantiles', empirical_quantiles);
+            norm_tests.([name '_qq_corr']) = qq_corr;
+        else
+            norm_tests.([name '_qq_corr']) = NaN;
+        end
+    end
+end
+
+function fitted = fit_distribution_models(X_A, X_B, R)
+    %FIT_DISTRIBUTION_MODELS Fit various parametric distributions
+    
+    fitted = struct();
+    
+    datasets = struct('X_A', X_A, 'X_B', X_B, 'Relative', R);
+    dataset_names = fieldnames(datasets);
+    
+    % Distributions to test
+    distributions = {'normal', 'gamma', 'lognormal', 'exponential'};
+    
+    for i = 1:length(dataset_names)
+        name = dataset_names{i};
+        data = datasets.(name);
+        
+        if length(data) < 10
+            continue;
+        end
+        
+        fitted.(name) = struct();
+        
+        for j = 1:length(distributions)
+            dist_name = distributions{j};
+            
+            try
+                switch dist_name
+                    case 'normal'
+                        params = [mean(data), std(data)];
+                        ll = sum(log(normpdf(data, params(1), params(2))));
+                        
+                    case 'gamma'
+                        if any(data <= 0)
+                            params = NaN(1,2);
+                            ll = -Inf;
+                        else
+                            params = gamfit(data);
+                            ll = sum(log(gampdf(data, params(1), params(2))));
+                        end
+                        
+                    case 'lognormal'
+                        if any(data <= 0)
+                            params = NaN(1,2);
+                            ll = -Inf;
+                        else
+                            params = lognfit(data);
+                            ll = sum(log(lognpdf(data, params(1), params(2))));
+                        end
+                        
+                    case 'exponential'
+                        if any(data < 0)
+                            params = NaN;
+                            ll = -Inf;
+                        else
+                            params = mean(data);
+                            ll = sum(log(exppdf(data, params)));
+                        end
+                end
+                
+                fitted.(name).(dist_name).params = params;
+                fitted.(name).(dist_name).loglikelihood = ll;
+                
+                % AIC and BIC
+                k = length(params); % Number of parameters
+                n = length(data);
+                fitted.(name).(dist_name).AIC = 2*k - 2*ll;
+                fitted.(name).(dist_name).BIC = k*log(n) - 2*ll;
+                
+            catch ME
+                fitted.(name).(dist_name).params = NaN;
+                fitted.(name).(dist_name).loglikelihood = -Inf;
+                fitted.(name).(dist_name).AIC = Inf;
+                fitted.(name).(dist_name).BIC = Inf;
+                fitted.(name).(dist_name).error = ME.message;
+            end
+        end
+    end
+end
+
+function env_analysis = estimate_environmental_components(X_A, X_B)
+    %ESTIMATE_ENVIRONMENTAL_COMPONENTS Estimate environmental noise components
+    
+    env_analysis = struct();
+    
+    % Basic correlation analysis
+    if length(X_A) == length(X_B)
+        env_analysis.correlation = corr(X_A, X_B);
+        env_analysis.n_matches = length(X_A);
+    else
+        env_analysis.correlation = NaN;
+        env_analysis.n_matches = NaN;
+    end
+    
+    % Variance estimates
+    env_analysis.var_A = var(X_A);
+    env_analysis.var_B = var(X_B);
+    env_analysis.var_relative = var(X_A - X_B);
+    
+    % Environmental noise estimate (preliminary)
+    if env_analysis.correlation > 0
+        % Estimate based on correlation structure
+        env_analysis.sigma_eta_sq_est = env_analysis.correlation * sqrt(env_analysis.var_A * env_analysis.var_B);
+        env_analysis.sigma_eta_est = sqrt(max(0, env_analysis.sigma_eta_sq_est));
+    else
+        env_analysis.sigma_eta_sq_est = 0;
+        env_analysis.sigma_eta_est = 0;
+    end
+    
+    % Environmental noise ratio
+    individual_var_est = (env_analysis.var_A + env_analysis.var_B) / 2;
+    if individual_var_est > 0
+        env_analysis.eta_ratio = env_analysis.sigma_eta_est / sqrt(individual_var_est);
+    else
+        env_analysis.eta_ratio = 0;
+    end
+    
+    % Theoretical SNR improvement prediction
+    if env_analysis.var_A > 0 && env_analysis.var_B > 0
+        env_analysis.theoretical_snr_improvement = ...
+            (env_analysis.var_A + env_analysis.sigma_eta_sq_est) / env_analysis.var_relative;
+    else
+        env_analysis.theoretical_snr_improvement = NaN;
+    end
+end
+
+function data_char = classify_data_type(X_A, X_B)
+    %CLASSIFY_DATA_TYPE Determine data type characteristics
+    
+    data_char = struct();
+    
+    % Combined data for analysis
+    X_combined = [X_A; X_B];
+    
+    % Integer data check
+    data_char.is_integer = all(X_combined == round(X_combined));
+    
+    % Non-negative check
+    data_char.is_non_negative = all(X_combined >= 0);
+    
+    % Count data characteristics
+    data_char.has_zeros = any(X_combined == 0);
+    data_char.prop_zeros = sum(X_combined == 0) / length(X_combined);
+    
+    % Range characteristics
+    data_char.min_value = min(X_combined);
+    data_char.max_value = max(X_combined);
+    data_char.range_span = range(X_combined);
+    
+    % Distribution shape
+    if data_char.range_span > 0
+        data_char.skewness = skewness(X_combined);
+        data_char.is_right_skewed = data_char.skewness > 1;
+        data_char.is_left_skewed = data_char.skewness < -1;
+        data_char.is_heavy_tailed = kurtosis(X_combined) > 6;
+    end
+    
+    % Data type classification
+    if data_char.is_integer && data_char.is_non_negative && data_char.has_zeros
+        data_char.likely_type = 'count';
+    elseif data_char.is_non_negative && data_char.is_right_skewed
+        data_char.likely_type = 'positive_continuous';
+    elseif ~data_char.is_non_negative && abs(data_char.skewness) < 1
+        data_char.likely_type = 'normal_like';
+    else
+        data_char.likely_type = 'other';
+    end
+end
+
+function print_kpi_summary(results)
+    %PRINT_KPI_SUMMARY Print comprehensive summary for KPI
+    
+    fprintf('  Data type: %s (%d matches)\n', ...
+        results.data_characteristics.likely_type, results.n_matches);
+    
+    fprintf('  Team A: M=%.2f, SD=%.2f, Skew=%.2f\n', ...
+        results.stats_A.mean, results.stats_A.std, results.stats_A.skewness);
+    
+    fprintf('  Team B: M=%.2f, SD=%.2f, Skew=%.2f\n', ...
+        results.stats_B.mean, results.stats_B.std, results.stats_B.skewness);
+    
+    fprintf('  Relative: M=%.2f, SD=%.2f, Skew=%.2f\n', ...
+        results.stats_relative.mean, results.stats_relative.std, results.stats_relative.skewness);
+    
+    fprintf('  Correlation(A,B): %.3f\n', results.environmental_analysis.correlation);
+    
+    fprintf('  Est. η/σ ratio: %.3f\n', results.environmental_analysis.eta_ratio);
+    
+    % Normality assessment
+    relative_qq = results.normality_tests.Relative_qq_corr;
+    if ~isnan(relative_qq)
+        fprintf('  Relative normality (Q-Q corr): %.3f\n', relative_qq);
+    end
+end
+
+function generate_characterization_report(kpi_names, distribution_results, data_quality_report)
+    %GENERATE_CHARACTERIZATION_REPORT Comprehensive analysis report
+    
+    fprintf('\n=== RUGBY DATA CHARACTERIZATION REPORT ===\n');
+    fprintf('Generated: %s\n', datestr(now));
+    fprintf('KPIs analyzed: %d\n', length(kpi_names));
+    
+    % Data quality summary
+    fprintf('\n--- DATA QUALITY SUMMARY ---\n');
+    for i = 1:length(kpi_names)
+        kpi = kpi_names{i};
+        if isfield(data_quality_report, kpi)
+            quality = data_quality_report.(kpi);
+            fprintf('%s: %.1f%% retention (%d→%d matches)\n', ...
+                kpi, quality.data_retention*100, quality.original_length, quality.final_length);
+        end
+    end
+    
+    % Distributional summary
+    fprintf('\n--- DISTRIBUTIONAL CHARACTERISTICS ---\n');
+    fprintf('%-20s | Type | Norm(A) | Norm(B) | Norm(R) | η/σ | Corr\n', 'KPI');
+    fprintf('%s\n', repmat('-', 1, 70));
+    
+    for i = 1:length(kpi_names)
+        kpi = kpi_names{i};
+        if isfield(distribution_results, kpi)
+            results = distribution_results.(kpi);
+            
+            % Extract key metrics
+            type_short = results.data_characteristics.likely_type(1:min(4,end));
+            qq_A = results.normality_tests.X_A_qq_corr;
+            qq_B = results.normality_tests.X_B_qq_corr;
+            qq_R = results.normality_tests.Relative_qq_corr;
+            eta_ratio = results.environmental_analysis.eta_ratio;
+            correlation = results.environmental_analysis.correlation;
+            
+            fprintf('%-20s | %4s | %6.3f | %6.3f | %6.3f | %3.2f | %4.2f\n', ...
+                kpi, type_short, qq_A, qq_B, qq_R, eta_ratio, correlation);
+        end
+    end
+    
+    % Recommendations for validation framework
+    fprintf('\n--- VALIDATION FRAMEWORK READINESS ---\n');
+    ready_count = 0;
+    conditional_count = 0;
+    transform_count = 0;
+    
+    for i = 1:length(kpi_names)
+        kpi = kpi_names{i};
+        if isfield(distribution_results, kpi)
+            results = distribution_results.(kpi);
+            qq_R = results.normality_tests.Relative_qq_corr;
+            
+            if ~isnan(qq_R)
+                if qq_R >= 0.95
+                    status = 'READY';
+                    ready_count = ready_count + 1;
+                elseif qq_R >= 0.90
+                    status = 'CONDITIONAL';
+                    conditional_count = conditional_count + 1;
+                else
+                    status = 'TRANSFORM_NEEDED';
+                    transform_count = transform_count + 1;
+                end
+                
+                fprintf('%-20s: %s (Q-Q corr: %.3f)\n', kpi, status, qq_R);
+            end
+        end
+    end
+    
+    fprintf('\nSUMMARY: Ready=%d, Conditional=%d, Transform=%d\n', ...
+        ready_count, conditional_count, transform_count);
+end
+
+function create_distribution_dashboard(kpi_names, distribution_results)
+    %CREATE_DISTRIBUTION_DASHBOARD Visualize distributional characteristics
+    
+    n_kpis = min(4, length(kpi_names)); % Limit for readability
+    
+    figure('Position', [100, 100, 1400, 1000]);
+    
+    for i = 1:n_kpis
+        kpi = kpi_names{i};
+        if ~isfield(distribution_results, kpi)
+            continue;
+        end
+        
+        results = distribution_results.(kpi);
+        
+        % Team A distribution
+        subplot(n_kpis, 4, (i-1)*4 + 1);
+        histogram(results.stats_A.data, 20, 'Normalization', 'pdf', 'FaceAlpha', 0.7);
+        title(sprintf('%s - Team A', strrep(kpi, '_', ' ')));
+        xlabel('Value'); ylabel('Density');
+        
+        % Team B distribution  
+        subplot(n_kpis, 4, (i-1)*4 + 2);
+        histogram(results.stats_B.data, 20, 'Normalization', 'pdf', 'FaceAlpha', 0.7);
+        title(sprintf('%s - Team B', strrep(kpi, '_', ' ')));
+        xlabel('Value'); ylabel('Density');
+        
+        % Relative measure distribution (CRITICAL)
+        subplot(n_kpis, 4, (i-1)*4 + 3);
+        R = results.stats_relative.data;
+        histogram(R, 20, 'Normalization', 'pdf', 'FaceAlpha', 0.7);
+        hold on;
+        % Overlay normal distribution
+        x_norm = linspace(min(R), max(R), 100);
+        y_norm = normpdf(x_norm, mean(R), std(R));
+        plot(x_norm, y_norm, 'r-', 'LineWidth', 2);
+        title(sprintf('%s - Relative (R)', strrep(kpi, '_', ' ')));
+        xlabel('Value'); ylabel('Density');
+        legend({'Data', 'Normal fit'}, 'Location', 'best');
+        
+        % Q-Q plot for relative measure
+        subplot(n_kpis, 4, (i-1)*4 + 4);
+        qqplot(R);
+        title(sprintf('%s - Q-Q Plot', strrep(kpi, '_', ' ')));
+        
+        % Add correlation annotation
+        if isfield(results.normality_tests, 'Relative_qq_corr')
+            qq_corr = results.normality_tests.Relative_qq_corr;
+            if ~isnan(qq_corr)
+                text(0.05, 0.95, sprintf('r = %.3f', qq_corr), ...
+                     'Units', 'normalized', 'FontSize', 10, ...
+                     'BackgroundColor', 'white', 'EdgeColor', 'black');
+            end
+        end
+    end
+    
+    sgtitle('Rugby KPI Distributional Characteristics', 'FontSize', 16, 'FontWeight', 'bold');
+end
+
+function export_characterization_results(kpi_names, distribution_results, rugby_data)
+    %EXPORT_CHARACTERIZATION_RESULTS Save results for validation framework
+    
+    % Save comprehensive results
+    save('rugby_data_characterization.mat', 'kpi_names', 'distribution_results', 'rugby_data');
+    
+    % Create summary table
+    summary_table = table();
+    
+    for i = 1:length(kpi_names)
+        kpi = kpi_names{i};
+        if isfield(distribution_results, kpi)
+            results = distribution_results.(kpi);
+            
+            % Extract key characteristics
+            row = table();
+            row.KPI = {kpi};
+            row.DataType = {results.data_characteristics.likely_type};
+            row.NMatches = results.n_matches;
+            row.MeanA = results.stats_A.mean;
+            row.StdA = results.stats_A.std;
+            row.SkewA = results.stats_A.skewness;
+            row.MeanB = results.stats_B.mean;
+            row.StdB = results.stats_B.std;
+            row.SkewB = results.stats_B.skewness;
+            row.MeanR = results.stats_relative.mean;
+            row.StdR = results.stats_relative.std;
+            row.SkewR = results.stats_relative.skewness;
+            row.Correlation = results.environmental_analysis.correlation;
+            row.EtaRatio = results.environmental_analysis.eta_ratio;
+            
+            if isfield(results.normality_tests, 'Relative_qq_corr')
+                row.RelativeNormality = results.normality_tests.Relative_qq_corr;
+            else
+                row.RelativeNormality = NaN;
+            end
+            
+            summary_table = [summary_table; row];
+        end
+    end
+    
+    % Export to CSV
+    writetable(summary_table, 'rugby_kpi_characteristics.csv');
+    
+    fprintf('\nResults exported:\n');
+    fprintf('  - rugby_data_characterization.mat (complete results)\n');
+    fprintf('  - rugby_kpi_characteristics.csv (summary table)\n');
+end
+
+function sample_data = create_sample_rugby_data()
+    %CREATE_SAMPLE_RUGBY_DATA Create sample data for testing
+    
+    fprintf('Creating sample rugby data for demonstration...\n');
+    
+    n_matches = 564;
+    
+    % Create sample data table with realistic rugby KPIs
+    kpis = {'kicks_from_hand', 'clean_breaks', 'metres_made', 'scrum_pens_conceded', 'scrums_won'};
+    
+    sample_data = table();
+    
+    for i = 1:length(kpis)
+        kpi = kpis{i};
+        
+        if strcmp(kpi, 'kicks_from_hand')
+            sample_data.([kpi '_A']) = poissrnd(8, n_matches, 1);
+            sample_data.([kpi '_B']) = poissrnd(7.5, n_matches, 1);
+        elseif strcmp(kpi, 'clean_breaks')
+            sample_data.([kpi '_A']) = nbinrnd(5, 0.7, n_matches, 1);
+            sample_data.([kpi '_B']) = nbinrnd(4.8, 0.7, n_matches, 1);
+        elseif strcmp(kpi, 'metres_made')
+            sample_data.([kpi '_A']) = gamrnd(3, 50, n_matches, 1);
+            sample_data.([kpi '_B']) = gamrnd(2.8, 50, n_matches, 1);
+        elseif contains(kpi, 'pens')
+            sample_data.([kpi '_A']) = (rand(n_matches,1) < 0.3) .* poissrnd(2, n_matches, 1);
+            sample_data.([kpi '_B']) = (rand(n_matches,1) < 0.3) .* poissrnd(2.2, n_matches, 1);
+        else
+            sample_data.([kpi '_A']) = abs(randn(n_matches, 1) * 2 + 10);
+            sample_data.([kpi '_B']) = abs(randn(n_matches, 1) * 2.1 + 9.8);
+        end
+    end
+    
+    sample_data.outcome = rand(n_matches, 1) > 0.5;
+    
+    fprintf('Sample data created with %d matches and %d KPIs\n', n_matches, length(kpis));
+end
+
+% Helper function for normality tests (if not available in toolbox)
+function [h, p] = swtest(data, alpha)
+    %SWTEST Simple Shapiro-Wilk test fallback
+    % This is a placeholder - use Statistics Toolbox version if available
+    
+    try
+        [h, p] = swtest(data, alpha);
+    catch
+        % Simplified test based on Q-Q correlation
+        if length(data) < 4
+            h = NaN; p = NaN;
+            return;
+        end
+        
+        sorted_data = sort(data);
+        n = length(sorted_data);
+        theoretical_quantiles = norminv((1:n) / (n + 1));
+        empirical_quantiles = (sorted_data - mean(sorted_data)) / std(sorted_data);
+        
+        correlation = corr(theoretical_quantiles', empirical_quantiles);
+        
+        % Simple threshold for normality (correlation > 0.95)
+        h = correlation < 0.95;
+        p = 1 - correlation; % Approximate p-value
+    end
+end

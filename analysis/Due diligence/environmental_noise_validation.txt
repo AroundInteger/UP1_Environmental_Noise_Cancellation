@@ -1,0 +1,490 @@
+%% Environmental Noise Estimation Validation Framework
+% Numerical experiments to test σ²_η estimation accuracy using empirical distributions
+% Tests whether systematic over/under-estimation explains empirical-theoretical gaps
+
+clear; close all; clc;
+
+%% Phase 1: Empirical Distribution Characterization
+fprintf('=== EMPIRICAL DISTRIBUTION CHARACTERIZATION ===\n');
+
+% Load actual rugby data
+% data = load_rugby_data(); % Replace with actual data loading
+
+% For demonstration, create realistic rugby-like distributions
+rng(42);
+n_matches = 564;
+
+% KPI names from empirical analysis
+kpi_names = {'kicks_from_hand', 'clean_breaks', 'metres_made', ...
+             'scrum_pens_conceded', 'scrums_won'};
+
+% Create empirical-like data with different distributional characteristics
+empirical_data = struct();
+true_distributions = struct();
+
+for i = 1:length(kpi_names)
+    kpi = kpi_names{i};
+    
+    % Generate realistic rugby KPI distributions based on domain knowledge
+    if strcmp(kpi, 'kicks_from_hand')
+        % Count data - Poisson-like but bounded
+        lambda_A = 8; lambda_B = 7.5;
+        empirical_data.([kpi '_A']) = poissrnd(lambda_A, n_matches, 1);
+        empirical_data.([kpi '_B']) = poissrnd(lambda_B, n_matches, 1);
+        true_distributions.(kpi).type = 'poisson';
+        true_distributions.(kpi).params_A = lambda_A;
+        true_distributions.(kpi).params_B = lambda_B;
+        
+    elseif strcmp(kpi, 'clean_breaks')
+        % Count data with overdispersion - Negative Binomial
+        empirical_data.([kpi '_A']) = nbinrnd(5, 0.7, n_matches, 1);
+        empirical_data.([kpi '_B']) = nbinrnd(4.8, 0.7, n_matches, 1);
+        true_distributions.(kpi).type = 'negative_binomial';
+        
+    elseif strcmp(kpi, 'metres_made')
+        % Continuous, right-skewed - Gamma distribution
+        empirical_data.([kpi '_A']) = gamrnd(3, 50, n_matches, 1);
+        empirical_data.([kpi '_B']) = gamrnd(2.8, 50, n_matches, 1);
+        true_distributions.(kpi).type = 'gamma';
+        
+    elseif contains(kpi, 'pens')
+        % Penalty counts - Zero-inflated Poisson
+        base_rate = 0.3; % Probability of non-zero
+        empirical_data.([kpi '_A']) = (rand(n_matches,1) < base_rate) .* poissrnd(2, n_matches, 1);
+        empirical_data.([kpi '_B']) = (rand(n_matches,1) < base_rate) .* poissrnd(2.2, n_matches, 1);
+        true_distributions.(kpi).type = 'zero_inflated_poisson';
+        
+    else
+        % Default: Approximately normal with some skewness
+        empirical_data.([kpi '_A']) = abs(randn(n_matches, 1) * 2 + 10);
+        empirical_data.([kpi '_B']) = abs(randn(n_matches, 1) * 2.1 + 9.8);
+        true_distributions.(kpi).type = 'skewed_normal';
+    end
+end
+
+% Add match outcomes
+empirical_data.outcome = rand(n_matches, 1) > 0.5;
+
+%% Phase 2: Empirical Distribution Analysis
+fprintf('\n=== DISTRIBUTION ANALYSIS ===\n');
+
+distribution_analysis = struct();
+
+for i = 1:length(kpi_names)
+    kpi = kpi_names{i};
+    fprintf('Analyzing %s...\n', kpi);
+    
+    X_A = empirical_data.([kpi '_A']);
+    X_B = empirical_data.([kpi '_B']);
+    
+    % Comprehensive distributional characterization
+    dist_char = characterize_distribution(X_A, X_B, kpi);
+    distribution_analysis.(kpi) = dist_char;
+    
+    % Fit parametric models to empirical data
+    fitted_models = fit_parametric_models(X_A, X_B);
+    distribution_analysis.(kpi).fitted_models = fitted_models;
+end
+
+%% Phase 3: Controlled Numerical Experiments
+fprintf('\n=== ENVIRONMENTAL NOISE ESTIMATION VALIDATION ===\n');
+
+validation_results = struct();
+
+% Test different environmental noise levels
+eta_test_values = [0.5, 1.0, 2.0, 5.0, 10.0]; % Known σ_η values
+n_monte_carlo = 1000; % Number of simulation runs per test
+
+for i = 1:length(kpi_names)
+    kpi = kpi_names{i};
+    fprintf('\nTesting %s with known environmental noise...\n', kpi);
+    
+    % Get empirical distribution characteristics
+    dist_char = distribution_analysis.(kpi);
+    
+    validation_results.(kpi) = test_environmental_estimation(dist_char, eta_test_values, n_monte_carlo);
+end
+
+%% Phase 4: Results Analysis and Reporting
+generate_validation_report(kpi_names, validation_results, eta_test_values);
+
+%% CORE VALIDATION FUNCTIONS
+
+function dist_char = characterize_distribution(X_A, X_B, kpi_name)
+    %CHARACTERIZE_DISTRIBUTION Comprehensive empirical distribution analysis
+    
+    % Combined data for overall distribution
+    X_combined = [X_A; X_B];
+    
+    % Basic statistics
+    stats = struct();
+    stats.mean_A = mean(X_A); stats.std_A = std(X_A);
+    stats.mean_B = mean(X_B); stats.std_B = std(X_B);
+    stats.mean_combined = mean(X_combined); stats.std_combined = std(X_combined);
+    
+    % Shape characteristics
+    stats.skewness_A = skewness(X_A); stats.kurtosis_A = kurtosis(X_A);
+    stats.skewness_B = skewness(X_B); stats.kurtosis_B = kurtosis(X_B);
+    stats.skewness_combined = skewness(X_combined);
+    stats.kurtosis_combined = kurtosis(X_combined);
+    
+    % Range and support
+    stats.min_A = min(X_A); stats.max_A = max(X_A);
+    stats.min_B = min(X_B); stats.max_B = max(X_B);
+    stats.range_A = range(X_A); stats.range_B = range(X_B);
+    
+    % Zero-inflation (relevant for count data)
+    stats.prop_zeros_A = sum(X_A == 0) / length(X_A);
+    stats.prop_zeros_B = sum(X_B == 0) / length(X_B);
+    
+    % Package results
+    dist_char = struct();
+    dist_char.kpi_name = kpi_name;
+    dist_char.stats = stats;
+    dist_char.X_A_sample = X_A;
+    dist_char.X_B_sample = X_B;
+    
+    fprintf('  %s: Mean(%.2f, %.2f), Std(%.2f, %.2f), Skew(%.2f, %.2f)\n', ...
+        kpi_name, stats.mean_A, stats.mean_B, stats.std_A, stats.std_B, ...
+        stats.skewness_A, stats.skewness_B);
+end
+
+function fitted_models = fit_parametric_models(X_A, X_B)
+    %FIT_PARAMETRIC_MODELS Fit various parametric models to empirical data
+    
+    fitted_models = struct();
+    
+    % Test multiple distribution families
+    distributions_to_test = {'normal', 'gamma', 'lognormal', 'poisson', 'negative binomial'};
+    
+    for i = 1:length(distributions_to_test)
+        dist_name = distributions_to_test{i};
+        
+        try
+            % Fit distribution to data
+            switch dist_name
+                case 'normal'
+                    params_A = [mean(X_A), std(X_A)];
+                    params_B = [mean(X_B), std(X_B)];
+                    
+                case 'gamma'
+                    params_A = gamfit(X_A + 1e-6); % Add small constant for zeros
+                    params_B = gamfit(X_B + 1e-6);
+                    
+                case 'lognormal'
+                    params_A = lognfit(X_A + 1);
+                    params_B = lognfit(X_B + 1);
+                    
+                case 'poisson'
+                    if all(X_A == round(X_A)) && all(X_B == round(X_B)) % Integer check
+                        params_A = mean(X_A);
+                        params_B = mean(X_B);
+                    else
+                        params_A = NaN; params_B = NaN;
+                    end
+                    
+                case 'negative binomial'
+                    if all(X_A == round(X_A)) && all(X_B == round(X_B)) % Integer check
+                        params_A = nbinfit(X_A);
+                        params_B = nbinfit(X_B);
+                    else
+                        params_A = NaN; params_B = NaN;
+                    end
+            end
+            
+            % Store fitted parameters
+            fitted_models.(strrep(dist_name, ' ', '_')).params_A = params_A;
+            fitted_models.(strrep(dist_name, ' ', '_')).params_B = params_B;
+            
+        catch ME
+            % If fitting fails, store NaN
+            fitted_models.(strrep(dist_name, ' ', '_')).params_A = NaN;
+            fitted_models.(strrep(dist_name, ' ', '_')).params_B = NaN;
+            fitted_models.(strrep(dist_name, ' ', '_')).error = ME.message;
+        end
+    end
+end
+
+function results = test_environmental_estimation(dist_char, eta_values, n_monte_carlo)
+    %TEST_ENVIRONMENTAL_ESTIMATION Test σ²_η estimation accuracy with known truth
+    
+    results = struct();
+    results.true_eta_values = eta_values;
+    results.estimated_eta_values = zeros(length(eta_values), n_monte_carlo);
+    results.estimation_errors = zeros(length(eta_values), n_monte_carlo);
+    results.snr_improvements_theoretical = zeros(length(eta_values), 1);
+    results.snr_improvements_empirical = zeros(length(eta_values), n_monte_carlo);
+    
+    % Original empirical data characteristics
+    X_A_original = dist_char.X_A_sample;
+    X_B_original = dist_char.X_B_sample;
+    n_matches = length(X_A_original);
+    
+    for eta_idx = 1:length(eta_values)
+        true_sigma_eta = eta_values(eta_idx);
+        
+        fprintf('  Testing σ_η = %.1f...', true_sigma_eta);
+        
+        % Theoretical SNR improvement (assuming normal approximation)
+        sigma_A_approx = std(X_A_original);
+        sigma_B_approx = std(X_B_original);
+        theoretical_snr_improvement = (sigma_A_approx^2 + true_sigma_eta^2) / ...
+                                    (sigma_A_approx^2 + sigma_B_approx^2);
+        results.snr_improvements_theoretical(eta_idx) = theoretical_snr_improvement;
+        
+        % Monte Carlo simulation
+        for mc = 1:n_monte_carlo
+            % Generate synthetic data with known environmental noise
+            synthetic_data = generate_synthetic_with_known_eta(dist_char, true_sigma_eta, n_matches);
+            
+            % Estimate environmental noise using our method
+            estimated_sigma_eta = estimate_environmental_noise(synthetic_data);
+            
+            % Calculate empirical SNR improvement
+            empirical_snr_improvement = calculate_empirical_snr_improvement(synthetic_data);
+            
+            % Store results
+            results.estimated_eta_values(eta_idx, mc) = estimated_sigma_eta;
+            results.estimation_errors(eta_idx, mc) = estimated_sigma_eta - true_sigma_eta;
+            results.snr_improvements_empirical(eta_idx, mc) = empirical_snr_improvement;
+        end
+        
+        fprintf(' Done.\n');
+    end
+    
+    % Summary statistics
+    results.mean_estimation_errors = mean(results.estimation_errors, 2);
+    results.std_estimation_errors = std(results.estimation_errors, 0, 2);
+    results.mean_empirical_snr = mean(results.snr_improvements_empirical, 2);
+    results.std_empirical_snr = std(results.snr_improvements_empirical, 0, 2);
+end
+
+function synthetic_data = generate_synthetic_with_known_eta(dist_char, sigma_eta, n_matches)
+    %GENERATE_SYNTHETIC_WITH_KNOWN_ETA Create synthetic data with known environmental noise
+    
+    % Extract original data characteristics
+    X_A_orig = dist_char.X_A_sample;
+    X_B_orig = dist_char.X_B_sample;
+    
+    % Method 1: Resampling with added environmental noise
+    % Resample from empirical distribution (bootstrap)
+    bootstrap_idx_A = randi(length(X_A_orig), n_matches, 1);
+    bootstrap_idx_B = randi(length(X_B_orig), n_matches, 1);
+    
+    X_A_base = X_A_orig(bootstrap_idx_A);
+    X_B_base = X_B_orig(bootstrap_idx_B);
+    
+    % Add known environmental noise
+    eta_realizations = randn(n_matches, 1) * sigma_eta;
+    
+    synthetic_data = struct();
+    synthetic_data.X_A = X_A_base + eta_realizations;
+    synthetic_data.X_B = X_B_base + eta_realizations;
+    synthetic_data.true_sigma_eta = sigma_eta;
+    synthetic_data.eta_realizations = eta_realizations;
+    
+    % Ensure non-negative values for count data if needed
+    if min([X_A_orig; X_B_orig]) >= 0
+        synthetic_data.X_A = max(0, synthetic_data.X_A);
+        synthetic_data.X_B = max(0, synthetic_data.X_B);
+    end
+end
+
+function estimated_sigma_eta = estimate_environmental_noise(synthetic_data)
+    %ESTIMATE_ENVIRONMENTAL_NOISE Estimate σ²_η using mixed-effects approach
+    
+    X_A = synthetic_data.X_A;
+    X_B = synthetic_data.X_B;
+    n = length(X_A);
+    
+    % Method 1: Variance decomposition approach
+    % Total variance in each team
+    var_A = var(X_A);
+    var_B = var(X_B);
+    
+    % Cross-team correlation (should reflect environmental component)
+    cross_correlation = corr(X_A, X_B);
+    
+    % Environmental variance estimate (if correlation > 0)
+    if cross_correlation > 0
+        % Estimate based on correlation structure
+        estimated_sigma_eta_squared = cross_correlation * sqrt(var_A * var_B);
+        estimated_sigma_eta = sqrt(max(0, estimated_sigma_eta_squared));
+    else
+        % Fallback: Assume environmental component is small
+        estimated_sigma_eta = 0;
+    end
+    
+    % Method 2: Mixed-effects model (more sophisticated)
+    % This would require Statistics and Machine Learning Toolbox
+    % [Implement mixed-effects estimation here]
+end
+
+function snr_improvement = calculate_empirical_snr_improvement(synthetic_data)
+    %CALCULATE_EMPIRICAL_SNR_IMPROVEMENT Calculate SNR improvement directly from data
+    
+    X_A = synthetic_data.X_A;
+    X_B = synthetic_data.X_B;
+    
+    % Absolute measurement variance (Team A only)
+    var_absolute = var(X_A);
+    
+    % Relative measurement variance
+    R = X_A - X_B;
+    var_relative = var(R);
+    
+    % SNR improvement ratio
+    snr_improvement = var_absolute / var_relative;
+end
+
+function generate_validation_report(kpi_names, validation_results, eta_values)
+    %GENERATE_VALIDATION_REPORT Comprehensive validation analysis report
+    
+    fprintf('\n=== ENVIRONMENTAL NOISE ESTIMATION VALIDATION REPORT ===\n');
+    
+    % Overall validation summary
+    total_tests = length(kpi_names) * length(eta_values);
+    fprintf('Total validation tests: %d\n', total_tests);
+    fprintf('KPIs tested: %d\n', length(kpi_names));
+    fprintf('η values tested: %s\n\n', mat2str(eta_values));
+    
+    % KPI-by-KPI results
+    for i = 1:length(kpi_names)
+        kpi = kpi_names{i};
+        results = validation_results.(kpi);
+        
+        fprintf('--- %s ---\n', upper(kpi));
+        
+        % Estimation accuracy summary
+        mean_errors = results.mean_estimation_errors;
+        std_errors = results.std_estimation_errors;
+        
+        fprintf('σ_η Estimation Accuracy:\n');
+        fprintf('True η | Est. Error | Std Error | Bias | RMSE\n');
+        fprintf('-------|------------|-----------|------|------\n');
+        
+        for j = 1:length(eta_values)
+            true_eta = eta_values(j);
+            mean_error = mean_errors(j);
+            std_error = std_errors(j);
+            bias = mean_error;
+            rmse = sqrt(mean_error^2 + std_error^2);
+            
+            fprintf(' %5.1f |   %7.3f |   %7.3f | %4.1f%% | %.3f\n', ...
+                true_eta, mean_error, std_error, 100*bias/true_eta, rmse);
+        end
+        
+        % SNR improvement validation
+        fprintf('\nSNR Improvement Validation:\n');
+        fprintf('True η | Theoretical | Empirical | Difference\n');
+        fprintf('-------|-------------|-----------|------------\n');
+        
+        for j = 1:length(eta_values)
+            theoretical = results.snr_improvements_theoretical(j);
+            empirical_mean = results.mean_empirical_snr(j);
+            difference = empirical_mean - theoretical;
+            
+            fprintf(' %5.1f |     %7.3f |   %7.3f |    %7.3f\n', ...
+                eta_values(j), theoretical, empirical_mean, difference);
+        end
+        
+        fprintf('\n');
+    end
+    
+    % Overall assessment
+    assess_validation_quality(validation_results, kpi_names, eta_values);
+end
+
+function assess_validation_quality(validation_results, kpi_names, eta_values)
+    %ASSESS_VALIDATION_QUALITY Overall assessment of estimation quality
+    
+    fprintf('=== OVERALL VALIDATION ASSESSMENT ===\n');
+    
+    % Calculate overall statistics
+    all_relative_errors = [];
+    all_snr_differences = [];
+    
+    for i = 1:length(kpi_names)
+        kpi = kpi_names{i};
+        results = validation_results.(kpi);
+        
+        % Relative estimation errors
+        for j = 1:length(eta_values)
+            relative_error = abs(results.mean_estimation_errors(j)) / eta_values(j);
+            all_relative_errors = [all_relative_errors; relative_error];
+            
+            % SNR prediction accuracy
+            theoretical = results.snr_improvements_theoretical(j);
+            empirical = results.mean_empirical_snr(j);
+            snr_diff = abs(empirical - theoretical) / theoretical;
+            all_snr_differences = [all_snr_differences; snr_diff];
+        end
+    end
+    
+    % Summary statistics
+    mean_relative_error = mean(all_relative_errors);
+    std_relative_error = std(all_relative_errors);
+    mean_snr_diff = mean(all_snr_differences);
+    
+    fprintf('Mean relative estimation error: %.1f%% ± %.1f%%\n', ...
+        100*mean_relative_error, 100*std_relative_error);
+    fprintf('Mean SNR prediction error: %.1f%%\n', 100*mean_snr_diff);
+    
+    % Quality assessment
+    if mean_relative_error < 0.1 % Less than 10% error
+        fprintf('ASSESSMENT: EXCELLENT - Environmental noise estimation is highly accurate\n');
+    elseif mean_relative_error < 0.2 % Less than 20% error
+        fprintf('ASSESSMENT: GOOD - Environmental noise estimation has acceptable accuracy\n');
+    elseif mean_relative_error < 0.5 % Less than 50% error
+        fprintf('ASSESSMENT: FAIR - Environmental noise estimation needs improvement\n');
+    else
+        fprintf('ASSESSMENT: POOR - Environmental noise estimation is unreliable\n');
+        fprintf('WARNING: Systematic estimation errors may explain empirical-theoretical gaps\n');
+    end
+    
+    % Recommendations
+    if mean_snr_diff > 0.2 % More than 20% SNR prediction error
+        fprintf('\nRECOMMENDATION: Investigate SNR calculation methodology\n');
+        fprintf('Large prediction errors suggest methodological issues\n');
+    end
+end
+
+% Create visualization of validation results
+function create_validation_plots(kpi_names, validation_results, eta_values)
+    %CREATE_VALIDATION_PLOTS Visualize validation results
+    
+    figure('Position', [100, 100, 1200, 800]);
+    
+    n_kpis = length(kpi_names);
+    
+    for i = 1:n_kpis
+        kpi = kpi_names{i};
+        results = validation_results.(kpi);
+        
+        % Estimation accuracy plot
+        subplot(2, n_kpis, i);
+        errorbar(eta_values, results.mean_estimation_errors, results.std_estimation_errors, 'o-');
+        hold on;
+        plot(eta_values, zeros(size(eta_values)), 'k--', 'LineWidth', 1);
+        xlabel('True σ_η');
+        ylabel('Estimation Error');
+        title(sprintf('%s\nEstimation Accuracy', strrep(kpi, '_', ' ')));
+        grid on;
+        
+        % SNR validation plot
+        subplot(2, n_kpis, n_kpis + i);
+        plot(eta_values, results.snr_improvements_theoretical, 'b-', 'LineWidth', 2);
+        hold on;
+        errorbar(eta_values, results.mean_empirical_snr, results.std_empirical_snr, 'ro-');
+        xlabel('True σ_η');
+        ylabel('SNR Improvement');
+        title(sprintf('%s\nSNR Validation', strrep(kpi, '_', ' ')));
+        legend({'Theoretical', 'Empirical'}, 'Location', 'northwest');
+        grid on;
+    end
+    
+    sgtitle('Environmental Noise Estimation Validation Results', 'FontSize', 14, 'FontWeight', 'bold');
+end
+
+% Run validation plots
+create_validation_plots(kpi_names, validation_results, eta_test_values);
