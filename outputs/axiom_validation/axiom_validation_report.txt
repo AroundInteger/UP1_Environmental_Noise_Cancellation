@@ -1,0 +1,20 @@
+UP1 Axiom Validation Report
+Generated: 02-Sep-2025 14:21:53
+
+Summary:
+  Total KPIs: 24
+  Overall Compliance: 0.0% (0/24 KPIs)
+  Test Threshold: 0.600
+
+Top Performing KPIs:
+  1. lineout_pens_conceded: 0.584 (2/4 axioms compliant)
+  2. ruck_maul_tackle_pen_con: 0.583 (2/4 axioms compliant)
+  3. free_kicks_conceded: 0.583 (2/4 axioms compliant)
+  4. clean_breaks: 0.581 (2/4 axioms compliant)
+  5. tackles: 0.578 (2/4 axioms compliant)
+
+Recommendations:
+  Overall Status: Needs Improvement
+  Low compliance. Review KPI design and implementation.
+  Priority: High
+  Approach: Systematic review and redesign of non-compliant KPIs

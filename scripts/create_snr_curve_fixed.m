@@ -45,7 +45,9 @@ figure('Position', [100, 100, 1000, 700]);
 
 % Theoretical SNR improvement curve
 x = linspace(0, 0.99, 1000); % Environmental noise ratio (avoid division by zero)
-y_snr = 1 ./ sqrt(1 - x.^2); % Theoretical SNR improvement formula
+% CORRECTED: Use the proper SNR improvement formula from the paper
+% SNR_improvement = 1 + 2σ²_η/(σ²_A + σ²_B) = 1 + σ²_η/σ²_indiv when σ_A = σ_B
+y_snr = 1 + x.^2; % Corrected theoretical SNR improvement formula
 y_snr_percent = (y_snr - 1) * 100; % Convert to percentage
 
 % Main curve
@@ -67,7 +69,7 @@ text(env_ratio + 0.02, theoretical_snr_percent + 10, ...
      'FontWeight', 'bold', 'Color', 'red', 'FontSize', 12);
 
 % Add theoretical formula
-text(0.1, 200, sprintf('SNR_{improvement} = \\frac{1}{\\sqrt{1-\\eta^2}}'), ...
+text(0.1, 200, sprintf('SNR_{improvement} = 1 + \\eta^2'), ...
      'FontSize', 14, 'FontWeight', 'bold', 'Color', [0.8500, 0.3250, 0.0980]);
 
 % Add interpretation text

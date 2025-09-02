@@ -280,8 +280,14 @@ function snr_improvement = calculateTheoreticalSNRImprovement(sigma_eta, sigma_i
         return;
     end
     
-    % Theoretical SNR improvement from environmental noise cancellation
-    % SNR_relative = SNR_absolute * sqrt(1 + (σ_η/σ_indiv)^2)
-    snr_ratio = sigma_eta / sigma_indiv;
-    snr_improvement = sqrt(1 + snr_ratio^2);
+    % CORRECTED: Theoretical SNR improvement from environmental noise cancellation
+    % Formula from paper: SNR_improvement = 1 + 2σ²_η/(σ²_A + σ²_B)
+    % When σ_A = σ_B = σ_indiv (equal individual variances), this becomes:
+    % SNR_improvement = 1 + 2σ²_η/(2σ²_indiv) = 1 + σ²_η/σ²_indiv
+    
+    sigma_eta_squared = sigma_eta^2;
+    sigma_indiv_squared = sigma_indiv^2;
+    
+    % Use the correct formula from the theoretical framework
+    snr_improvement = 1 + (sigma_eta_squared / sigma_indiv_squared);
 end

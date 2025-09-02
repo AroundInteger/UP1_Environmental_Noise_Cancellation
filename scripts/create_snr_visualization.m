@@ -190,7 +190,9 @@ title('Environmental Noise Composition', 'FontSize', 16, 'FontWeight', 'bold');
 subplot(2, 2, 2);
 % Show the mathematical relationship
 x = linspace(0, 1, 100);
-y_snr = 1 ./ sqrt(1 - x.^2); % Theoretical SNR improvement formula
+% CORRECTED: Use the proper SNR improvement formula from the paper
+% SNR_improvement = 1 + 2σ²_η/(σ²_A + σ²_B) = 1 + σ²_η/σ²_indiv when σ_A = σ_B
+y_snr = 1 + x.^2; % Corrected theoretical SNR improvement formula
 y_snr_percent = (y_snr - 1) * 100;
 
 plot(x, y_snr_percent, 'LineWidth', 3, 'Color', [0.8500, 0.3250, 0.0980]);
