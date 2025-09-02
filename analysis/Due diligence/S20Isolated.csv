@@ -1,0 +1,193 @@
+Number,Date,Team.Stats.for,Match.x,Tries,PenGoals,Cons,Drops,MissedGoals,PenTries,Carry,MetresMade,DefenderBeaten,Offload,Pass,Tackle,MissedTackle,Turnover,KicksfromHand,CleanBreaks,Turnovers.Won,LineoutsWon,LineoutsLost,ScrumsWon,ScrumsLost,RucksWon,RucksLost,PensConceded,Free.Kicks,Scrum.Pens,LO.Pens,Tackle.Ruck...Maul.Pens,Gen.Play.Pens,Control.Pens,YellowCards,RedCards,Match.Type,Season,PF,PA,PD,Match.Outcome,Home.or.Away,Match.y,Total.Penalty.Conceded,Lineout.Penalty,Scrum.Penalty
+1,01/01/2021,Cardiff,Cardiff Blues v Ospreys,0,1,0,0,0,0,78,302,8,4,89,99,12,11,34,7,7,16,2,3,2,51,1,19,1,7,2,7,3,0,3,0,Regular,S20,3,17,-14,L,H,Cardiff vs Ospreys,18,2,6
+2,01/01/2021,Dragons,Scarlets v Dragons,0,1,0,0,1,0,110,346,10,4,129,103,19,13,41,3,7,14,1,6,1,77,2,10,1,1,1,6,2,0,1,0,Regular,S20,3,20,-17,L,A,Scarlets vs Dragons,9,1,0
+3,01/01/2021,Ospreys,Cardiff Blues v Ospreys,2,1,1,0,1,1,85,294,12,2,121,73,8,11,38,5,4,22,0,8,1,60,3,9,0,2,1,3,2,1,1,0,Regular,S20,17,3,14,W,A,Cardiff vs Ospreys,9,1,2
+4,01/01/2021,Scarlets,Scarlets v Dragons,2,2,2,0,0,0,127,379,19,7,152,108,10,19,40,13,6,15,2,4,1,76,2,9,1,2,1,5,1,0,0,0,Regular,S20,20,3,17,W,H,Scarlets vs Dragons,8,0,2
+5,01/11/2020,Dragons,Dragons v Munster,2,2,0,0,3,0,113,173,9,3,113,123,19,6,37,3,7,13,5,7,1,86,2,17,2,4,2,7,3,1,0,0,Regular,S20,16,28,-12,L,H,Dragons vs Munster,15,0,4
+6,01/11/2020,Edinburgh,Scarlets v Edinburgh,0,2,0,0,0,0,70,189,15,1,59,103,15,17,25,0,6,12,4,11,0,62,1,5,1,2,1,1,1,0,0,0,Regular,S20,6,3,3,W,A,Scarlets vs Edinburgh,4,1,1
+7,01/11/2020,Munster,Dragons v Munster,3,3,2,0,1,0,123,424,19,8,122,126,9,16,34,10,4,18,1,3,0,77,4,15,2,3,0,6,6,0,0,0,Regular,S20,28,16,12,W,A,Dragons vs Munster,13,0,1
+8,01/11/2020,Scarlets,Scarlets v Edinburgh,0,1,0,0,0,0,79,240,15,2,94,92,15,8,24,5,6,8,2,4,2,69,4,21,2,10,1,6,3,1,1,1,Regular,S20,3,6,-3,L,H,Scarlets vs Edinburgh,19,0,9
+9,02/01/2021,Benetton,Benetton v Zebre,2,1,1,0,1,0,127,275,13,3,136,90,13,10,26,3,7,17,3,5,1,101,7,11,1,2,0,6,1,2,1,0,Regular,S20,15,24,-9,L,H,Benetton vs Zebre,10,0,1
+10,02/01/2021,Connacht,Leinster v Connacht,4,3,3,0,2,0,87,295,14,1,124,180,39,11,30,3,9,14,1,5,1,75,4,11,2,3,1,4,1,2,0,0,Regular,S20,35,24,11,W,A,Leinster vs Connacht,9,1,1
+11,02/01/2021,Edinburgh,Edinburgh v Glasgow Warriors,1,1,1,0,0,0,83,182,9,3,87,165,15,13,28,1,9,10,6,12,1,71,1,10,1,1,0,6,3,0,0,0,Regular,S20,10,7,3,W,H,Edinburgh vs Glasgow,9,0,0
+12,02/01/2021,Glasgow,Edinburgh v Glasgow Warriors,1,0,1,0,1,0,135,275,15,9,181,113,9,12,23,5,5,13,1,5,0,108,4,19,1,8,0,8,2,1,0,0,Regular,S20,7,10,-3,L,A,Edinburgh vs Glasgow,18,0,7
+13,02/01/2021,Leinster,Leinster v Connacht,4,0,2,0,2,0,145,576,39,6,154,132,14,13,18,8,4,13,2,4,0,117,5,10,0,0,1,6,3,0,0,0,Regular,S20,24,35,-11,L,H,Leinster vs Connacht,10,1,0
+14,02/01/2021,Munster,Ulster v Munster,1,1,1,0,1,0,80,138,7,1,105,156,22,13,20,1,9,14,0,7,2,69,4,10,2,3,0,7,0,0,1,0,Regular,S20,10,15,-5,L,A,Ulster vs Munster,8,0,1
+15,02/01/2021,Ulster,Ulster v Munster,2,1,1,0,1,0,122,348,22,6,163,115,7,15,21,4,6,13,0,7,0,100,6,13,0,3,0,7,1,2,1,0,Regular,S20,15,10,5,W,H,Ulster vs Munster,13,0,3
+16,02/01/2021,Zebre,Benetton v Zebre,2,4,1,0,1,0,77,261,13,2,81,162,13,8,30,1,6,9,1,4,0,56,4,12,1,1,3,6,1,1,1,0,Regular,S20,24,15,9,W,A,Benetton vs Zebre,11,2,1
+17,02/10/2020,Benetton,Ulster v Benetton,3,1,3,0,0,0,152,550,27,13,214,143,22,18,14,15,4,11,1,3,1,117,4,9,0,1,1,3,2,2,0,0,Regular,S20,24,35,-11,L,A,Ulster vs Benetton,9,1,1
+18,02/10/2020,Cardiff,Zebre v Cardiff Blues,1,3,1,0,3,0,88,279,11,1,97,162,13,9,31,5,13,10,1,4,0,70,4,12,1,2,0,6,1,2,0,1,Regular,S20,16,6,10,W,A,Zebre vs Cardiff,11,0,1
+19,02/10/2020,Dragons,Leinster v Dragons,1,0,0,0,1,0,117,250,18,7,187,171,29,7,23,5,8,9,5,8,1,101,4,8,1,2,0,4,2,0,1,0,Regular,S20,5,35,-30,L,A,Leinster vs Dragons,7,0,1
+20,02/10/2020,Leinster,Leinster v Dragons,5,0,5,0,0,0,151,635,29,13,230,126,18,13,20,16,5,14,3,1,0,115,5,12,2,2,0,8,2,0,1,0,Regular,S20,35,5,30,W,H,Leinster vs Dragons,10,0,1
+21,02/10/2020,Ulster,Ulster v Benetton,5,0,5,0,0,0,114,386,22,14,156,196,27,5,24,13,7,17,3,5,0,88,3,9,0,0,0,5,2,2,1,0,Regular,S20,35,24,11,W,H,Ulster vs Benetton,9,0,0
+22,02/10/2020,Zebre,Zebre v Cardiff Blues,0,2,0,0,1,0,157,344,13,12,229,102,11,18,11,2,6,12,6,2,1,107,7,10,1,3,0,4,2,1,1,0,Regular,S20,6,16,-10,L,H,Zebre vs Cardiff,9,0,2
+23,02/11/2020,Cardiff,Cardiff Blues v Ulster,1,0,1,0,1,0,89,186,9,7,135,168,12,16,32,3,7,12,0,1,0,69,1,15,1,4,1,7,3,0,1,0,Regular,S20,7,11,-4,L,H,Cardiff vs Ulster,14,1,3
+24,02/11/2020,Glasgow,Glasgow Warriors v Leinster,3,0,2,0,1,0,129,270,20,6,149,153,13,10,16,5,3,13,4,4,1,100,4,14,0,4,0,4,5,1,1,0,Regular,S20,19,32,-13,L,H,Glasgow vs Leinster,14,0,4
+25,02/11/2020,Leinster,Glasgow Warriors v Leinster,4,2,3,0,1,0,123,405,13,6,150,151,20,12,26,5,6,17,0,6,0,98,3,11,0,1,0,4,4,2,1,0,Regular,S20,32,19,13,W,A,Glasgow vs Leinster,11,0,1
+26,02/11/2020,Ospreys,Zebre v Ospreys,2,1,2,0,1,0,80,191,8,3,100,151,14,12,26,4,1,13,6,8,0,67,5,11,1,2,1,8,0,0,0,0,Regular,S20,17,23,-6,L,A,Zebre vs Ospreys,10,1,1
+27,02/11/2020,Ulster,Cardiff Blues v Ulster,1,2,0,0,1,0,126,308,12,1,120,101,9,11,27,6,5,12,2,17,1,114,6,8,0,0,0,6,2,0,0,0,Regular,S20,11,7,4,W,A,Cardiff vs Ulster,8,0,0
+28,02/11/2020,Zebre,Zebre v Ospreys,2,3,2,0,0,0,110,337,14,6,142,105,8,12,35,7,9,10,1,3,1,94,3,16,1,5,0,6,4,1,1,0,Regular,S20,23,17,6,W,H,Zebre vs Ospreys,15,0,4
+29,03/10/2020,Connacht,Connacht v Glasgow Warriors,3,3,2,0,2,0,105,272,4,10,129,126,15,6,21,7,4,13,2,4,1,79,3,13,2,3,3,6,0,1,1,0,Regular,S20,28,24,4,W,H,Connacht vs Glasgow,11,3,1
+30,03/10/2020,Edinburgh,Edinburgh v Ospreys,1,1,0,0,2,1,69,234,17,5,79,84,7,18,29,4,7,15,0,6,1,55,3,9,1,4,0,4,0,1,1,0,Regular,S20,10,25,-15,L,H,Edinburgh vs Ospreys,8,0,3
+31,03/10/2020,Glasgow,Connacht v Glasgow Warriors,3,1,3,0,1,0,112,398,15,5,155,114,4,9,17,13,4,14,1,4,0,92,3,12,0,2,0,6,1,3,0,0,Regular,S20,24,28,-4,L,A,Connacht vs Glasgow,12,0,2
+32,03/10/2020,Munster,Scarlets v Munster,3,3,3,0,1,0,88,324,16,3,87,84,10,17,17,5,1,11,2,3,1,65,3,13,0,1,0,10,1,1,1,1,Regular,S20,30,27,3,W,A,Scarlets vs Munster,13,0,1
+33,03/10/2020,Ospreys,Edinburgh v Ospreys,3,2,2,0,1,0,74,229,7,2,92,88,17,13,37,9,6,12,0,8,0,60,4,11,0,1,0,7,1,2,1,0,Regular,S20,25,10,15,W,A,Edinburgh vs Ospreys,11,0,1
+34,03/10/2020,Scarlets,Scarlets v Munster,0,9,0,0,0,0,88,243,10,6,105,102,16,10,30,7,9,9,3,6,0,61,3,14,0,3,1,9,0,1,0,0,Regular,S20,27,30,-3,L,H,Scarlets vs Munster,14,1,3
+35,04/12/2020,Benetton,Connacht v Benetton,2,0,2,0,0,0,83,331,15,10,114,156,17,17,19,4,4,13,3,6,3,65,0,12,1,5,1,1,1,4,1,0,Regular,S20,14,31,-17,L,A,Connacht vs Benetton,11,0,5
+36,04/12/2020,Connacht,Connacht v Benetton,5,0,3,0,2,0,106,342,17,2,99,104,15,10,19,8,3,10,5,11,1,91,3,11,1,1,2,6,1,1,0,0,Regular,S20,31,14,17,W,H,Connacht vs Benetton,10,1,1
+37,05/02/2021,Connacht,Dragons v Connacht,4,1,2,1,3,0,79,284,17,5,103,139,22,7,34,5,3,18,1,6,1,59,5,17,1,1,0,11,4,1,1,0,Regular,S20,30,20,10,W,A,Dragons vs Connacht,16,0,0
+38,05/02/2021,Dragons,Dragons v Connacht,3,1,1,0,2,0,120,298,22,3,141,98,17,14,29,4,4,20,1,3,1,91,0,10,1,2,1,5,0,2,0,0,Regular,S20,20,30,-10,L,H,Dragons vs Connacht,9,1,1
+39,05/03/2021,Connacht,Munster v Connacht,2,1,2,0,0,0,82,259,19,4,121,120,10,10,25,9,3,9,2,5,0,64,4,15,0,0,1,10,3,2,1,0,Regular,S20,17,20,-3,L,A,Munster vs Connacht,15,1,0
+40,05/03/2021,Munster,Munster v Connacht,2,2,2,0,2,0,93,299,10,5,104,100,19,4,29,3,5,13,6,4,0,74,3,9,0,0,0,7,2,0,1,0,Regular,S20,20,17,3,W,H,Munster vs Connacht,9,0,0
+41,05/12/2020,Dragons,Glasgow Warriors v Dragons,2,2,2,1,0,0,78,208,10,1,93,235,18,7,32,3,6,16,2,3,0,66,3,11,1,3,0,4,3,2,2,0,Regular,S20,23,22,1,W,A,Glasgow vs Dragons,10,0,2
+42,05/12/2020,Glasgow,Glasgow Warriors v Dragons,3,1,2,0,1,0,160,466,18,5,185,100,10,9,26,6,4,13,1,5,0,145,3,12,0,1,1,5,2,3,1,0,Regular,S20,22,23,-1,L,H,Glasgow vs Dragons,12,1,1
+43,06/03/2021,Dragons,Ospreys v Dragons,5,0,3,0,3,0,75,306,12,4,113,137,17,8,31,7,2,18,3,3,0,57,1,14,2,3,3,4,2,2,1,0,Regular,S20,31,20,11,W,A,Ospreys vs Dragons,12,2,2
+44,06/03/2021,Glasgow,Zebre v Glasgow Warriors,4,1,4,0,0,0,123,485,20,6,148,103,21,14,22,14,9,14,0,8,1,85,2,11,1,2,0,5,4,0,2,0,Regular,S20,31,20,11,W,A,Zebre vs Glasgow,10,0,1
+45,06/03/2021,Leinster,Ulster v Leinster,5,1,5,0,0,0,152,367,16,5,134,164,25,5,14,3,1,13,0,3,0,127,3,10,0,0,0,6,2,2,3,0,Regular,S20,38,19,19,W,A,Ulster vs Leinster,10,0,0
+46,06/03/2021,Ospreys,Ospreys v Dragons,2,2,2,0,0,0,95,336,17,2,136,92,12,7,34,6,2,13,1,5,2,79,2,14,2,2,1,7,2,2,1,0,Regular,S20,20,31,-11,L,H,Ospreys vs Dragons,12,1,0
+47,06/03/2021,Ulster,Ulster v Leinster,3,0,2,0,1,0,120,249,25,10,148,226,16,6,11,8,5,11,0,2,0,97,1,17,0,3,0,4,6,4,2,1,Regular,S20,19,38,-19,L,H,Ulster vs Leinster,17,0,3
+48,06/03/2021,Zebre,Zebre v Glasgow Warriors,2,2,2,0,1,0,94,376,21,12,116,130,20,16,14,9,6,12,4,6,0,59,0,9,1,2,0,5,2,0,2,0,Regular,S20,20,31,-11,L,H,Zebre vs Glasgow,8,0,1
+49,08/01/2021,Leinster,Leinster v Ulster,4,0,2,0,3,0,136,412,31,6,153,183,15,9,24,13,5,11,3,4,0,107,5,10,0,0,0,8,2,0,0,0,Regular,S20,24,12,12,W,H,Leinster vs Ulster,10,0,0
+50,08/01/2021,Ulster,Leinster v Ulster,0,4,0,0,0,0,137,207,15,6,184,167,31,9,28,1,6,9,2,5,0,120,2,13,1,2,0,6,2,3,1,0,Regular,S20,12,24,-12,L,A,Leinster vs Ulster,12,0,1
+51,08/11/2020,Leinster,Ospreys v Leinster,4,0,3,0,2,0,135,463,19,9,142,169,11,18,27,10,6,7,3,6,0,109,0,8,0,2,0,6,0,0,1,0,Regular,S20,26,7,19,W,A,Ospreys vs Leinster,8,0,2
+52,08/11/2020,Ospreys,Ospreys v Leinster,1,0,0,0,1,1,118,171,11,1,153,175,19,10,28,3,6,14,3,8,0,107,3,11,2,2,0,7,1,1,0,0,Regular,S20,7,26,-19,L,H,Ospreys vs Leinster,9,0,0
+53,08/11/2020,Scarlets,Scarlets v Zebre,2,2,1,0,2,0,90,352,27,6,147,57,10,15,22,8,4,10,1,9,1,64,2,16,1,3,0,5,5,3,0,0,Regular,S20,18,17,1,W,H,Scarlets vs Zebre,15,0,2
+54,08/11/2020,Zebre,Scarlets v Zebre,1,4,0,0,2,0,60,229,10,2,90,93,27,12,24,6,5,12,3,5,1,41,1,11,3,6,0,2,3,0,0,0,Regular,S20,17,18,-1,L,A,Scarlets vs Zebre,8,0,3
+55,09/01/2021,Benetton,Zebre v Benetton,2,2,1,0,1,0,97,366,14,10,129,120,13,10,33,5,4,13,2,5,0,71,6,19,0,5,0,11,2,1,1,0,Regular,S20,18,22,-4,L,A,Zebre vs Benetton,19,0,5
+56,09/01/2021,Cardiff,Cardiff Blues v Scarlets,3,4,1,0,2,0,100,386,23,4,126,105,10,12,24,10,5,14,1,3,1,77,3,12,0,3,1,6,0,2,1,0,Regular,S20,29,20,9,W,H,Cardiff vs Scarlets,12,1,3
+57,09/01/2021,Connacht,Connacht v Munster,1,1,1,0,1,0,133,211,19,3,174,113,11,11,23,3,4,20,2,7,0,118,8,13,1,2,0,9,2,1,1,0,Regular,S20,10,16,-6,L,H,Connacht vs Munster,12,0,1
+58,09/01/2021,Dragons,Dragons v Ospreys,2,2,2,0,0,0,99,378,21,12,147,129,22,16,24,9,12,10,1,5,0,69,6,15,1,4,0,9,1,2,1,0,Regular,S20,20,28,-8,L,H,Dragons vs Ospreys,14,0,3
+59,09/01/2021,Munster,Connacht v Munster,1,3,1,0,0,0,79,192,11,3,107,183,19,9,29,2,9,15,2,4,1,67,4,19,2,4,1,11,1,2,2,0,Regular,S20,16,10,6,W,A,Connacht vs Munster,17,1,2
+60,09/01/2021,Ospreys,Dragons v Ospreys,3,3,2,0,1,0,117,461,22,4,158,101,21,15,22,15,10,15,1,7,0,81,4,9,1,1,0,7,1,0,1,0,Regular,S20,28,20,8,W,A,Dragons vs Ospreys,8,0,0
+61,09/01/2021,Scarlets,Cardiff Blues v Scarlets,2,2,2,0,0,0,76,184,10,1,82,107,23,11,20,1,4,8,1,4,0,61,4,17,0,1,1,9,4,2,1,1,Regular,S20,20,29,-9,L,A,Cardiff vs Scarlets,17,1,1
+62,09/01/2021,Zebre,Zebre v Benetton,2,4,0,0,2,0,107,425,13,8,130,116,14,11,32,4,7,13,2,7,0,78,4,6,0,0,0,5,0,1,1,0,Regular,S20,22,18,4,W,H,Zebre vs Benetton,6,0,0
+63,09/10/2020,Dragons,Dragons v Zebre,4,2,0,0,4,0,82,314,28,6,115,96,15,9,27,9,5,12,1,9,1,70,1,12,1,3,1,5,3,0,0,0,Regular,S20,26,18,8,W,H,Dragons vs Zebre,11,1,2
+64,09/10/2020,Zebre,Dragons v Zebre,2,2,1,0,1,0,91,260,15,6,117,87,28,13,29,11,1,17,1,4,0,71,2,13,1,3,0,8,1,1,1,0,Regular,S20,18,26,-8,L,A,Dragons vs Zebre,12,0,2
+65,09/11/2020,Cardiff,Edinburgh v Cardiff Blues,0,0,0,0,1,0,107,199,8,2,146,172,6,19,21,3,6,15,1,4,0,74,5,11,0,0,1,8,2,0,0,0,Regular,S20,0,18,-18,L,A,Edinburgh vs Cardiff,11,1,0
+66,09/11/2020,Edinburgh,Edinburgh v Cardiff Blues,2,2,1,0,1,0,124,265,6,2,114,114,8,8,28,0,11,18,2,5,0,107,6,11,0,1,1,7,2,0,0,0,Regular,S20,18,0,18,W,H,Edinburgh vs Cardiff,11,1,1
+67,09/11/2020,Glasgow,Ulster v Glasgow Warriors,2,1,1,0,1,0,133,319,18,4,163,128,19,16,29,9,7,15,2,5,0,116,3,7,0,0,0,5,2,0,1,0,Regular,S20,15,40,-25,L,A,Ulster vs Glasgow,7,0,0
+68,09/11/2020,Ulster,Ulster v Glasgow Warriors,6,0,5,0,1,0,112,360,19,4,140,186,18,12,32,10,6,16,0,7,0,76,4,9,0,0,1,3,5,0,1,0,Regular,S20,40,15,25,W,H,Ulster vs Glasgow,9,1,0
+69,10/10/2020,Benetton,Benetton v Leinster,3,2,2,0,1,0,112,180,18,9,158,130,11,10,11,5,3,12,1,6,1,92,2,8,0,2,0,4,2,1,1,0,Regular,S20,25,37,-12,L,H,Benetton vs Leinster,8,0,2
+70,10/10/2020,Cardiff,Cardiff Blues v Connacht,4,1,2,0,1,1,105,463,27,6,136,177,21,7,24,11,9,10,2,6,1,76,3,13,3,2,1,10,0,0,1,0,Regular,S20,29,7,22,W,H,Cardiff vs Connacht,10,0,0
+71,10/10/2020,Connacht,Cardiff Blues v Connacht,1,0,1,0,0,0,134,318,21,3,167,121,27,14,23,2,3,13,2,6,0,114,6,10,0,1,0,5,2,2,1,0,Regular,S20,7,29,-22,L,A,Cardiff vs Connacht,10,0,1
+72,10/10/2020,Edinburgh,Munster v Edinburgh,2,3,2,0,0,0,103,260,28,5,133,120,10,8,21,5,1,9,2,3,0,91,7,13,0,0,1,6,2,4,1,0,Regular,S20,23,25,-2,L,A,Munster vs Edinburgh,13,1,0
+73,10/10/2020,Leinster,Benetton v Leinster,4,3,3,0,0,1,105,328,11,8,107,144,18,9,17,7,7,6,0,5,1,85,3,13,1,2,1,7,1,2,1,0,Regular,S20,37,25,12,W,A,Benetton vs Leinster,12,1,1
+74,10/10/2020,Munster,Munster v Edinburgh,1,6,1,0,1,0,92,209,10,2,110,130,28,7,30,1,6,13,0,3,0,86,0,8,0,2,0,3,2,1,0,0,Regular,S20,25,23,2,W,H,Munster vs Edinburgh,8,0,2
+75,10/10/2020,Ospreys,Ospreys v Ulster,0,4,0,0,0,0,62,142,6,0,73,155,21,14,20,0,5,10,5,5,0,51,1,7,1,1,1,2,2,1,0,0,Regular,S20,12,24,-12,L,H,Ospreys vs Ulster,6,0,1
+76,10/10/2020,Ulster,Ospreys v Ulster,3,1,3,0,2,0,119,350,21,6,140,86,6,11,32,7,8,9,0,9,1,98,4,14,1,3,1,7,3,1,0,1,Regular,S20,24,12,12,W,A,Ospreys vs Ulster,13,0,3
+77,11/10/2020,Glasgow,Glasgow Warriors v Scarlets,2,2,2,0,2,0,101,236,11,3,104,115,16,10,23,5,8,12,0,8,1,84,4,12,0,2,0,6,3,1,2,0,Regular,S20,20,7,13,W,H,Glasgow vs Scarlets,12,0,2
+78,11/10/2020,Scarlets,Glasgow Warriors v Scarlets,1,0,1,0,1,0,93,283,16,4,130,135,11,12,16,6,6,15,2,6,0,76,5,17,2,5,0,8,2,3,0,1,Regular,S20,7,20,-13,L,A,Glasgow vs Scarlets,15,0,3
+79,12/03/2021,Glasgow,Glasgow Warriors v Ospreys,3,3,3,0,0,0,102,338,15,5,108,151,13,12,29,5,3,12,2,5,0,82,3,9,0,1,0,6,1,1,2,0,Regular,S20,30,25,5,W,H,Glasgow vs Ospreys,9,0,1
+80,12/03/2021,Leinster,Zebre v Leinster,7,1,5,0,2,0,132,560,30,11,172,156,15,15,22,10,5,9,2,1,0,107,6,11,0,0,0,8,2,1,1,0,Regular,S20,48,31,17,W,A,Zebre vs Leinster,11,0,0
+81,12/03/2021,Munster,Munster v Scarlets,4,0,4,0,0,0,111,377,11,6,104,83,17,12,32,5,6,21,1,5,1,80,1,11,1,3,1,2,3,1,1,0,Regular,S20,28,10,18,W,H,Munster vs Scarlets,10,1,2
+82,12/03/2021,Ospreys,Glasgow Warriors v Ospreys,3,2,1,0,2,1,113,364,13,2,155,125,15,11,21,3,9,7,6,6,2,95,1,7,0,2,1,1,2,1,0,0,Regular,S20,25,30,-5,L,A,Glasgow vs Ospreys,7,1,2
+83,12/03/2021,Scarlets,Munster v Scarlets,1,1,1,0,0,0,66,159,17,4,91,133,11,16,33,5,7,12,2,7,1,56,4,13,0,2,2,6,2,1,2,0,Regular,S20,10,28,-18,L,A,Munster vs Scarlets,13,2,2
+84,12/03/2021,Zebre,Zebre v Leinster,3,4,2,0,1,0,157,406,15,15,185,148,30,9,32,10,5,10,1,8,0,113,3,6,0,0,0,2,3,1,1,0,Regular,S20,31,48,-17,L,H,Zebre vs Leinster,6,0,0
+85,13/03/2021,Connacht,Connacht v Edinburgh,2,0,2,0,0,0,138,270,16,2,190,155,16,16,20,6,5,17,2,7,0,115,5,10,0,1,0,5,3,1,0,1,Regular,S20,14,15,-1,L,H,Connacht vs Edinburgh,10,0,1
+86,13/03/2021,Dragons,Dragons v Ulster,3,1,2,0,2,0,124,318,7,3,180,102,16,16,22,2,5,15,3,8,0,108,3,8,0,0,1,5,1,1,1,0,Regular,S20,22,26,-4,L,H,Dragons vs Ulster,8,1,0
+87,13/03/2021,Edinburgh,Connacht v Edinburgh,2,1,1,0,1,0,118,366,16,4,132,174,16,12,22,7,7,11,2,8,0,102,2,13,1,4,2,5,2,0,0,0,Regular,S20,15,14,1,W,A,Connacht vs Edinburgh,12,2,3
+88,13/03/2021,Ulster,Dragons v Ulster,4,0,3,0,1,0,95,532,16,9,119,172,7,11,28,9,4,11,1,4,0,73,3,17,0,2,0,9,3,3,2,0,Regular,S20,26,22,4,W,A,Dragons vs Ulster,17,0,2
+89,14/03/2021,Benetton,Benetton v Cardiff Blues,2,0,2,0,0,0,117,395,16,7,174,148,23,19,27,8,6,16,1,3,0,79,4,11,1,0,1,10,0,0,0,0,Regular,S20,14,29,-15,L,H,Benetton vs Cardiff,10,0,0
+90,14/03/2021,Cardiff,Benetton v Cardiff Blues,4,1,3,0,1,0,137,476,23,9,156,129,16,10,35,7,11,13,2,7,2,101,2,9,1,2,0,4,2,1,0,0,Regular,S20,29,14,15,W,A,Benetton vs Cardiff,8,0,1
+91,14/11/2020,Connacht,Connacht v Scarlets,2,0,2,0,0,0,122,397,21,4,115,82,9,23,27,7,3,16,3,12,1,89,5,5,0,1,0,3,1,0,0,0,Regular,S20,14,20,-6,L,H,Connacht vs Scarlets,5,0,1
+92,14/11/2020,Scarlets,Connacht v Scarlets,3,1,1,0,2,0,74,317,9,3,90,158,21,10,37,8,7,8,6,12,0,54,2,10,3,3,3,2,1,1,0,0,Regular,S20,20,14,6,W,A,Connacht vs Scarlets,7,1,2
+93,15/11/2020,Munster,Munster v Ospreys,5,1,5,0,0,0,96,251,13,2,108,103,10,16,21,5,9,13,1,6,0,75,1,9,1,4,0,4,0,1,1,0,Regular,S20,38,22,16,W,H,Munster vs Ospreys,8,0,3
+94,15/11/2020,Ospreys,Munster v Ospreys,3,1,1,0,1,1,78,274,10,1,109,133,13,14,16,7,4,7,2,8,1,65,3,11,0,3,1,6,0,1,1,0,Regular,S20,22,38,-16,L,A,Munster vs Ospreys,11,1,3
+95,16/01/2021,Edinburgh,Glasgow Warriors v Edinburgh,3,1,2,0,1,0,103,245,20,4,117,130,16,13,13,8,4,8,1,8,0,86,1,14,0,4,2,4,1,3,1,0,Regular,S20,22,23,-1,L,A,Glasgow vs Edinburgh,14,2,4
+96,16/01/2021,Glasgow,Glasgow Warriors v Edinburgh,2,3,2,0,1,0,97,166,16,2,110,144,20,10,20,2,5,18,1,5,0,89,0,9,1,2,1,2,3,1,2,0,Regular,S20,23,22,1,W,H,Glasgow vs Edinburgh,8,1,1
+97,16/11/2020,Benetton,Cardiff Blues v Benetton,1,0,0,0,2,0,67,223,7,3,74,90,13,14,34,1,11,13,4,5,0,55,3,15,1,5,0,9,0,1,1,0,Regular,S20,5,22,-17,L,A,Cardiff vs Benetton,14,0,4
+98,16/11/2020,Cardiff,Cardiff Blues v Benetton,3,1,2,0,2,0,82,194,13,2,87,78,7,13,30,4,6,12,5,8,0,62,6,10,1,3,0,6,0,1,0,0,Regular,S20,22,5,17,W,H,Cardiff vs Benetton,9,0,2
+99,16/11/2020,Edinburgh,Leinster v Edinburgh,1,1,1,0,0,0,88,193,11,4,94,167,19,10,19,1,4,12,2,7,1,74,4,13,0,2,1,4,5,1,1,0,Regular,S20,10,50,-40,L,A,Leinster vs Edinburgh,13,1,2
+100,16/11/2020,Leinster,Leinster v Edinburgh,8,0,5,0,3,0,137,520,19,4,143,126,11,13,19,11,5,16,1,1,0,95,4,14,0,1,0,9,2,2,0,0,Regular,S20,50,10,40,W,H,Leinster vs Edinburgh,14,0,1
+101,16/11/2020,Ulster,Zebre v Ulster,9,0,6,0,3,0,138,390,27,10,170,105,11,14,29,11,5,13,1,2,0,104,1,9,1,1,1,4,3,0,0,0,Regular,S20,57,14,43,W,A,Zebre vs Ulster,8,0,1
+102,16/11/2020,Zebre,Zebre v Ulster,2,0,2,0,1,0,82,188,11,0,127,166,27,12,28,6,5,11,3,6,0,68,5,10,0,1,0,6,3,0,0,0,Regular,S20,14,57,-43,L,H,Zebre vs Ulster,10,0,1
+103,19/02/2021,Dragons,Dragons v Leinster,2,5,2,0,0,0,121,324,13,4,130,169,19,9,26,6,7,10,3,11,1,103,1,8,1,2,0,3,2,1,2,0,Regular,S20,29,35,-6,L,H,Dragons vs Leinster,7,0,1
+104,19/02/2021,Glasgow,Glasgow Warriors v Ulster,1,2,1,0,0,0,104,366,17,7,122,167,24,11,15,3,8,8,4,9,1,78,5,14,1,4,2,4,2,2,0,0,Regular,S20,13,19,-6,L,H,Glasgow vs Ulster,13,2,3
+105,19/02/2021,Leinster,Dragons v Leinster,5,0,4,0,0,1,135,424,19,8,129,148,13,11,25,4,2,5,2,4,1,105,2,16,0,4,1,6,5,0,0,0,Regular,S20,35,29,6,W,A,Dragons vs Leinster,16,1,4
+106,19/02/2021,Ulster,Glasgow Warriors v Ulster,3,0,2,0,1,0,130,371,24,10,131,124,17,16,13,10,7,13,3,6,0,102,3,10,0,2,1,6,1,0,1,0,Regular,S20,19,13,6,W,A,Glasgow vs Ulster,10,1,2
+107,19/03/2021,Benetton,Munster v Benetton,3,0,1,0,3,0,95,357,17,11,133,137,16,13,20,11,2,11,0,6,0,65,1,9,0,1,2,4,1,1,0,0,Regular,S20,17,31,-14,L,A,Munster vs Benetton,9,2,1
+108,19/03/2021,Leinster,Leinster v Ospreys,3,0,2,0,1,0,102,331,15,2,139,174,18,14,26,6,2,12,0,4,0,87,4,12,1,4,0,6,1,1,1,0,Regular,S20,19,24,-5,L,H,Leinster vs Ospreys,11,0,3
+109,19/03/2021,Munster,Munster v Benetton,4,1,4,0,0,0,105,362,16,3,133,96,17,8,29,8,2,14,3,7,1,89,0,8,1,2,0,5,1,0,0,0,Regular,S20,31,17,14,W,H,Munster vs Benetton,7,0,1
+110,19/03/2021,Ospreys,Leinster v Ospreys,3,1,3,0,1,0,153,303,18,11,248,124,15,9,32,5,7,18,1,7,0,124,1,5,0,0,0,3,1,1,1,0,Regular,S20,24,19,5,W,A,Leinster vs Ospreys,5,0,0
+111,19/03/2021,Ulster,Ulster v Zebre,7,0,7,0,0,0,148,586,42,21,213,140,22,14,21,26,2,11,1,6,0,97,4,10,0,0,0,8,1,1,0,0,Regular,S20,49,3,46,W,H,Ulster vs Zebre,10,0,0
+112,19/03/2021,Zebre,Ulster v Zebre,0,1,0,0,0,0,105,241,22,2,89,139,42,14,20,4,5,7,3,14,0,91,0,8,0,0,1,3,3,1,0,1,Regular,S20,3,49,-46,L,A,Ulster vs Zebre,8,1,0
+113,20/02/2021,Benetton,Scarlets v Benetton,2,1,2,0,0,0,59,220,9,6,72,130,25,12,15,5,4,10,0,7,0,37,2,19,1,5,0,9,3,2,2,0,Regular,S20,17,41,-24,L,A,Scarlets vs Benetton,18,0,4
+114,20/02/2021,Cardiff,Connacht v Cardiff Blues,2,1,2,0,1,0,118,357,19,8,159,131,20,15,15,4,5,13,4,6,0,93,4,12,2,4,0,7,0,1,0,0,Regular,S20,17,32,-15,L,A,Connacht vs Cardiff,10,0,2
+115,20/02/2021,Connacht,Connacht v Cardiff Blues,4,2,3,0,1,0,96,365,20,3,118,136,19,14,26,7,3,11,3,9,0,75,4,11,0,1,0,10,0,0,0,0,Regular,S20,32,17,15,W,H,Connacht vs Cardiff,11,0,1
+116,20/02/2021,Edinburgh,Edinburgh v Munster,1,1,1,0,0,0,121,166,14,5,120,119,11,12,14,1,3,16,2,9,1,104,3,12,2,6,2,3,0,1,0,0,Regular,S20,10,22,-12,L,H,Edinburgh vs Munster,10,2,4
+117,20/02/2021,Munster,Edinburgh v Munster,3,1,2,0,1,0,90,208,11,6,116,156,14,9,21,4,7,13,0,6,1,70,1,16,1,5,0,6,3,2,0,0,Regular,S20,22,10,12,W,A,Edinburgh vs Munster,15,0,4
+118,20/02/2021,Ospreys,Ospreys v Zebre,1,1,1,0,1,0,90,240,9,0,105,154,18,11,31,3,10,15,6,11,2,72,6,13,0,2,0,9,1,1,1,0,Regular,S20,10,0,10,W,H,Ospreys vs Zebre,13,0,2
+119,20/02/2021,Scarlets,Scarlets v Benetton,6,1,4,0,2,0,129,521,25,11,178,50,9,12,17,9,6,14,1,12,0,85,4,8,0,1,1,5,1,0,0,0,Regular,S20,41,17,24,W,H,Scarlets vs Benetton,8,1,1
+120,20/02/2021,Zebre,Ospreys v Zebre,0,0,0,0,1,0,132,422,18,7,136,112,9,17,33,6,9,13,3,2,1,99,6,13,0,4,0,7,2,1,0,0,Regular,S20,0,10,-10,L,A,Ospreys vs Zebre,13,0,4
+121,21/03/2021,Dragons,Dragons v Glasgow Warriors,2,4,2,0,0,0,92,368,22,5,138,172,14,11,22,6,5,16,1,7,1,69,0,13,1,3,1,5,2,2,2,0,Regular,S20,26,17,9,W,H,Dragons vs Glasgow,12,1,2
+122,21/03/2021,Glasgow,Dragons v Glasgow Warriors,2,1,2,0,0,0,131,325,14,5,152,114,22,12,22,4,1,19,0,5,2,107,1,18,1,4,1,8,1,3,2,0,Regular,S20,17,26,-9,L,A,Dragons vs Glasgow,17,1,3
+123,22/01/2021,Cardiff,Scarlets v Cardiff Blues,1,2,1,0,0,0,100,321,28,3,112,164,20,15,26,6,4,11,2,4,0,80,1,13,0,1,0,8,2,2,0,0,Regular,S20,13,10,3,W,A,Scarlets vs Cardiff,13,0,1
+124,22/01/2021,Scarlets,Scarlets v Cardiff Blues,1,1,1,0,0,0,131,332,20,4,212,114,28,14,26,2,10,16,4,2,1,112,3,13,0,1,0,8,2,2,1,0,Regular,S20,10,13,-3,L,H,Scarlets vs Cardiff,13,0,1
+125,22/03/2021,Cardiff,Cardiff Blues v Edinburgh,4,2,4,0,2,0,104,349,21,5,120,166,29,10,17,9,7,8,1,6,0,78,1,7,0,2,0,5,0,0,0,0,Regular,S20,34,15,19,W,H,Cardiff vs Edinburgh,7,0,2
+126,22/03/2021,Connacht,Scarlets v Connacht,5,1,4,0,1,0,119,501,22,7,168,139,19,14,10,18,2,13,1,7,0,77,1,9,0,1,0,5,3,0,0,0,Regular,S20,36,41,-5,L,A,Scarlets vs Connacht,9,0,1
+127,22/03/2021,Edinburgh,Cardiff Blues v Edinburgh,2,1,1,0,2,0,133,502,29,1,171,109,21,9,21,8,2,7,1,6,0,112,5,12,0,3,0,7,2,0,0,0,Regular,S20,15,34,-19,L,A,Cardiff vs Edinburgh,12,0,3
+128,22/03/2021,Scarlets,Scarlets v Connacht,6,1,4,0,2,0,113,416,19,7,159,129,22,7,20,13,3,13,0,5,1,82,0,11,0,2,0,4,4,1,2,0,Regular,S20,41,36,5,W,H,Scarlets vs Connacht,11,0,2
+129,22/11/2020,Benetton,Ospreys v Benetton,3,1,2,0,1,0,93,373,9,5,129,135,19,18,30,7,10,11,2,2,0,62,4,10,0,1,0,4,2,3,2,0,Regular,S20,22,24,-2,L,A,Ospreys vs Benetton,10,0,1
+130,22/11/2020,Cardiff,Leinster v Cardiff Blues,1,0,0,0,1,0,69,184,10,2,123,241,22,15,24,4,4,11,1,5,0,49,1,10,1,4,0,4,1,1,0,0,Regular,S20,5,40,-35,L,A,Leinster vs Cardiff,9,0,3
+131,22/11/2020,Connacht,Zebre v Connacht,7,2,2,0,4,1,112,475,15,15,105,88,12,10,35,7,8,12,2,6,1,75,2,11,0,1,0,8,0,2,0,1,Regular,S20,47,12,35,W,A,Zebre vs Connacht,11,0,1
+132,22/11/2020,Leinster,Leinster v Cardiff Blues,6,0,5,0,2,0,186,688,22,7,193,73,10,12,24,9,4,12,2,10,1,148,3,8,1,1,1,3,3,0,0,0,Regular,S20,40,5,35,W,H,Leinster vs Cardiff,7,1,0
+133,22/11/2020,Ospreys,Ospreys v Benetton,3,1,3,0,0,0,123,416,19,1,145,99,9,11,29,5,6,15,2,5,2,81,12,12,1,1,0,9,0,1,1,1,Regular,S20,24,22,2,W,H,Ospreys vs Benetton,11,0,0
+134,22/11/2020,Scarlets,Ulster v Scarlets,4,0,2,0,4,0,85,260,23,5,131,170,15,18,27,6,9,15,3,8,0,57,4,3,0,0,0,2,0,1,0,0,Regular,S20,24,26,-2,L,A,Ulster vs Scarlets,3,0,0
+135,22/11/2020,Ulster,Ulster v Scarlets,4,0,3,0,1,0,135,494,15,6,166,87,23,15,29,5,6,8,2,6,0,112,5,13,0,2,1,6,1,4,2,0,Regular,S20,26,24,2,W,H,Ulster vs Scarlets,13,1,2
+136,22/11/2020,Zebre,Zebre v Connacht,2,0,1,0,1,0,96,303,12,7,144,104,15,13,21,9,3,20,5,7,0,57,6,13,0,0,1,8,4,0,1,0,Regular,S20,12,47,-35,L,H,Zebre vs Connacht,13,1,0
+137,23/01/2021,Edinburgh,Zebre v Edinburgh,2,4,2,0,1,0,113,381,17,7,167,77,13,7,22,4,4,11,1,6,1,94,4,13,2,3,0,4,4,2,1,1,Regular,S20,26,10,16,W,A,Zebre vs Edinburgh,11,0,1
+138,23/01/2021,Leinster,Munster v Leinster,1,2,1,0,0,0,137,322,33,3,154,200,13,12,33,6,3,12,0,8,0,117,4,8,0,1,0,5,2,0,0,0,Regular,S20,13,10,3,W,A,Munster vs Leinster,8,0,1
+139,23/01/2021,Munster,Munster v Leinster,1,1,1,0,2,0,139,194,13,5,139,168,33,13,28,2,5,9,5,3,0,128,2,9,0,1,0,4,2,2,0,0,Regular,S20,10,13,-3,L,H,Munster vs Leinster,9,0,1
+140,23/01/2021,Zebre,Zebre v Edinburgh,1,1,1,0,1,0,73,143,13,7,116,118,17,16,20,1,6,10,3,6,1,57,2,13,2,5,0,6,2,0,0,0,Regular,S20,10,26,-16,L,H,Zebre vs Edinburgh,11,0,3
+141,23/10/2020,Benetton,Benetton v Scarlets,0,1,0,0,1,0,106,219,17,7,133,54,2,15,39,2,0,10,2,8,2,95,0,9,0,4,0,4,0,1,0,0,Regular,S20,3,10,-7,L,H,Benetton vs Scarlets,9,0,4
+142,23/10/2020,Leinster,Leinster v Zebre,9,0,9,0,0,0,144,624,44,5,190,83,11,13,24,11,3,15,1,7,0,119,3,9,0,0,0,7,1,1,0,0,Regular,S20,63,8,55,W,H,Leinster vs Zebre,9,0,0
+143,23/10/2020,Scarlets,Benetton v Scarlets,1,1,1,0,1,0,48,187,2,2,82,135,17,14,38,6,5,14,4,6,0,40,3,11,0,3,0,5,0,3,0,1,Regular,S20,10,3,7,W,A,Benetton vs Scarlets,11,0,3
+144,23/10/2020,Zebre,Leinster v Zebre,1,1,0,0,1,0,60,166,11,2,99,177,44,11,22,5,4,13,3,6,0,52,2,10,0,1,2,5,1,1,0,0,Regular,S20,8,63,-55,L,A,Leinster vs Zebre,10,2,1
+145,23/11/2020,Glasgow,Glasgow Warriors v Munster,2,1,0,0,2,0,63,181,10,3,61,88,14,12,21,5,1,13,2,10,0,52,5,14,0,3,2,7,1,2,1,0,Regular,S20,13,27,-14,L,H,Glasgow vs Munster,14,2,3
+146,23/11/2020,Munster,Glasgow Warriors v Munster,4,1,2,0,4,0,74,306,14,5,71,79,10,12,26,8,6,14,2,3,1,54,1,11,1,3,3,4,1,0,1,0,Regular,S20,27,13,14,W,A,Glasgow vs Munster,10,3,2
+147,24/01/2021,Connacht,Connacht v Ospreys,2,2,2,0,0,0,79,300,13,2,92,129,28,15,18,7,6,11,0,5,1,57,5,14,1,5,0,7,2,0,0,0,Regular,S20,20,26,-6,L,H,Connacht vs Ospreys,13,0,4
+148,24/01/2021,Ospreys,Connacht v Ospreys,4,0,3,0,1,0,121,355,28,6,159,91,13,12,16,11,7,17,3,8,0,87,4,15,2,4,2,6,1,2,1,0,Regular,S20,26,20,6,W,A,Connacht vs Ospreys,13,1,3
+149,24/10/2020,Glasgow,Ospreys v Glasgow Warriors,2,1,1,0,1,0,117,407,26,7,131,116,11,12,28,9,5,12,0,5,0,100,3,10,0,3,1,4,2,0,0,0,Regular,S20,15,23,-8,L,A,Ospreys vs Glasgow,10,1,3
+150,24/10/2020,Ospreys,Ospreys v Glasgow Warriors,2,3,2,0,0,0,89,311,11,5,98,149,26,8,34,8,6,11,2,5,0,71,6,11,0,0,1,8,2,0,1,0,Regular,S20,23,15,8,W,H,Ospreys vs Glasgow,11,1,0
+151,25/10/2020,Connacht,Edinburgh v Connacht,5,2,3,0,2,0,101,295,14,6,90,175,25,9,28,8,3,10,4,3,0,70,1,13,0,2,2,6,2,1,0,0,Regular,S20,37,26,11,W,A,Edinburgh vs Connacht,13,2,2
+152,25/10/2020,Dragons,Ulster v Dragons,2,1,2,0,0,0,131,349,26,14,167,199,12,15,12,10,7,14,4,4,0,78,4,11,2,5,0,6,0,0,0,0,Regular,S20,17,40,-23,L,A,Ulster vs Dragons,9,0,3
+153,25/10/2020,Edinburgh,Edinburgh v Connacht,4,0,3,0,1,0,148,356,25,6,181,97,14,8,21,4,1,18,3,4,0,121,3,11,0,0,0,8,2,1,0,0,Regular,S20,26,37,-11,L,H,Edinburgh vs Connacht,11,0,0
+154,25/10/2020,Ulster,Ulster v Dragons,6,0,5,0,1,0,165,434,12,11,181,125,26,14,18,17,10,11,1,9,0,117,5,11,1,1,2,4,0,4,1,0,Regular,S20,40,17,23,W,H,Ulster vs Dragons,10,1,1
+155,26/02/2021,Benetton,Benetton v Connacht,2,1,2,0,0,0,124,425,18,4,192,109,14,21,26,7,8,20,1,5,1,98,8,12,2,3,0,7,2,0,0,0,Regular,S20,17,19,-2,L,H,Benetton vs Connacht,10,0,1
+156,26/02/2021,Cardiff,Cardiff Blues v Munster,1,2,0,0,3,0,85,317,22,0,110,150,17,7,23,8,6,6,0,6,1,71,5,13,0,4,0,7,2,1,1,0,Regular,S20,11,20,-9,L,H,Cardiff vs Munster,13,0,4
+157,26/02/2021,Connacht,Benetton v Connacht,3,0,2,0,1,0,86,316,14,5,82,169,18,13,28,8,12,11,2,8,1,56,5,10,0,2,0,6,1,1,1,0,Regular,S20,19,17,2,W,A,Benetton vs Connacht,10,0,2
+158,26/02/2021,Munster,Cardiff Blues v Munster,2,2,2,0,1,0,110,345,17,2,147,100,22,11,21,3,6,12,4,4,0,95,6,10,0,1,0,7,2,0,0,0,Regular,S20,20,11,9,W,A,Cardiff vs Munster,10,0,1
+159,26/02/2021,Ospreys,Ulster v Ospreys,1,0,1,0,0,0,95,228,14,5,168,178,23,13,23,3,7,11,3,11,0,76,4,12,1,3,0,8,1,0,1,0,Regular,S20,7,21,-14,L,A,Ulster vs Ospreys,11,0,2
+160,26/02/2021,Ulster,Ulster v Ospreys,3,0,2,0,0,1,153,453,23,7,204,121,14,18,21,6,7,12,0,6,0,127,4,10,0,4,0,4,2,0,0,0,Regular,S20,21,7,14,W,H,Ulster vs Ospreys,10,0,4
+161,26/10/2020,Cardiff,Munster v Cardiff Blues,3,2,3,0,0,0,79,297,18,3,112,156,18,9,26,8,4,7,1,8,0,66,4,11,1,2,0,6,1,2,1,0,Regular,S20,27,38,-11,L,A,Munster vs Cardiff,10,0,1
+162,26/10/2020,Munster,Munster v Cardiff Blues,5,1,5,0,1,0,135,445,18,14,156,92,18,9,26,7,3,11,1,6,0,94,4,9,1,1,0,5,2,1,0,0,Regular,S20,38,27,11,W,H,Munster vs Cardiff,8,0,0
+163,26/12/2020,Cardiff,Dragons v Cardiff Blues,1,2,1,0,0,0,88,117,6,1,56,96,9,6,22,0,3,17,4,5,1,85,2,12,0,2,1,4,4,1,0,0,Regular,S20,13,12,1,W,A,Dragons vs Cardiff,12,1,2
+164,26/12/2020,Dragons,Dragons v Cardiff Blues,0,4,0,0,0,0,80,181,9,1,83,146,6,8,19,0,2,9,2,1,1,68,5,19,2,5,2,6,5,1,0,0,Regular,S20,12,13,-1,L,H,Dragons vs Cardiff,17,1,4
+165,26/12/2020,Ospreys,Ospreys v Scarlets,1,3,0,0,1,0,59,166,9,3,71,135,6,11,20,2,4,15,4,2,2,48,1,12,0,1,1,3,6,1,0,0,Regular,S20,14,16,-2,L,H,Ospreys vs Scarlets,12,1,1
+166,26/12/2020,Scarlets,Ospreys v Scarlets,1,3,1,0,2,0,101,181,6,5,117,59,9,10,29,2,2,10,1,7,0,89,2,13,0,1,2,7,2,1,0,0,Regular,S20,16,14,2,W,A,Ospreys vs Scarlets,13,2,1
+167,27/02/2021,Dragons,Zebre v Dragons,2,1,1,0,1,0,93,335,19,8,132,160,16,14,16,4,8,14,4,4,1,65,6,14,0,0,1,11,1,2,2,0,Regular,S20,15,26,-11,L,A,Zebre vs Dragons,14,1,0
+168,27/02/2021,Edinburgh,Edinburgh v Scarlets,3,2,2,0,2,0,174,501,36,8,224,99,5,14,22,12,4,12,0,9,0,141,1,5,0,0,0,3,1,1,0,0,Regular,S20,25,27,-2,L,H,Edinburgh vs Scarlets,5,0,0
+169,27/02/2021,Scarlets,Edinburgh v Scarlets,3,2,3,0,0,0,89,262,5,7,147,218,36,15,22,8,4,8,0,2,0,68,1,11,0,1,2,6,1,1,0,0,Regular,S20,27,25,2,W,A,Edinburgh vs Scarlets,11,2,1
+170,27/02/2021,Zebre,Zebre v Dragons,2,4,2,0,2,0,119,289,16,5,152,101,19,10,29,3,9,16,0,8,0,102,4,12,0,2,0,5,3,2,0,0,Regular,S20,26,15,11,W,H,Zebre vs Dragons,12,0,2
+171,27/03/2021,Benetton,Glasgow Warriors v Benetton,4,1,1,0,3,0,149,285,19,12,181,117,15,12,14,3,5,13,1,10,1,113,2,11,2,5,0,2,2,2,1,0,Regular,S20,25,46,-21,L,A,Glasgow vs Benetton,9,0,3
+172,27/03/2021,Glasgow,Glasgow Warriors v Benetton,6,2,5,0,1,0,100,427,15,9,104,179,19,12,16,10,7,7,1,7,0,69,2,14,1,3,1,7,3,0,0,0,Regular,S20,46,25,21,W,H,Glasgow vs Benetton,13,1,2
+173,27/03/2021,Leinster,Leinster v Munster,1,3,1,0,1,0,167,490,35,7,176,122,10,7,20,10,5,9,2,12,0,135,5,11,2,2,0,5,2,2,0,0,Final ,S20,16,6,10,W,H,Leinster vs Munster,9,0,0
+174,27/03/2021,Munster,Leinster v Munster,0,2,0,0,2,0,93,207,10,4,117,213,35,18,18,1,5,8,1,4,0,80,2,7,0,2,0,3,1,1,0,0,Final ,S20,6,16,-10,L,A,Leinster vs Munster,7,0,2
+175,27/12/2020,Connacht,Connacht v Ulster,3,0,2,0,1,0,143,319,15,6,170,99,10,10,15,6,4,10,4,9,0,110,7,11,0,2,1,8,0,0,0,0,Regular,S20,19,32,-13,L,H,Connacht vs Ulster,11,1,2
+176,27/12/2020,Ulster,Connacht v Ulster,2,6,2,0,1,0,66,140,10,1,63,180,15,9,24,2,9,10,0,6,0,57,1,10,0,3,0,6,1,0,1,0,Regular,S20,32,19,13,W,A,Connacht vs Ulster,10,0,3
+177,28/02/2021,Glasgow,Leinster v Glasgow Warriors,3,0,3,0,0,0,173,361,34,7,175,199,22,16,19,6,4,11,3,5,0,142,1,9,1,1,0,2,3,4,2,1,Regular,S20,21,40,-19,L,A,Leinster vs Glasgow,8,0,0
+178,28/02/2021,Leinster,Leinster v Glasgow Warriors,6,0,4,0,2,1,146,438,22,4,149,220,34,11,24,7,7,5,1,7,1,110,2,11,1,2,0,1,6,2,0,0,Regular,S20,40,21,19,W,H,Leinster vs Glasgow,10,0,1
+179,28/03/2021,Dragons,Dragons v Edinburgh,3,1,3,0,1,0,125,425,31,13,169,175,29,17,14,9,2,15,1,2,0,89,7,14,1,1,0,9,3,1,0,0,Regular,S20,24,17,7,W,H,Dragons vs Edinburgh,13,0,0
+180,28/03/2021,Edinburgh,Dragons v Edinburgh,3,0,1,0,2,0,154,504,29,7,174,143,31,9,25,10,8,10,2,6,0,123,3,11,0,2,0,5,4,0,1,0,Regular,S20,17,24,-7,L,A,Dragons vs Edinburgh,11,0,2
+181,29/11/2020,Benetton,Benetton v Dragons,3,0,2,0,1,0,130,528,20,9,166,65,9,12,27,4,4,21,1,7,2,81,6,16,1,3,0,10,3,0,0,0,Regular,S20,19,26,-7,L,H,Benetton vs Dragons,15,0,2
+182,29/11/2020,Cardiff,Cardiff Blues v Glasgow Warriors,1,1,1,0,0,0,92,368,21,6,129,154,17,14,26,10,7,17,2,6,0,55,6,13,1,1,1,7,2,2,1,0,Regular,S20,10,19,-9,L,H,Cardiff vs Glasgow,12,1,0
+183,29/11/2020,Dragons,Benetton v Dragons,3,3,1,0,4,0,68,258,9,7,94,142,20,11,36,6,10,12,1,5,1,43,1,9,1,3,1,3,1,1,0,0,Regular,S20,26,19,7,W,A,Benetton vs Dragons,8,1,2
+184,29/11/2020,Glasgow,Cardiff Blues v Glasgow Warriors,1,4,1,0,1,0,144,547,17,5,170,79,21,13,30,8,9,8,2,7,0,113,3,7,0,1,0,5,1,0,0,0,Regular,S20,19,10,9,W,A,Cardiff vs Glasgow,7,0,1
+185,30/01/2021,Benetton,Benetton v Munster,2,2,0,0,2,0,165,381,26,18,237,86,12,9,37,8,5,17,3,3,0,124,3,9,1,1,0,6,1,1,1,0,Regular,S20,16,18,-2,L,H,Benetton vs Munster,8,0,0
+186,30/01/2021,Leinster,Scarlets v Leinster,7,1,6,0,0,1,148,477,24,0,157,113,26,12,25,8,6,8,1,7,0,120,1,10,1,1,0,4,4,1,1,0,Regular,S20,52,25,27,W,A,Scarlets vs Leinster,9,0,0
+187,30/01/2021,Munster,Benetton v Munster,2,1,1,1,1,0,101,310,12,7,130,181,26,9,40,3,5,12,1,3,0,65,7,10,0,0,0,8,2,1,0,0,Regular,S20,18,16,2,W,A,Benetton vs Munster,10,0,0
+188,30/01/2021,Scarlets,Scarlets v Leinster,3,2,2,0,1,0,113,405,26,8,203,180,24,14,20,8,4,14,0,3,0,81,3,9,1,1,0,5,2,1,1,0,Regular,S20,25,52,-27,L,H,Scarlets vs Leinster,8,0,0
+189,30/11/2020,Edinburgh,Edinburgh v Ulster,2,0,2,0,1,0,98,195,12,7,128,93,17,13,19,4,1,10,1,5,0,81,5,16,1,4,4,4,4,0,1,0,Regular,S20,14,43,-29,L,H,Edinburgh vs Ulster,15,4,3
+190,30/11/2020,Munster,Munster v Zebre,8,0,5,0,2,1,104,378,17,9,154,116,7,10,23,12,6,17,4,7,0,72,1,8,1,2,0,4,2,0,0,0,Regular,S20,52,3,49,W,H,Munster vs Zebre,7,0,1
+191,30/11/2020,Ulster,Edinburgh v Ulster,7,0,4,0,3,0,87,292,17,8,108,120,12,9,21,7,5,14,3,8,1,62,2,10,0,3,0,5,1,1,0,0,Regular,S20,43,14,29,W,A,Edinburgh vs Ulster,10,0,3
+192,30/11/2020,Zebre,Munster v Zebre,0,1,0,0,0,0,86,172,7,5,88,105,17,11,17,1,2,13,0,7,2,70,3,18,0,3,1,9,4,2,2,0,Regular,S20,3,52,-49,L,A,Munster vs Zebre,18,1,3

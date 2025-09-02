@@ -1,0 +1,33 @@
+UP1 COMPLETE VALIDATION PIPELINE REPORT
+Generated: 02-Sep-2025 18:02:55
+
+EXECUTIVE SUMMARY
+================
+Overall Success: false
+Total PIs: 24
+NPIs (Normal PIs): 19
+NPI Variance Reduction: -0.0%
+Environmental Noise Estimate: 0.0%
+Adjusted Axiom Threshold: 40.0%
+Final ANPIs: 0
+Empirical SNR Improvement: NaN%
+Theory-Empirical Correlation: NaN
+
+STEP-BY-STEP RESULTS
+====================
+Step 1 - PI Extraction: true (24 PIs)
+Step 2 - Standardisation: true (100.0% retention)
+Step 3 - Normality: true (79.2% rate)
+Step 3.5 - NPI Analysis: false (-0.0% variance reduction, 0.0% env noise)
+Step 4 - Axioms: false (0.0% rate, threshold: 40.0%)
+Step 5 - Distributions: false (0 ANPIs)
+Step 6 - SNR: false (NaN% improvement)
+
+RECOMMENDATIONS
+===============
+Status: NEEDS_ATTENTION
+Message: Pipeline completed with issues. Review and address identified problems.
+
+Specific Recommendations:
+  1. Review axiom validation criteria or data quality
+  2. Consider relaxing criteria to increase ANPI count

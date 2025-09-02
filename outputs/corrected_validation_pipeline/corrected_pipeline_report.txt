@@ -1,0 +1,44 @@
+UP1 CORRECTED VALIDATION PIPELINE REPORT
+Generated: 02-Sep-2025 19:01:20
+
+EXECUTIVE SUMMARY
+================
+Overall Success: false
+Total PIs: 24
+NPIs (Normal PIs): 21
+Optimization SNR Improvement: 0.00
+Optimization Variance Reduction: -94.1%
+Adjusted Axiom Threshold: 40.0%
+Final ANPIs: 0
+Theory Validated: false
+AUC Improvement: NaN%
+Mean SNR Improvement: NaN%
+Theory-Empirical Correlation: NaN
+
+STEP-BY-STEP RESULTS
+====================
+Step 1 - PI Extraction: true (24 PIs)
+Step 2 - Processing: true (100.0% retention)
+Step 3 - Normality: true (87.5% rate)
+Step 3.5 - Optimization: false (0.00 SNR improvement, -94.1% variance reduction)
+Step 4 - Axioms: false (0.0% rate, threshold: 40.0%)
+Step 5 - Theory Validation: false (NaN% AUC improvement)
+Step 6 - Distributions: false (0 ANPIs)
+Step 7 - SNR: false (NaN% improvement)
+
+ENVIRONMENTAL NOISE CANCELLATION THEORY VALIDATION
+==================================================
+Absolute Measures AUC: NaN
+Relative Measures AUC: NaN
+AUC Improvement: NaN%
+Theory Validated: false
+
+RECOMMENDATIONS
+===============
+Status: NEEDS_ATTENTION
+Message: Pipeline completed with issues. Review and address identified problems.
+
+Specific Recommendations:
+  1. Review data quality
+  2. Adjust parameters
+  3. Re-run analysis
