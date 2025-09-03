@@ -1,0 +1,58 @@
+% ===================================================================
+% SHARED LATEX SETUP FOR CORRELATION-BASED FRAMEWORK PAPER
+% ===================================================================
+
+% Packages
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amsfonts,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{geometry}
+\usepackage{setspace}
+\usepackage{natbib}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usepackage{pgfplots}
+
+% Page setup
+\geometry{a4paper,margin=1in}
+\onehalfspacing
+
+% Author information
+\newcommand{\authorone}{Rowan Brown}
+\newcommand{\affiliationone}{University of [Institution]}
+
+% Custom commands
+\newcommand{\competitivemeasurement}{Competitive measurement}
+\newcommand{\snr}{SNR}
+\newcommand{\correlation}{\rho}
+\newcommand{\variance}{\kappa}
+
+% Theorem environments
+\theoremstyle{definition}
+\newtheorem{axiom}{Axiom}
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}{Lemma}
+\newtheorem{corollary}{Corollary}
+\newtheorem{definition}{Definition}
+\newtheorem{example}{Example}
+\newtheorem{remark}{Remark}
+
+% Custom environments
+\newenvironment{proof}{\noindent\textbf{Proof.}}{\hfill$\square$}
+
+% Figure and table captions
+\captionsetup{font=small,labelfont=bf}
+
+% Hyperref setup
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=red
+}

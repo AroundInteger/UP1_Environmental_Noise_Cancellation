@@ -1,0 +1,396 @@
+COMPREHENSIVE EMPIRICAL ANALYSIS REPORT
+======================================
+
+Framework: UP1 Environmental Noise Cancellation
+Version: 1.0
+Date: 03-Sep-2025 16:11:43
+
+DATA SUMMARY
+============
+Domain: Synthetic
+Scale: Arbitrary Units
+Teams: 4
+KPIs: 6
+Matches: 50
+
+SCALE INDEPENDENCE ANALYSIS
+===========================
+Property: Scale Independence
+Scale Independent: true
+Description: SNR improvement is independent of absolute scales due to δ² cancellation
+
+DUAL MECHANISM ANALYSIS
+=======================
+Mechanisms: Variance Ratio (κ), Correlation (ρ)
+KPIs Analyzed: 6
+
+LANDSCAPE POSITIONING
+=====================
+Landscape: SNR Improvement Landscape
+Description: Positioning data in universal parameter space
+
+CROSS-DOMAIN ANALYSIS
+=====================
+Description: Cross-domain comparison using universal landscape
+Reference Domains: Sports, Finance, Medicine, Engineering, Education
+
+UNIVERSAL RECOMMENDATIONS
+========================
+Framework: Universal SNR Improvement Recommendations
+Most Common Domain: Engineering
+Domain Frequency: 0.72
+Average Similarity: 0.785
+Recommendation: High overall similarity to Engineering domain - apply domain-specific framework
+Confidence: High
+
+SPECIFIC RECOMMENDATIONS
+=======================
+Framework Applicability: Universal SNR improvement framework is applicable
+Scale Independence: Scale independence property confirmed
+Dual Mechanisms: Both variance ratio and correlation mechanisms are active
+Cross-Domain Comparison: Cross-domain comparison provides valuable insights
+
+DETAILED KPI ANALYSIS
+=====================
+
+KPI: KPI_1
+---------
+  Pair: Team_1_vs_Team_2
+    Kappa: 0.566
+    Rho: -0.004
+    SNR Improvement: 0.997
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.728
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_1_vs_Team_3
+    Kappa: 0.585
+    Rho: 0.241
+    SNR Improvement: 1.303
+    Region: Positive Correlation
+    Most Similar Domain: Sports
+    Similarity Score: 0.793
+    Recommendation: High similarity to Sports domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_1_vs_Team_4
+    Kappa: 0.522
+    Rho: 0.225
+    SNR Improvement: 1.271
+    Region: Positive Correlation
+    Most Similar Domain: Finance
+    Similarity Score: 0.784
+    Recommendation: High similarity to Finance domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_3
+    Kappa: 1.033
+    Rho: 0.129
+    SNR Improvement: 1.148
+    Region: Positive Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.830
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_4
+    Kappa: 0.921
+    Rho: 0.217
+    SNR Improvement: 1.277
+    Region: Positive Correlation
+    Most Similar Domain: Sports
+    Similarity Score: 0.816
+    Recommendation: High similarity to Sports domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_3_vs_Team_4
+    Kappa: 0.892
+    Rho: -0.014
+    SNR Improvement: 0.987
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.749
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+
+KPI: KPI_2
+---------
+  Pair: Team_1_vs_Team_2
+    Kappa: 0.822
+    Rho: 0.173
+    SNR Improvement: 1.208
+    Region: Positive Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.810
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_1_vs_Team_3
+    Kappa: 0.880
+    Rho: -0.306
+    SNR Improvement: 0.766
+    Region: Negative Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.643
+    Recommendation: Moderate similarity to Engineering domain - consider domain-specific approaches
+    Confidence: Medium
+  Pair: Team_1_vs_Team_4
+    Kappa: 1.136
+    Rho: 0.053
+    SNR Improvement: 1.056
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.810
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_3
+    Kappa: 1.071
+    Rho: -0.140
+    SNR Improvement: 0.877
+    Region: Negative Correlation
+    Most Similar Domain: Medicine
+    Similarity Score: 0.717
+    Recommendation: High similarity to Medicine domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_4
+    Kappa: 1.382
+    Rho: -0.150
+    SNR Improvement: 0.871
+    Region: Negative Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.753
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_3_vs_Team_4
+    Kappa: 1.291
+    Rho: -0.191
+    SNR Improvement: 0.841
+    Region: Negative Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.724
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+
+KPI: KPI_3
+---------
+  Pair: Team_1_vs_Team_2
+    Kappa: 0.711
+    Rho: 0.186
+    SNR Improvement: 1.225
+    Region: Positive Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.792
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_1_vs_Team_3
+    Kappa: 0.800
+    Rho: 0.120
+    SNR Improvement: 1.135
+    Region: Positive Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.807
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_1_vs_Team_4
+    Kappa: 1.124
+    Rho: 0.172
+    SNR Improvement: 1.208
+    Region: Positive Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.840
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_3
+    Kappa: 1.124
+    Rho: 0.090
+    SNR Improvement: 1.099
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.832
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_4
+    Kappa: 1.580
+    Rho: 0.203
+    SNR Improvement: 1.247
+    Region: Positive Correlation
+    Most Similar Domain: Sports
+    Similarity Score: 0.901
+    Recommendation: High similarity to Sports domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_3_vs_Team_4
+    Kappa: 1.405
+    Rho: 0.023
+    SNR Improvement: 1.024
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.832
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+
+KPI: KPI_4
+---------
+  Pair: Team_1_vs_Team_2
+    Kappa: 0.826
+    Rho: -0.177
+    SNR Improvement: 0.850
+    Region: Negative Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.677
+    Recommendation: Moderate similarity to Engineering domain - consider domain-specific approaches
+    Confidence: Medium
+  Pair: Team_1_vs_Team_3
+    Kappa: 1.343
+    Rho: 0.249
+    SNR Improvement: 1.327
+    Region: Positive Correlation
+    Most Similar Domain: Sports
+    Similarity Score: 0.916
+    Recommendation: High similarity to Sports domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_1_vs_Team_4
+    Kappa: 1.159
+    Rho: -0.021
+    SNR Improvement: 0.980
+    Region: Independence
+    Most Similar Domain: Medicine
+    Similarity Score: 0.774
+    Recommendation: High similarity to Medicine domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_3
+    Kappa: 1.626
+    Rho: -0.001
+    SNR Improvement: 0.999
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.864
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_4
+    Kappa: 1.404
+    Rho: -0.149
+    SNR Improvement: 0.872
+    Region: Negative Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.757
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_3_vs_Team_4
+    Kappa: 0.863
+    Rho: 0.179
+    SNR Improvement: 1.217
+    Region: Positive Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.809
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+
+KPI: KPI_5
+---------
+  Pair: Team_1_vs_Team_2
+    Kappa: 1.248
+    Rho: -0.184
+    SNR Improvement: 0.846
+    Region: Negative Correlation
+    Most Similar Domain: Medicine
+    Similarity Score: 0.730
+    Recommendation: High similarity to Medicine domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_1_vs_Team_3
+    Kappa: 0.894
+    Rho: -0.094
+    SNR Improvement: 0.914
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.713
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_1_vs_Team_4
+    Kappa: 1.051
+    Rho: -0.006
+    SNR Improvement: 0.994
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.768
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_3
+    Kappa: 0.716
+    Rho: 0.114
+    SNR Improvement: 1.126
+    Region: Positive Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.799
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_4
+    Kappa: 0.842
+    Rho: -0.036
+    SNR Improvement: 0.965
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.734
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_3_vs_Team_4
+    Kappa: 1.175
+    Rho: -0.070
+    SNR Improvement: 0.934
+    Region: Independence
+    Most Similar Domain: Medicine
+    Similarity Score: 0.765
+    Recommendation: High similarity to Medicine domain - apply domain-specific best practices
+    Confidence: High
+
+KPI: KPI_6
+---------
+  Pair: Team_1_vs_Team_2
+    Kappa: 0.648
+    Rho: -0.039
+    SNR Improvement: 0.964
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.717
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_1_vs_Team_3
+    Kappa: 0.910
+    Rho: 0.016
+    SNR Improvement: 1.016
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.765
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_1_vs_Team_4
+    Kappa: 0.919
+    Rho: 0.119
+    SNR Improvement: 1.135
+    Region: Positive Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.817
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_3
+    Kappa: 1.403
+    Rho: 0.150
+    SNR Improvement: 1.174
+    Region: Positive Correlation
+    Most Similar Domain: Engineering
+    Similarity Score: 0.881
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_2_vs_Team_4
+    Kappa: 1.418
+    Rho: -0.020
+    SNR Improvement: 0.981
+    Region: Independence
+    Most Similar Domain: Engineering
+    Similarity Score: 0.812
+    Recommendation: High similarity to Engineering domain - apply domain-specific best practices
+    Confidence: High
+  Pair: Team_3_vs_Team_4
+    Kappa: 1.011
+    Rho: 0.188
+    SNR Improvement: 1.231
+    Region: Positive Correlation
+    Most Similar Domain: Medicine
+    Similarity Score: 0.818
+    Recommendation: High similarity to Medicine domain - apply domain-specific best practices
+    Confidence: High
