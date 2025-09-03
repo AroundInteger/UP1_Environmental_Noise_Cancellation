@@ -1,0 +1,100 @@
+FORMATTED DATASET ANALYSIS REPORT
+=================================
+
+Analysis Date: 03-Sep-2025 11:13:10
+Data File: /Users/rowanbrown/Documents/GitHub/UP1_Environmental_Noise_Cancellation/scripts/../data/raw/Example_Formatted_Dataset.csv
+Data: 1128 rows, 15 columns
+
+ENVIRONMENTAL NOISE ANALYSIS
+============================
+Environmental Noise Level: Very Low
+Environmental Noise Ratio (η): 0.000
+Team Correlation: 0.086
+Environmental Effects Detected: false
+
+MEASUREMENT STRATEGY ANALYSIS
+=============================
+Carries:
+  σ_A = 24.54, σ_B = 24.56
+  Variance Ratio (r) = 1.001
+  SNR Improvement = 2.00x
+  Recommendation = Use relative measures
+  Confidence = 80.0%
+
+Metres_Made:
+  σ_A = 107.84, σ_B = 85.35
+  Variance Ratio (r) = 0.791
+  SNR Improvement = 2.46x
+  Recommendation = Use relative measures
+  Confidence = 80.0%
+
+Defenders_Beaten:
+  σ_A = 6.91, σ_B = 6.62
+  Variance Ratio (r) = 0.958
+  SNR Improvement = 2.09x
+  Recommendation = Use relative measures
+  Confidence = 80.0%
+
+Offloads:
+  σ_A = 3.90, σ_B = 7.70
+  Variance Ratio (r) = 1.971
+  SNR Improvement = 0.82x
+  Recommendation = Use absolute measures
+  Confidence = 80.0%
+
+Passes:
+  σ_A = 32.30, σ_B = 40.16
+  Variance Ratio (r) = 1.243
+  SNR Improvement = 1.57x
+  Recommendation = Use relative measures
+  Confidence = 80.0%
+
+Tackles:
+  σ_A = 36.20, σ_B = 41.61
+  Variance Ratio (r) = 1.149
+  SNR Improvement = 1.72x
+  Recommendation = Use relative measures
+  Confidence = 80.0%
+
+Clean_Breaks:
+  σ_A = 2.73, σ_B = 2.69
+  Variance Ratio (r) = 0.984
+  SNR Improvement = 2.03x
+  Recommendation = Use relative measures
+  Confidence = 80.0%
+
+Turnovers_Won:
+  σ_A = 2.40, σ_B = 3.01
+  Variance Ratio (r) = 1.254
+  SNR Improvement = 1.55x
+  Recommendation = Use relative measures
+  Confidence = 80.0%
+
+Rucks_Won:
+  σ_A = 31.20, σ_B = 30.86
+  Variance Ratio (r) = 0.989
+  SNR Improvement = 2.02x
+  Recommendation = Use relative measures
+  Confidence = 80.0%
+
+Lineout_Throws_Won:
+  σ_A = 3.56, σ_B = 2.79
+  Variance Ratio (r) = 0.782
+  SNR Improvement = 2.48x
+  Recommendation = Use relative measures
+  Confidence = 80.0%
+
+DECISION FRAMEWORK RESULTS
+==========================
+Primary Strategy: Relative measures
+Expected Improvement: 99.2%
+Confidence Level: 80.0%
+
+SUMMARY STATISTICS
+==================
+Metrics Analyzed: 10
+Average SNR Improvement: 1.87x
+Maximum SNR Improvement: 2.48x
+Relative Measures Recommended: 9
+Absolute Measures Recommended: 1
+Average Confidence: 80.0%

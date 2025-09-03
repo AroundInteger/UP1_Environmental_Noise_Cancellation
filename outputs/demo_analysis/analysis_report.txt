@@ -1,0 +1,72 @@
+DEMO USER DATA ANALYSIS REPORT
+==============================
+
+Analysis Date: 03-Sep-2025 11:02:15
+Data File: /Users/rowanbrown/Documents/GitHub/UP1_Environmental_Noise_Cancellation/scripts/../data/raw/S20Isolated.csv
+Data: 192 rows, 47 columns
+
+ENVIRONMENTAL NOISE ANALYSIS
+============================
+Environmental Noise Level: High
+Environmental Noise Ratio (η): 0.636
+Team Correlation: -0.636
+Environmental Effects Detected: true
+
+MEASUREMENT STRATEGY ANALYSIS
+=============================
+Carry:
+  σ_A = 30.57, σ_B = 16.93
+  Variance Ratio (r) = 0.554
+  SNR Improvement = 3.06x
+  Recommendation = Use relative measures
+  Confidence = 72.0%
+
+MetresMade:
+  σ_A = 109.90, σ_B = 102.56
+  Variance Ratio (r) = 0.933
+  SNR Improvement = 2.14x
+  Recommendation = Use relative measures
+  Confidence = 72.0%
+
+DefenderBeaten:
+  σ_A = 5.65, σ_B = 7.31
+  Variance Ratio (r) = 1.293
+  SNR Improvement = 1.50x
+  Recommendation = Use relative measures
+  Confidence = 72.0%
+
+Offload:
+  σ_A = 4.12, σ_B = 2.67
+  Variance Ratio (r) = 0.648
+  SNR Improvement = 2.82x
+  Recommendation = Use relative measures
+  Confidence = 72.0%
+
+Pass:
+  σ_A = 46.36, σ_B = 27.03
+  Variance Ratio (r) = 0.583
+  SNR Improvement = 2.99x
+  Recommendation = Use relative measures
+  Confidence = 72.0%
+
+Tackle:
+  σ_A = 30.76, σ_B = 39.85
+  Variance Ratio (r) = 1.295
+  SNR Improvement = 1.49x
+  Recommendation = Use relative measures
+  Confidence = 72.0%
+
+DECISION FRAMEWORK RESULTS
+==========================
+Primary Strategy: Relative measures
+Expected Improvement: 133.2%
+Confidence Level: 72.0%
+
+SUMMARY STATISTICS
+==================
+Metrics Analyzed: 6
+Average SNR Improvement: 2.33x
+Maximum SNR Improvement: 3.06x
+Relative Measures Recommended: 6
+Absolute Measures Recommended: 0
+Average Confidence: 72.0%
