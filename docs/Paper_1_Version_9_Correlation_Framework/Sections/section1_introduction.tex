@@ -45,34 +45,32 @@ However, these solutions lack theoretical foundation and universal applicability
 
 \subsection{Correlation-Based Solution Discovery}
 
-Our research reveals a fundamental insight: environmental effects in competitive measurement manifest as correlation between competitors rather than additive shared noise terms. This discovery provides the foundation for a mathematically rigorous and universally applicable framework for correlation-based signal enhancement in competitive measurement.
+Our research reveals a fundamental insight: we observe positive correlation between competitors in competitive measurement contexts, which we can exploit through relative measurement to achieve signal enhancement. While we hypothesize that this correlation may be due to shared environmental effects, the framework's effectiveness depends on the observed correlation structure rather than its underlying cause.
 
 \textbf{Key Insight:}
-When competitors are measured under shared environmental conditions, their performances become correlated through the shared environmental factors. This correlation structure can be systematically exploited to achieve noise reduction through relative measurement.
+We observe positive correlation between competitors in competitive measurement contexts. This correlation structure can be systematically exploited through relative measurement to achieve signal enhancement, regardless of the underlying causal mechanism.
 
 \textbf{Mechanism:}
-The correlation-based environmental noise cancellation mechanism operates through:
+The correlation-based signal enhancement mechanism operates through:
 \begin{itemize}
-    \item \textbf{Shared Conditions:} Environmental factors affecting both competitors simultaneously
-    \item \textbf{Positive Correlation:} Shared conditions create measurable correlation $\rho > 0$
-    \item \textbf{Noise Reduction:} Relative measures exploit correlation to reduce variance
+    \item \textbf{Observed Correlation:} Positive correlation $\rho > 0$ between competitor performances
+    \item \textbf{Relative Measurement:} Exploiting correlation through $R = X_A - X_B$
+    \item \textbf{Variance Reduction:} Relative measures achieve lower variance when $\rho > 0$
     \item \textbf{Signal Enhancement:} Improved signal-to-noise ratios through correlation exploitation
 \end{itemize}
 
 \textbf{Mathematical Foundation:}
-Our key insight is that environmental effects manifest as correlation between competitors rather than additive noise terms. When competitors are measured under shared environmental conditions, their performances become correlated through the shared factors. This correlation structure can be systematically exploited through relative measurement to achieve noise reduction.
-
-The relative measure $R = X_A - X_B$ achieves variance reduction when competitors exhibit positive correlation $\rho > 0$ due to shared environmental conditions. This correlation-based approach provides a universal mechanism for signal enhancement that applies across all competitive measurement domains.
+Our key insight is that we observe positive correlation between competitors, which we can exploit through relative measurement to achieve signal enhancement. The relative measure $R = X_A - X_B$ achieves variance reduction when competitors exhibit positive correlation $\rho > 0$, regardless of the underlying cause of this correlation. This correlation-based approach provides a universal mechanism for signal enhancement that applies across all competitive measurement domains where positive correlation is observed.
 
 \subsection{Paper Contributions}
 
 This paper makes five primary contributions to competitive measurement theory and practice:
 
 \textbf{1. Theoretical Foundation:}
-We establish the mathematical foundation for correlation-based signal enhancement, demonstrating that environmental effects manifest as correlation between competitors rather than additive shared noise terms. This provides a rigorous theoretical basis for relative measurement approaches.
+We establish the mathematical foundation for correlation-based signal enhancement, demonstrating that observed positive correlation between competitors can be exploited through relative measurement to achieve superior signal-to-noise ratios. This provides a rigorous theoretical basis for relative measurement approaches.
 
 \textbf{2. Mathematical Framework:}
-We derive a mathematically rigorous framework that quantifies the signal-to-noise ratio improvement achieved by relative measures. The framework reveals that SNR improvement depends on two key parameters: the variance ratio $\kappa = \sigma_B^2/\sigma_A^2$ (capturing competitive asymmetry) and the correlation coefficient $\rho$ (capturing shared environmental effects). The resulting improvement formula demonstrates complete scale independence, enabling universal application across measurement scales and domains.
+We derive a mathematically rigorous framework that quantifies the signal-to-noise ratio improvement achieved by relative measures. The framework reveals that SNR improvement depends on two key parameters: the variance ratio $\kappa = \sigma_B^2/\sigma_A^2$ (capturing competitive asymmetry) and the correlation coefficient $\rho$ (capturing observed correlation between competitors). The resulting improvement formula demonstrates complete scale independence, enabling universal application across measurement scales and domains.
 
 \textbf{3. Empirical Validation:}
 Through comprehensive analysis of professional rugby performance data, we demonstrate correlation coefficients $\rho \in [0.086, 0.250]$ with corresponding SNR improvements of 9-31\%, achieving theoretical prediction accuracy of $r = 0.96$ between predicted and observed improvements.

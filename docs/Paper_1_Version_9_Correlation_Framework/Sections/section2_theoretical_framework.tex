@@ -6,7 +6,7 @@ The framework builds upon established principles in competitive measurement \cit
 
 \subsection{Correlation-Based Measurement Model}
 
-Consider a competitive scenario where we observe the performance of two competitors, A and B, under shared environmental conditions. The key insight is that environmental effects manifest as correlation between competitors rather than additive shared noise terms.
+Consider a competitive scenario where we observe the performance of two competitors, A and B. The key insight is that we observe positive correlation between competitors, which we can exploit through relative measurement to achieve signal enhancement. While we hypothesize that this correlation may be due to shared environmental conditions, we acknowledge that the causal mechanism cannot be definitively established without direct environmental measurement.
 
 We model the observed performances as:
 \begin{align}
@@ -18,30 +18,30 @@ where:
 \begin{itemize}
     \item $\mu_A, \mu_B \in \mathbb{R}$ represent the true performance capabilities of competitors A and B
     \item $\epsilon_A \sim \mathcal{N}(0, \sigma_A^2)$ and $\epsilon_B \sim \mathcal{N}(0, \sigma_B^2)$ capture competitor-specific performance variations
-    \item $\text{Cov}(X_A, X_B) = \rho\sigma_A\sigma_B$ represents the correlation between competitors due to shared environmental conditions
+    \item $\text{Cov}(X_A, X_B) = \rho\sigma_A\sigma_B$ represents the observed correlation between competitors
 \end{itemize}
 
-This correlation-based model captures the essential mechanism: shared environmental factors (weather, referee decisions, market conditions, etc.) create positive correlation $\rho > 0$ between competitors, enabling systematic noise reduction through the relative measure $R = X_A - X_B$.
+This correlation-based model captures the essential mechanism: we observe positive correlation $\rho > 0$ between competitors, which we can exploit through the relative measure $R = X_A - X_B$ to achieve systematic signal enhancement. While we hypothesize that this correlation may arise from shared environmental factors (weather, referee decisions, market conditions, etc.), the framework's effectiveness depends on the observed correlation structure rather than its underlying cause.
 
 The variance of the relative measure becomes:
 \begin{equation}
 \text{Var}(R) = \text{Var}(X_A - X_B) = \sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B \label{eq:relative_variance}
 \end{equation}
 
-When $\rho > 0$, we achieve systematic noise reduction: $\text{Var}(R) < \sigma_A^2 + \sigma_B^2$, with the reduction proportional to the correlation strength.
+When $\rho > 0$, we achieve systematic signal enhancement: $\text{Var}(R) < \sigma_A^2 + \sigma_B^2$, with the improvement proportional to the correlation strength.
 
 \subsection{Axiomatic Foundation}
 
 We establish four fundamental axioms that any effective relative performance metric must satisfy in competitive measurement contexts, based on the correlation-based mechanism.
 
 \begin{axiom}[Correlation-Based Signal Enhancement]
-For competitors A and B measured under shared environmental conditions, the relative measure $R = X_A - X_B$ achieves systematic signal enhancement through positive correlation $\rho = \text{Cov}(X_A, X_B)/(\sigma_A \sigma_B)$, where $\rho > 0$ captures shared environmental effects operating at the measurement level.
+For competitors A and B, the relative measure $R = X_A - X_B$ achieves systematic signal enhancement when positive correlation $\rho = \text{Cov}(X_A, X_B)/(\sigma_A \sigma_B) > 0$ is observed between their performances.
 
 Mathematically:
 $$\text{Var}(R) = \sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A \sigma_B < \sigma_A^2 + \sigma_B^2 \quad \text{(when } \rho > 0\text{)}$$
 \end{axiom}
 
-This axiom captures the essential requirement that relative metrics exploit environmental correlation to achieve noise reduction. The mechanism operates at the granular measurement level where conditions are actually shared, creating observable and measurable correlation structure.
+This axiom captures the essential requirement that relative metrics exploit observed correlation to achieve signal enhancement. The mechanism operates by leveraging the correlation structure present in the data, regardless of its underlying cause.
 
 \begin{axiom}[Ordinal Consistency] 
 If $\mu_A > \mu_B$ (competitor A has superior true performance), then $\mathbb{E}[R(X_A, X_B)] > 0$, ensuring that relative measures preserve competitive ordering while providing noise reduction benefits.
@@ -50,7 +50,7 @@ Mathematically:
 $$\mathbb{E}[R] = \mathbb{E}[X_A - X_B] = \mu_A - \mu_B$$
 \end{axiom}
 
-The correlation-based noise reduction mechanism operates on the variance structure while preserving the signal of interest (performance difference), ensuring reliable competitive ordering.
+The correlation-based signal enhancement mechanism operates on the variance structure while preserving the signal of interest (performance difference), ensuring reliable competitive ordering.
 
 \begin{axiom}[Scale and Correlation Invariance]
 For any positive scalar $\alpha > 0$: $R(\alpha X_A, \alpha X_B) = \alpha R(X_A, X_B)$, and the correlation $\rho$ remains invariant under linear scaling, ensuring framework universality across measurement scales and domains.
@@ -65,7 +65,7 @@ Mathematically:
 This axiom ensures consistent interpretation across different measurement scales and units, enabling application across diverse competitive domains through complete scale independence.
 
 \begin{axiom}[Correlation-Based Statistical Optimality]
-Under correlated measurement conditions with $\rho > 0$, the relative measure $R = X_A - X_B$ provides the minimum variance unbiased estimator of $\mu_A - \mu_B$, achieving optimal signal-to-noise ratio through systematic exploitation of environmental correlation structure via dual mechanisms.
+Under conditions where positive correlation $\rho > 0$ is observed, the relative measure $R = X_A - X_B$ provides the minimum variance unbiased estimator of $\mu_A - \mu_B$, achieving optimal signal-to-noise ratio through systematic exploitation of the observed correlation structure via dual mechanisms.
 
 Mathematically:
 $$\text{SNR}_R/\text{SNR}_A = \frac{1 + \kappa}{1 + \kappa - 2\sqrt{\kappa}\rho} > 1 \quad \text{(when } \rho > 0\text{)}$$
