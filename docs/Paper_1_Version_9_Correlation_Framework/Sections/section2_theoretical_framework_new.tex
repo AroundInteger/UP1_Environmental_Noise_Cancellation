@@ -174,3 +174,85 @@ The framework provides quantitative guidance for when relative measures offer ad
 The mathematical framework builds upon established principles in statistical estimation and signal processing. Under the assumed measurement model, the relative measure $R = X_A - X_B$ provides an unbiased estimator of the performance difference $\mu_A - \mu_B$ with variance reduced by the correlation term.
 
 The framework extends correlation-aware estimation techniques to competitive measurement contexts, providing a systematic approach to exploiting observed correlation structure for improved signal extraction. While the theoretical optimality claims require standard regularity conditions (normality, independence of individual variations, stable parameters), the empirical effectiveness can be validated through direct performance comparison in specific application contexts.
+
+\subsection{SNR-Prediction Performance Relationship}
+
+A critical theoretical consideration is understanding how SNR improvements translate to enhanced binary prediction performance. The relationship between SNR and prediction accuracy is not linear and depends on the specific characteristics of the KPI in question.
+
+\textbf{Theoretical Framework:}
+Consider a binary prediction task where we predict competitive outcomes (win/loss) using performance measures. The prediction performance depends on the discriminative power of the measure, which is fundamentally related to the signal-to-noise ratio.
+
+For a binary classifier using logistic regression:
+$$P(\text{win}) = \text{logit}^{-1}(\beta_0 + \beta_1 X)$$
+
+The discriminative power depends on the separation between the distributions of $X$ for winning and losing outcomes. This separation is quantified by the SNR, but the relationship is complex and KPI-dependent.
+
+\textbf{SNR-Prediction Relationship:}
+The relationship between SNR improvement and prediction performance follows:
+
+$$\text{Prediction Improvement} \propto \frac{\Delta \text{SNR}}{\text{SNR}_{\text{baseline}}} \times f(\text{KPI characteristics})$$
+
+where $f(\text{KPI characteristics})$ captures the KPI-specific factors that determine how SNR improvements translate to prediction gains.
+
+\textbf{KPI-Specific Factors:}
+The function $f(\text{KPI characteristics})$ depends on several factors:
+
+\textbf{1. Distributional Properties:}
+\begin{itemize}
+    \item \textbf{Skewness:} Highly skewed KPIs may show different SNR-prediction relationships
+    \item \textbf{Kurtosis:} Heavy-tailed distributions affect prediction boundary optimization
+    \item \textbf{Outlier sensitivity:} KPIs with extreme values may have non-linear relationships
+\end{itemize}
+
+\textbf{2. Competitive Relevance:}
+\begin{itemize}
+    \item \textbf{Outcome correlation:} KPIs more strongly correlated with outcomes show better SNR-prediction relationships
+    \item \textbf{Threshold effects:} Some KPIs may have non-linear relationships with competitive success
+    \item \textbf{Context dependency:} The importance of a KPI may vary across different competitive contexts
+\end{itemize}
+
+\textbf{3. Measurement Characteristics:}
+\begin{itemize}
+    \item \textbf{Scale effects:} Different measurement scales affect how SNR improvements manifest
+    \item \textbf{Precision:} Higher precision measurements show more consistent SNR-prediction relationships
+    \item \textbf{Reliability:} More reliable KPIs demonstrate stronger SNR-prediction correlations
+\end{itemize}
+
+\textbf{Theoretical Predictions:}
+Based on this framework, we can make several theoretical predictions:
+
+\textbf{1. Non-Linear Relationship:}
+The relationship between SNR improvement and prediction performance is not linear. Small SNR improvements may yield large prediction gains for some KPIs, while large SNR improvements may yield modest gains for others.
+
+\textbf{2. KPI-Dependent Scaling:}
+The scaling factor $f(\text{KPI characteristics})$ varies significantly across KPIs, explaining why some KPIs show dramatic prediction improvements while others show modest gains.
+
+\textbf{3. Threshold Effects:}
+There may exist SNR thresholds below which prediction improvements are minimal, and above which improvements accelerate.
+
+\textbf{4. Diminishing Returns:}
+For very high SNR values, additional improvements may yield diminishing returns in prediction performance.
+
+\textbf{Mathematical Formulation:}
+The theoretical relationship can be expressed as:
+
+$$\text{AUC}_{\text{relative}} - \text{AUC}_{\text{absolute}} = \alpha \times \log\left(\frac{\text{SNR}_{\text{relative}}}{\text{SNR}_{\text{absolute}}}\right) \times f(\text{KPI})$$
+
+where:
+\begin{itemize}
+    \item $\alpha$ is a scaling constant
+    \item The logarithmic relationship captures the non-linear nature
+    \item $f(\text{KPI})$ represents KPI-specific characteristics
+\end{itemize}
+
+\textbf{Empirical Validation Requirements:}
+This theoretical framework makes several testable predictions:
+
+\begin{enumerate}
+    \item \textbf{Consistent Direction:} All KPIs should show improved prediction performance with higher SNR
+    \item \textbf{Variable Magnitude:} The magnitude of improvement should vary significantly across KPIs
+    \item \textbf{Statistical Significance:} Improvements should be statistically significant for most KPIs
+    \item \textbf{Cross-Validation Stability:} Results should be stable across different validation folds
+\end{enumerate}
+
+This theoretical foundation provides the context for understanding why SNR improvements translate to prediction gains, while explaining the observed variability in improvement magnitudes across different KPIs.
