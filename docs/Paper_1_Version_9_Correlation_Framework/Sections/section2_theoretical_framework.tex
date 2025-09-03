@@ -1,8 +1,8 @@
 \section{Theoretical Framework}
 
-We develop a mathematical framework that explains why relative performance indicators achieve superior signal-to-noise ratios compared to absolute indicators in competitive measurement contexts. Our approach formalizes the mechanism of correlation-based environmental noise cancellation through direct comparison, providing quantitative conditions under which relative measures achieve optimal predictive performance.
+We develop a mathematical framework that explains why relative performance indicators achieve superior signal-to-noise ratios compared to absolute indicators in competitive measurement contexts. Our approach formalizes the mechanism of correlation-based signal enhancement through direct comparison, providing quantitative conditions under which relative measures achieve optimal predictive performance.
 
-The framework builds upon established principles in competitive measurement \cite{keiningham2015competitive}, statistical signal processing \cite{boll1979suppression}, and performance analysis \cite{hughes2002performance}, while introducing novel mathematical foundations for correlation-based noise cancellation in competitive contexts.
+The framework builds upon established principles in competitive measurement \cite{keiningham2015competitive}, statistical signal processing \cite{boll1979suppression}, and performance analysis \cite{hughes2002performance}, while introducing novel mathematical foundations for correlation-based signal enhancement in competitive contexts.
 
 \subsection{Correlation-Based Measurement Model}
 
@@ -34,8 +34,8 @@ When $\rho > 0$, we achieve systematic noise reduction: $\text{Var}(R) < \sigma_
 
 We establish four fundamental axioms that any effective relative performance metric must satisfy in competitive measurement contexts, based on the correlation-based mechanism.
 
-\begin{axiom}[Correlation-Based Environmental Noise Reduction]
-For competitors A and B measured under shared environmental conditions, the relative measure $R = X_A - X_B$ achieves systematic noise reduction through positive correlation $\rho = \text{Cov}(X_A, X_B)/(\sigma_A \sigma_B)$, where $\rho > 0$ captures shared environmental effects operating at the measurement level.
+\begin{axiom}[Correlation-Based Signal Enhancement]
+For competitors A and B measured under shared environmental conditions, the relative measure $R = X_A - X_B$ achieves systematic signal enhancement through positive correlation $\rho = \text{Cov}(X_A, X_B)/(\sigma_A \sigma_B)$, where $\rho > 0$ captures shared environmental effects operating at the measurement level.
 
 Mathematically:
 $$\text{Var}(R) = \sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A \sigma_B < \sigma_A^2 + \sigma_B^2 \quad \text{(when } \rho > 0\text{)}$$
