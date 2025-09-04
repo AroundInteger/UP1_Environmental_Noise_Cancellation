@@ -54,49 +54,44 @@ Under the normal distribution assumption, $R$ is a complete and sufficient stati
 
 \subsection{Derivation of SNR Improvement Formula}
 
-\textbf{Theorem:} The signal-to-noise ratio improvement for relative measurement is given by:
+\textbf{Theorem:} The signal-to-noise ratio improvement for correlation-exploiting relative measurement compared to independent measurement is given by:
 \begin{equation}
-\frac{\text{SNR}_R}{\text{SNR}_A} = \frac{1 + \kappa}{1 + \kappa - 2\sqrt{\kappa}\rho}
+\frac{\text{SNR}_R}{\text{SNR}_{\text{independent}}} = \frac{1 + \kappa}{1 + \kappa - 2\sqrt{\kappa}\rho}
 \end{equation}
 
 where $\kappa = \sigma_B^2/\sigma_A^2$ and $\rho$ is the correlation coefficient.
 
 \textbf{Proof:}
 
-\textbf{Step 1: Absolute SNR}
-For absolute measurement using $X_A$:
+\textbf{Step 1: Independent Measurement SNR}
+When using both measurements independently (correlation ignored):
 \begin{align}
-\text{SNR}_A &= \frac{(\mu_A - \mu_B)^2}{\sigma_A^2} = \frac{\delta^2}{\sigma_A^2}
+\text{SNR}_{\text{independent}} &= \frac{(\mu_A - \mu_B)^2}{\sigma_A^2 + \sigma_B^2} = \frac{\delta^2}{\sigma_A^2 + \sigma_B^2}
 \end{align}
 
-\textbf{Step 2: Relative SNR}
-For relative measurement using $R = X_A - X_B$:
+This represents the SNR when treating $X_A$ and $X_B$ as independent measurements, where $\text{Var}(X_A - X_B) = \sigma_A^2 + \sigma_B^2$.
+
+\textbf{Step 2: Correlated Measurement SNR}
+For relative measurement using $R = X_A - X_B$ with correlation exploited:
 \begin{align}
 \text{SNR}_R &= \frac{(\mu_A - \mu_B)^2}{\text{Var}(R)} = \frac{\delta^2}{\sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B}
 \end{align}
 
-\textbf{Step 3: SNR Ratio}
+\textbf{Step 3: SNR Improvement Ratio}
 \begin{align}
-\frac{\text{SNR}_R}{\text{SNR}_A} &= \frac{\delta^2/(\sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B)}{\delta^2/\sigma_A^2} \\
-&= \frac{\sigma_A^2}{\sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B}
+\frac{\text{SNR}_R}{\text{SNR}_{\text{independent}}} &= \frac{\delta^2/(\sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B)}{\delta^2/(\sigma_A^2 + \sigma_B^2)} \\
+&= \frac{\sigma_A^2 + \sigma_B^2}{\sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B}
 \end{align}
 
 \textbf{Step 4: Substitution}
 Substituting $\kappa = \sigma_B^2/\sigma_A^2$ and $\sigma_B = \sqrt{\kappa}\sigma_A$:
 \begin{align}
-\frac{\text{SNR}_R}{\text{SNR}_A} &= \frac{\sigma_A^2}{\sigma_A^2 + \kappa\sigma_A^2 - 2\rho\sigma_A\sqrt{\kappa}\sigma_A} \\
-&= \frac{\sigma_A^2}{\sigma_A^2(1 + \kappa - 2\rho\sqrt{\kappa})} \\
-&= \frac{1}{1 + \kappa - 2\rho\sqrt{\kappa}}
-\end{align}
-
-\textbf{Step 5: Final Form}
-Multiplying numerator and denominator by $(1 + \kappa)$:
-\begin{align}
-\frac{\text{SNR}_R}{\text{SNR}_A} &= \frac{1 + \kappa}{(1 + \kappa)(1 + \kappa - 2\rho\sqrt{\kappa})} \\
+\frac{\text{SNR}_R}{\text{SNR}_{\text{independent}}} &= \frac{\sigma_A^2 + \kappa\sigma_A^2}{\sigma_A^2 + \kappa\sigma_A^2 - 2\rho\sigma_A\sqrt{\kappa}\sigma_A} \\
+&= \frac{\sigma_A^2(1 + \kappa)}{\sigma_A^2(1 + \kappa - 2\rho\sqrt{\kappa})} \\
 &= \frac{1 + \kappa}{1 + \kappa - 2\rho\sqrt{\kappa}}
 \end{align}
 
-\textbf{Conclusion:} The SNR improvement formula is derived as stated.
+\textbf{Conclusion:} The SNR improvement formula is derived as stated. This formula quantifies the improvement achieved by exploiting correlation between competitors compared to treating their measurements as independent.
 
 \subsection{Proof of Scale Independence}
 
