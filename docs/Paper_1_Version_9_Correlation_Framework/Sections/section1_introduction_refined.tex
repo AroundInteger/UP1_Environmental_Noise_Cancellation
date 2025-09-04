@@ -1,6 +1,6 @@
 \section{Introduction}
 
-Competitive measurement contexts consistently reveal positive correlations between competitors measured under similar conditions. In professional sports, teams competing in the same matches show correlated performance due to shared conditions \cite{scott2023performance}. Financial markets exhibit correlation between investment funds due to shared market conditions \cite{carhart1997persistence}. Healthcare facilities demonstrate correlation in treatment outcomes due to shared institutional factors \cite{iezzoni1997risk}. Manufacturing processes show correlation due to shared environmental conditions.
+Competitive measurement contexts consistently reveal positive correlations between competitors measured under similar conditions. In professional sports, teams competing in the same matches show correlated performance due to shared conditions \cite{scott2023performance, scott2023classifying}. Financial markets exhibit correlation between investment funds due to shared market conditions \cite{carhart1997persistence, fama1993common}. Healthcare facilities demonstrate correlation in treatment outcomes due to shared institutional factors \cite{iezzoni1997risk, normand2016statistical}. Manufacturing processes show correlation due to shared environmental conditions. The ubiquity of these correlation patterns across domains suggests fundamental principles underlying competitive measurement \cite{stefani2011measurement}.
 
 Traditional absolute measurement approaches treat each competitor independently, measuring performance against fixed benchmarks. This approach ignores correlation structure between competitors, missing opportunities to exploit statistical relationships for improved signal-to-noise ratios. We demonstrate that relative measurement approaches, which directly compare competitors through difference operations ($R = X_A - X_B$), can systematically exploit positive correlations to achieve signal-to-noise ratio improvements of 9-31\%, as validated through professional rugby performance data.
 
@@ -20,7 +20,7 @@ Existing competitive measurement approaches suffer from fundamental limitations:
 
 \textbf{Independent Treatment of Competitors:} Traditional methods measure each competitor against fixed benchmarks, ignoring correlation structure that could improve signal-to-noise ratios.
 
-\textbf{Domain-Specific Solutions:} Current approaches develop ad-hoc corrections for specific domains: sports analytics apply weather adjustments \cite{forrest2000forecasting}, financial analysis uses market-adjusted returns \cite{sharpe1994sharpe}, healthcare employs risk adjustment \cite{hanushek2010generalizations}, and manufacturing implements statistical process control. These solutions lack mathematical unification.
+\textbf{Domain-Specific Solutions:} Current approaches develop ad-hoc corrections for specific domains: sports analytics apply weather adjustments \cite{forrest2000forecasting, boulier2003predicting}, financial analysis uses market-adjusted returns \cite{sharpe1994sharpe}, healthcare employs risk adjustment \cite{hanushek2010generalizations}, and manufacturing implements statistical process control. These solutions lack mathematical unification.
 
 \textbf{Signal Degradation:} When competitors exhibit positive correlation, independent measurement approaches suffer from systematic signal degradation, treating exploitable correlation structure as noise.
 
@@ -49,7 +49,7 @@ The framework applies to competitive measurement contexts where positive correla
 
 \subsection{Contributions}
 
-\textbf{Mathematical Framework:} We establish mathematical foundations for correlation-based signal enhancement, deriving the Signal Enhancement Factor (SEF) that quantifies relationships between correlation structure, variance ratios, and signal-to-noise ratio improvements with complete scale independence.
+\textbf{Mathematical Framework:} We establish mathematical foundations for correlation-based signal enhancement, deriving the Signal Enhancement Factor (SEF) that quantifies relationships between correlation structure, variance ratios, and signal-to-noise ratio improvements with complete scale independence, following classical principles of comparative advantage \cite{ricardo1817principles} applied to competitive measurement contexts.
 
 \textbf{Empirical Validation:} Through rugby data analysis, we demonstrate theoretical predictions accurately match observed signal enhancement, with SEF values providing quantitative validation of the framework.
 
