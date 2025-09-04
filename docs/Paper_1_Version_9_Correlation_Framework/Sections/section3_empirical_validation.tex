@@ -1,6 +1,6 @@
 \section{Empirical Validation}
 
-We validate our correlation-based signal enhancement framework through comprehensive analysis of professional rugby performance data. This empirical validation demonstrates the theoretical predictions with high accuracy while confirming the universal applicability of the framework across diverse performance metrics.
+We validate our correlation-based signal enhancement framework through comprehensive analysis of professional rugby performance data. This empirical validation demonstrates the theoretical predictions with high accuracy while confirming the universal applicability of the framework across diverse performance metrics. Our analysis builds upon established rugby performance research \cite{bennett2019descriptive, scott2023performance, bennett2021predicting} and extends spatiotemporal analysis techniques \cite{bornn2021spatiotemporal} to correlation-based measurement contexts.
 
 \subsection{Data Processing Pipeline}
 
@@ -288,7 +288,7 @@ This analysis validates the mathematical framework while providing practical ins
 A critical validation of the correlation-based signal enhancement framework is demonstrating that improved SNR translates to superior binary prediction performance. We assess this through logistic regression analysis comparing absolute and relative measures for predicting competitive outcomes.
 
 \textbf{Prediction Methodology:}
-We employ logistic regression to predict binary outcomes (win/loss) using both absolute and relative performance measures:
+We employ logistic regression to predict binary outcomes (win/loss) using both absolute and relative performance measures, following established approaches in sports outcome prediction \cite{dixon1997modelling, berrar2019incorporating}:
 
 \begin{itemize}
     \item \textbf{Absolute Measure:} $P(\text{win}) = \text{logit}^{-1}(\beta_0 + \beta_1 X_A)$
