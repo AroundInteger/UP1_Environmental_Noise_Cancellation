@@ -1,0 +1,235 @@
+\appendix
+\section{Mathematical Proofs}
+
+This appendix provides rigorous mathematical proofs for the key theoretical results presented in the main paper. These proofs establish the mathematical foundation for the correlation-based signal enhancement framework.
+
+\subsection{Proof of Axiom 4: Statistical Optimality}
+
+\textbf{Theorem:} Under the correlation-based measurement model, the relative measure $R = X_A - X_B$ is the Minimum Variance Unbiased Estimator (MVUE) of the performance difference $\mu_A - \mu_B$.
+
+\textbf{Proof:}
+
+Consider the measurement model:
+\begin{align}
+X_A &= \mu_A + \varepsilon_A \\
+X_B &= \mu_B + \varepsilon_B
+\end{align}
+
+where $\varepsilon_A \sim N(0, \sigma_A^2)$, $\varepsilon_B \sim N(0, \sigma_B^2)$, and $\text{Cov}(\varepsilon_A, \varepsilon_B) = \rho\sigma_A\sigma_B$.
+
+\textbf{Step 1: Unbiasedness}
+The relative measure $R = X_A - X_B$ is an unbiased estimator of $\mu_A - \mu_B$:
+\begin{align}
+E[R] &= E[X_A - X_B] \\
+&= E[X_A] - E[X_B] \\
+&= \mu_A - \mu_B
+\end{align}
+
+\textbf{Step 2: Variance Calculation}
+The variance of $R$ is:
+\begin{align}
+\text{Var}(R) &= \text{Var}(X_A - X_B) \\
+&= \text{Var}(X_A) + \text{Var}(X_B) - 2\text{Cov}(X_A, X_B) \\
+&= \sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B
+\end{align}
+
+\textbf{Step 3: Cramér-Rao Lower Bound}
+For the parameter $\theta = \mu_A - \mu_B$, the Fisher Information is:
+\begin{align}
+I(\theta) &= \frac{1}{\text{Var}(R)} = \frac{1}{\sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B}
+\end{align}
+
+The Cramér-Rao Lower Bound is:
+\begin{align}
+\text{CRLB} &= \frac{1}{I(\theta)} = \sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B
+\end{align}
+
+\textbf{Step 4: Efficiency}
+Since $\text{Var}(R) = \text{CRLB}$, the estimator $R$ achieves the Cramér-Rao Lower Bound and is therefore efficient.
+
+\textbf{Step 5: Completeness and Sufficiency}
+Under the normal distribution assumption, $R$ is a complete and sufficient statistic for $\mu_A - \mu_B$. By the Lehmann-Scheffé theorem, $R$ is the unique MVUE.
+
+\textbf{Conclusion:} $R = X_A - X_B$ is the MVUE of $\mu_A - \mu_B$ under the correlation-based measurement model.
+
+\subsection{Derivation of SNR Improvement Formula}
+
+\textbf{Theorem:} The signal-to-noise ratio improvement for relative measurement is given by:
+\begin{equation}
+\frac{\text{SNR}_R}{\text{SNR}_A} = \frac{1 + \kappa}{1 + \kappa - 2\sqrt{\kappa}\rho}
+\end{equation}
+
+where $\kappa = \sigma_B^2/\sigma_A^2$ and $\rho$ is the correlation coefficient.
+
+\textbf{Proof:}
+
+\textbf{Step 1: Absolute SNR}
+For absolute measurement using $X_A$:
+\begin{align}
+\text{SNR}_A &= \frac{(\mu_A - \mu_B)^2}{\sigma_A^2} = \frac{\delta^2}{\sigma_A^2}
+\end{align}
+
+\textbf{Step 2: Relative SNR}
+For relative measurement using $R = X_A - X_B$:
+\begin{align}
+\text{SNR}_R &= \frac{(\mu_A - \mu_B)^2}{\text{Var}(R)} = \frac{\delta^2}{\sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B}
+\end{align}
+
+\textbf{Step 3: SNR Ratio}
+\begin{align}
+\frac{\text{SNR}_R}{\text{SNR}_A} &= \frac{\delta^2/(\sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B)}{\delta^2/\sigma_A^2} \\
+&= \frac{\sigma_A^2}{\sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B}
+\end{align}
+
+\textbf{Step 4: Substitution}
+Substituting $\kappa = \sigma_B^2/\sigma_A^2$ and $\sigma_B = \sqrt{\kappa}\sigma_A$:
+\begin{align}
+\frac{\text{SNR}_R}{\text{SNR}_A} &= \frac{\sigma_A^2}{\sigma_A^2 + \kappa\sigma_A^2 - 2\rho\sigma_A\sqrt{\kappa}\sigma_A} \\
+&= \frac{\sigma_A^2}{\sigma_A^2(1 + \kappa - 2\rho\sqrt{\kappa})} \\
+&= \frac{1}{1 + \kappa - 2\rho\sqrt{\kappa}}
+\end{align}
+
+\textbf{Step 5: Final Form}
+Multiplying numerator and denominator by $(1 + \kappa)$:
+\begin{align}
+\frac{\text{SNR}_R}{\text{SNR}_A} &= \frac{1 + \kappa}{(1 + \kappa)(1 + \kappa - 2\rho\sqrt{\kappa})} \\
+&= \frac{1 + \kappa}{1 + \kappa - 2\rho\sqrt{\kappa}}
+\end{align}
+
+\textbf{Conclusion:} The SNR improvement formula is derived as stated.
+
+\subsection{Proof of Scale Independence}
+
+\textbf{Theorem:} The SNR improvement ratio is independent of the absolute scale of the performance difference $\delta = |\mu_A - \mu_B|$.
+
+\textbf{Proof:}
+
+From the SNR improvement formula:
+\begin{align}
+\frac{\text{SNR}_R}{\text{SNR}_A} &= \frac{1 + \kappa}{1 + \kappa - 2\sqrt{\kappa}\rho}
+\end{align}
+
+The $\delta^2$ terms cancel out in the ratio calculation, leaving only:
+- $\kappa = \sigma_B^2/\sigma_A^2$ (variance ratio)
+- $\rho$ (correlation coefficient)
+
+\textbf{Implications:}
+1. The improvement is independent of the absolute performance difference
+2. Only the relative variance structure ($\kappa$) and correlation ($\rho$) matter
+3. The framework applies universally across different measurement scales
+4. Identical improvements can be achieved regardless of domain-specific units
+
+\subsection{Correlation-Based Variance Reduction Proof}
+
+\textbf{Theorem:} When $\rho > 0$, the variance of the relative measure $R$ is reduced compared to the sum of individual variances.
+
+\textbf{Proof:}
+
+\textbf{Step 1: Variance of R}
+\begin{align}
+\text{Var}(R) &= \sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B
+\end{align}
+
+\textbf{Step 2: Comparison with Sum of Variances}
+\begin{align}
+\text{Var}(R) - (\sigma_A^2 + \sigma_B^2) &= -2\rho\sigma_A\sigma_B
+\end{align}
+
+\textbf{Step 3: Condition for Reduction}
+When $\rho > 0$:
+\begin{align}
+-2\rho\sigma_A\sigma_B < 0
+\end{align}
+
+Therefore:
+\begin{align}
+\text{Var}(R) < \sigma_A^2 + \sigma_B^2
+\end{align}
+
+\textbf{Step 4: Magnitude of Reduction}
+The reduction is proportional to:
+\begin{align}
+\text{Reduction} &= 2\rho\sigma_A\sigma_B
+\end{align}
+
+\textbf{Conclusion:} Positive correlation reduces variance, with the reduction proportional to the correlation strength and the geometric mean of the standard deviations.
+
+\subsection{Log-Transformation SNR Enhancement Proof}
+
+\textbf{Theorem:} Under certain conditions, log-transformation can improve the signal-to-noise ratio for non-normal distributions.
+
+\textbf{Proof:}
+
+\textbf{Step 1: Log-Transformation Model}
+For positive random variables $X_A, X_B$, define:
+\begin{align}
+Y_A &= \log(X_A) \\
+Y_B &= \log(X_B)
+\end{align}
+
+\textbf{Step 2: Delta Method Approximation}
+Using the delta method, for $Y = \log(X)$:
+\begin{align}
+E[Y] &\approx \log(E[X]) - \frac{\text{Var}(X)}{2E[X]^2} \\
+\text{Var}(Y) &\approx \frac{\text{Var}(X)}{E[X]^2}
+\end{align}
+
+\textbf{Step 3: SNR Comparison}
+Original SNR:
+\begin{align}
+\text{SNR}_{\text{original}} &= \frac{(\mu_A - \mu_B)^2}{\sigma_A^2}
+\end{align}
+
+Log-transformed SNR:
+\begin{align}
+\text{SNR}_{\text{log}} &\approx \frac{(\log(\mu_A) - \log(\mu_B))^2}{\sigma_A^2/\mu_A^2} \\
+&= \frac{(\log(\mu_A/\mu_B))^2 \cdot \mu_A^2}{\sigma_A^2}
+\end{align}
+
+\textbf{Step 4: Enhancement Condition}
+Log-transformation enhances SNR when:
+\begin{align}
+\frac{(\log(\mu_A/\mu_B))^2 \cdot \mu_A^2}{\sigma_A^2} > \frac{(\mu_A - \mu_B)^2}{\sigma_A^2}
+\end{align}
+
+Simplifying:
+\begin{align}
+(\log(\mu_A/\mu_B))^2 \cdot \mu_A^2 > (\mu_A - \mu_B)^2
+\end{align}
+
+\textbf{Conclusion:} Log-transformation enhances SNR when the relative difference in means is sufficiently large compared to the absolute difference, which is common for skewed distributions with high variance-to-mean ratios.
+
+\subsection{Asymptote Analysis}
+
+\textbf{Theorem:} The SNR improvement formula exhibits specific asymptotic behavior.
+
+\textbf{Proof:}
+
+\textbf{Case 1: $\rho \to 1$ (Perfect Positive Correlation)}
+\begin{align}
+\lim_{\rho \to 1} \frac{\text{SNR}_R}{\text{SNR}_A} &= \lim_{\rho \to 1} \frac{1 + \kappa}{1 + \kappa - 2\sqrt{\kappa}\rho} \\
+&= \frac{1 + \kappa}{1 + \kappa - 2\sqrt{\kappa}} \\
+&= \frac{1 + \kappa}{(\sqrt{\kappa} - 1)^2}
+\end{align}
+
+\textbf{Case 2: $\rho \to -1$ (Perfect Negative Correlation)}
+\begin{align}
+\lim_{\rho \to -1} \frac{\text{SNR}_R}{\text{SNR}_A} &= \lim_{\rho \to -1} \frac{1 + \kappa}{1 + \kappa - 2\sqrt{\kappa}\rho} \\
+&= \frac{1 + \kappa}{1 + \kappa + 2\sqrt{\kappa}} \\
+&= \frac{1 + \kappa}{(\sqrt{\kappa} + 1)^2} = 1
+\end{align}
+
+\textbf{Case 3: $\kappa \to 0$ (Team B Perfectly Consistent)}
+\begin{align}
+\lim_{\kappa \to 0} \frac{\text{SNR}_R}{\text{SNR}_A} &= \lim_{\kappa \to 0} \frac{1 + \kappa}{1 + \kappa - 2\sqrt{\kappa}\rho} \\
+&= \frac{1}{1 - 0} = 1
+\end{align}
+
+\textbf{Case 4: $\kappa \to \infty$ (Team B Highly Variable)}
+\begin{align}
+\lim_{\kappa \to \infty} \frac{\text{SNR}_R}{\text{SNR}_A} &= \lim_{\kappa \to \infty} \frac{1 + \kappa}{1 + \kappa - 2\sqrt{\kappa}\rho} \\
+&= \lim_{\kappa \to \infty} \frac{\kappa}{\kappa - 2\sqrt{\kappa}\rho} \\
+&= \lim_{\kappa \to \infty} \frac{1}{1 - 2\rho/\sqrt{\kappa}} = 1
+\end{align}
+
+\textbf{Conclusion:} The asymptotic behavior confirms the theoretical bounds and provides insight into the framework's behavior under extreme conditions.

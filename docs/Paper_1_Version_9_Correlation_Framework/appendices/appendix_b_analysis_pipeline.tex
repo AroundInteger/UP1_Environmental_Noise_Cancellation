@@ -1,0 +1,287 @@
+\section{Analysis Pipeline and Functions}
+
+This appendix provides detailed documentation of the analysis pipeline, including all functions, procedures, and validation methods used in the empirical validation of the correlation-based signal enhancement framework.
+
+\subsection{Data Processing Functions}
+
+\subsubsection{Data Standardization}
+
+\textbf{Function:} \texttt{standardize\_kpi\_data()}
+
+\textbf{Purpose:} Standardizes KPI data to ensure consistent scaling and distributional properties across different performance metrics.
+
+\textbf{Algorithm:}
+\begin{enumerate}
+    \item \textbf{Z-score normalization:} $X_{\text{std}} = \frac{X - \mu}{\sigma}$
+    \item \textbf{Robust scaling:} $X_{\text{robust}} = \frac{X - \text{median}(X)}{\text{MAD}(X)}$
+    \item \textbf{Min-max scaling:} $X_{\text{minmax}} = \frac{X - \min(X)}{\max(X) - \min(X)}$
+\end{enumerate}
+
+\textbf{Implementation Details:}
+\begin{itemize}
+    \item Handles missing values through pairwise deletion
+    \item Applies outlier detection using IQR method
+    \item Validates standardization through normality testing
+\end{itemize}
+
+\subsubsection{Pairwise Deletion Implementation}
+
+\textbf{Function:} \texttt{pairwise\_correlation\_analysis()}
+
+\textbf{Purpose:} Calculates correlations between team performances using pairwise deletion to handle varying sample sizes.
+
+\textbf{Algorithm:}
+\begin{enumerate}
+    \item \textbf{Match identification:} Identify common matches between teams
+    \item \textbf{Data alignment:} Align performance data for matched competitions
+    \item \textbf{Correlation calculation:} Compute Pearson correlation coefficient
+    \item \textbf{Significance testing:} Apply t-test for correlation significance
+\end{enumerate}
+
+\textbf{Mathematical Foundation:}
+\begin{align}
+r_{AB} &= \frac{\sum_{i=1}^{n} (X_{A,i} - \bar{X}_A)(X_{B,i} - \bar{X}_B)}{\sqrt{\sum_{i=1}^{n} (X_{A,i} - \bar{X}_A)^2 \sum_{i=1}^{n} (X_{B,i} - \bar{X}_B)^2}}
+\end{align}
+
+where $n$ is the number of matched competitions between teams A and B.
+
+\subsubsection{Normality Testing Methodology}
+
+\textbf{Function:} \texttt{comprehensive\_normality\_test()}
+
+\textbf{Purpose:} Assesses normality of KPI distributions using multiple statistical tests.
+
+\textbf{Test Suite:}
+\begin{enumerate}
+    \item \textbf{Shapiro-Wilk Test:} $W = \frac{(\sum_{i=1}^{n} a_i x_{(i)})^2}{\sum_{i=1}^{n} (x_i - \bar{x})^2}$
+    \item \textbf{Kolmogorov-Smirnov Test:} $D = \max |F_n(x) - F_0(x)|$
+    \item \textbf{Anderson-Darling Test:} $A^2 = -n - \sum_{i=1}^{n} \frac{2i-1}{n}[\ln F_0(X_i) + \ln(1-F_0(X_{n+1-i}))]$
+    \item \textbf{D'Agostino-Pearson Test:} Combines skewness and kurtosis tests
+\end{enumerate}
+
+\textbf{Decision Criteria:}
+\begin{itemize}
+    \item \textbf{Normal:} $p > 0.05$ for all tests
+    \item \textbf{Non-normal:} $p \leq 0.05$ for any test
+    \item \textbf{Log-transformation candidate:} Positive skewness and high kurtosis
+\end{itemize}
+
+\subsection{Statistical Analysis Functions}
+
+\subsubsection{SNR Computation Algorithm}
+
+\textbf{Function:} \texttt{calculate\_snr\_improvement()}
+
+\textbf{Purpose:} Computes signal-to-noise ratio improvements for relative vs absolute measures.
+
+\textbf{Algorithm:}
+\begin{enumerate}
+    \item \textbf{Absolute SNR:} $\text{SNR}_A = \frac{(\mu_A - \mu_B)^2}{\sigma_A^2}$
+    \item \textbf{Relative SNR:} $\text{SNR}_R = \frac{(\mu_A - \mu_B)^2}{\sigma_A^2 + \sigma_B^2 - 2\rho\sigma_A\sigma_B}$
+    \item \textbf{Improvement ratio:} $\frac{\text{SNR}_R}{\text{SNR}_A} = \frac{1 + \kappa}{1 + \kappa - 2\sqrt{\kappa}\rho}$
+\end{enumerate}
+
+\textbf{Implementation Details:}
+\begin{itemize}
+    \item Uses robust estimators for mean and variance
+    \item Handles edge cases (zero variance, perfect correlation)
+    \item Provides confidence intervals using bootstrap resampling
+\end{itemize}
+
+\subsubsection{Logistic Regression Implementation}
+
+\textbf{Function:} \texttt{binary\_prediction\_analysis()}
+
+\textbf{Purpose:} Implements logistic regression for binary outcome prediction using both absolute and relative measures.
+
+\textbf{Model Specification:}
+\begin{align}
+P(\text{win}) &= \text{logit}^{-1}(\beta_0 + \beta_1 X) \\
+\text{where } \text{logit}^{-1}(x) &= \frac{e^x}{1 + e^x}
+\end{align}
+
+\textbf{Implementation Steps:}
+\begin{enumerate}
+    \item \textbf{Data preparation:} Create binary outcome variable (win/loss)
+    \item \textbf{Feature engineering:} Prepare absolute and relative measures
+    \item \textbf{Model fitting:} Maximum likelihood estimation
+    \item \textbf{Performance evaluation:} AUC, accuracy, precision, recall
+    \item \textbf{Cross-validation:} k-fold validation for robustness
+\end{enumerate}
+
+\textbf{Performance Metrics:}
+\begin{itemize}
+    \item \textbf{AUC:} Area Under the ROC Curve
+    \item \textbf{Accuracy:} $\frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}$
+    \item \textbf{Precision:} $\frac{\text{TP}}{\text{TP} + \text{FP}}$
+    \item \textbf{Recall:} $\frac{\text{TP}}{\text{TP} + \text{FN}}$
+\end{itemize}
+
+\subsection{Validation Procedures}
+
+\subsubsection{Cross-Validation Methodology}
+
+\textbf{Function:} \texttt{k\_fold\_cross\_validation()}
+
+\textbf{Purpose:} Validates model performance using k-fold cross-validation to ensure robustness.
+
+\textbf{Algorithm:}
+\begin{enumerate}
+    \item \textbf{Data splitting:} Divide dataset into k folds
+    \item \textbf{Iterative training:} Train on k-1 folds, test on remaining fold
+    \item \textbf{Performance aggregation:} Average performance across all folds
+    \item \textbf{Variance estimation:} Calculate standard error of performance metrics
+\end{enumerate}
+
+\textbf{Configuration:}
+\begin{itemize}
+    \item \textbf{k = 10:} Standard 10-fold cross-validation
+    \item \textbf{Stratified sampling:} Maintain class balance across folds
+    \item \textbf{Random seed:} Ensure reproducibility
+\end{itemize}
+
+\subsubsection{Statistical Significance Testing}
+
+\textbf{Function:} \texttt{significance\_testing\_suite()}
+
+\textbf{Purpose:} Performs comprehensive statistical significance testing for all comparisons.
+
+\textbf{Test Suite:}
+\begin{enumerate}
+    \item \textbf{Paired t-test:} Compare absolute vs relative prediction performance
+    \item \textbf{Wilcoxon signed-rank test:} Non-parametric alternative
+    \item \textbf{Bootstrap confidence intervals:} Non-parametric confidence estimation
+    \item \textbf{Effect size calculation:} Cohen's d for practical significance
+\end{enumerate}
+
+\textbf{Multiple Comparison Correction:}
+\begin{itemize}
+    \item \textbf{Bonferroni correction:} $\alpha_{\text{adjusted}} = \frac{\alpha}{n}$
+    \item \textbf{False Discovery Rate:} Benjamini-Hochberg procedure
+\end{itemize}
+
+\subsubsection{Bootstrap Confidence Intervals}
+
+\textbf{Function:} \texttt{bootstrap\_confidence\_intervals()}
+
+\textbf{Purpose:} Provides non-parametric confidence intervals for all performance metrics.
+
+\textbf{Algorithm:}
+\begin{enumerate}
+    \item \textbf{Resampling:} Draw B bootstrap samples with replacement
+    \item \textbf{Statistic calculation:} Compute performance metric for each sample
+    \item \textbf{Confidence interval:} Use percentile method or bias-corrected method
+    \item \textbf{Convergence check:} Ensure sufficient bootstrap samples
+\end{enumerate}
+
+\textbf{Configuration:}
+\begin{itemize}
+    \item \textbf{B = 1000:} Standard bootstrap sample size
+    \item \textbf{Confidence level:} 95\% confidence intervals
+    \item \textbf{Convergence criterion:} Standard error < 0.01
+\end{itemize}
+
+\subsection{Visualization Functions}
+
+\subsubsection{SNR Landscape Generation}
+
+\textbf{Function:} \texttt{generate\_snr\_landscape()}
+
+\textbf{Purpose:} Creates comprehensive visualization of SNR improvement across parameter space.
+
+\textbf{Visualization Components:}
+\begin{enumerate}
+    \item \textbf{Heatmap:} SNR improvement as function of $\kappa$ and $\rho$
+    \item \textbf{Contour lines:} Iso-improvement curves
+    \item \textbf{Asymptote markers:} Special cases and boundaries
+    \item \textbf{Empirical data points:} Overlay of actual KPI results
+\end{enumerate}
+
+\textbf{Parameter Ranges:}
+\begin{itemize}
+    \item \textbf{$\kappa$:} 0.1 to 10 (log scale)
+    \item \textbf{$\rho$:} -1 to 1 (linear scale)
+    \item \textbf{Resolution:} 100 × 100 grid points
+\end{itemize}
+
+\subsubsection{Correlation Analysis Plots}
+
+\textbf{Function:} \texttt{correlation\_analysis\_plots()}
+
+\textbf{Purpose:} Visualizes correlation patterns and their impact on SNR improvement.
+
+\textbf{Plot Types:}
+\begin{enumerate}
+    \item \textbf{Scatter plots:} Team A vs Team B performance
+    \item \textbf{Correlation matrix:} All team pair correlations
+    \item \textbf{Distribution plots:} Correlation coefficient distributions
+    \item \textbf{Significance plots:} p-value distributions
+\end{enumerate}
+
+\subsubsection{Performance Comparison Charts}
+
+\textbf{Function:} \texttt{performance\_comparison\_charts()}
+
+\textbf{Purpose:} Compares absolute vs relative measurement performance across KPIs.
+
+\textbf{Chart Types:}
+\begin{enumerate}
+    \item \textbf{Bar charts:} SNR improvement by KPI
+    \item \textbf{Box plots:} Distribution of improvements
+    \item \textbf{Scatter plots:} Absolute vs relative performance
+    \item \textbf{Error bars:} Confidence intervals for all metrics
+\end{enumerate}
+
+\subsection{Quality Assurance Procedures}
+
+\subsubsection{Data Quality Validation}
+
+\textbf{Function:} \texttt{data\_quality\_assessment()}
+
+\textbf{Purpose:} Ensures data integrity and identifies potential issues.
+
+\textbf{Validation Checks:}
+\begin{enumerate}
+    \item \textbf{Missing data analysis:} Percentage and pattern of missing values
+    \item \textbf{Outlier detection:} IQR method and statistical tests
+    \item \textbf{Consistency checks:} Logical constraints and bounds
+    \item \textbf{Temporal validation:} Time series consistency
+\end{enumerate}
+
+\subsubsection{Reproducibility Framework}
+
+\textbf{Function:} \texttt{reproducibility\_setup()}
+
+\textbf{Purpose:} Ensures all analyses are fully reproducible.
+
+\textbf{Components:}
+\begin{enumerate}
+    \item \textbf{Random seed management:} Consistent random number generation
+    \item \textbf{Version control:} Code and data version tracking
+    \item \textbf{Dependency management:} Package version specification
+    \item \textbf{Documentation:} Complete analysis documentation
+\end{enumerate}
+
+\subsection{Performance Optimization}
+
+\subsubsection{Computational Efficiency}
+
+\textbf{Optimization Strategies:}
+\begin{enumerate}
+    \item \textbf{Vectorized operations:} MATLAB vectorization for speed
+    \item \textbf{Parallel processing:} Multi-core utilization for bootstrap
+    \item \textbf{Memory management:} Efficient data structure usage
+    \item \textbf{Caching:} Store intermediate results for reuse
+\end{enumerate}
+
+\subsubsection{Scalability Considerations}
+
+\textbf{Scalability Features:}
+\begin{enumerate}
+    \item \textbf{Incremental processing:} Handle large datasets in chunks
+    \item \textbf{Streaming analysis:} Process data as it becomes available
+    \item \textbf{Distributed computing:} Support for cluster environments
+    \item \textbf{Cloud integration:} Cloud-based analysis capabilities
+\end{enumerate}
+
+This comprehensive analysis pipeline ensures rigorous, reproducible, and scalable validation of the correlation-based signal enhancement framework across diverse competitive measurement contexts.
