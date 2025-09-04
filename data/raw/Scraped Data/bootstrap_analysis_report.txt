@@ -1,0 +1,22 @@
+BOOTSTRAP NECESSITY ANALYSIS REPORT
+========================================
+
+DATASET OVERVIEW
+--------------------
+Total studies: 9
+Class A (Interventional): 7 studies
+Class B (Observational): 2 studies
+Sample size ratio: 7:2 = 3.5:1
+
+BOOTSTRAP RECOMMENDATION
+------------------------------
+RECOMMENDED: Implement bootstrap
+Reasons:
+  - Sample size imbalance > 3:1
+  - Extreme variance asymmetry
+  - Insufficient observations in minority class
+
+THEORETICAL IMPLICATIONS
+-------------------------
+The decision to bootstrap affects how the competitive
+measurement framework axioms are tested and validated.

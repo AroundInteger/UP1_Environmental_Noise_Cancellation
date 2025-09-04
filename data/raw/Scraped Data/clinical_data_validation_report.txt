@@ -1,0 +1,48 @@
+CLINICAL TRIAL DATA VALIDATION REPORT
+=====================================
+
+Data Source: ClinicalTrials.gov API v2.0
+Validation Date: 2025-07-01 21:42:14
+
+DATA OVERVIEW
+-------------
+Number of trials: 9
+Columns: NCTId, Condition, InterventionName, StudyType, EnrollmentCount
+
+NORMALITY TESTS
+---------------
+Shapiro-Wilk:
+  Statistic: 0.8518
+  P-value: 0.0780
+  Normal distribution: Yes
+
+D'Agostino K²:
+  Statistic: 1.5718
+  P-value: 0.4557
+  Normal distribution: Yes
+
+Jarque-Bera:
+  Statistic: 1.0009
+  P-value: 0.6063
+  Normal distribution: Yes
+
+VARIANCE ANALYSIS
+-----------------
+Sample variance: 9189.11
+Coefficient of variation: 0.863
+Variance stable: True
+Sufficient data points: True
+
+BINARY PREDICTION ANALYSIS
+-------------------------
+Study types: INTERVENTIONAL, OBSERVATIONAL
+Conditions: Prostatic Hyperplasia, Impotence, Laparoscopic Cholecystectomy, TAP Block, Local Anesthetic, Diabetic Retinopathy, Self Harm, Suicidal Ideation, Thoracic Surgery, Adenocarcinoma of the Prostate, Recurrent Prostate Cancer, Stage I Prostate Cancer, Stage II Prostate Cancer, Stage III Prostate Cancer, Crohn Disease, Severe Aplastic Anemia, Migraine
+Can create binary outcomes: True
+Suggested outcomes: Interventional vs Observational, Diabetes-related vs Other conditions, High enrollment (>=45) vs Low enrollment
+
+OVERALL ASSESSMENT
+------------------
+Quality score: 10.0/10
+Framework suitable: True
+Recommendations:
+  - Data appears suitable for competitive measurement framework
