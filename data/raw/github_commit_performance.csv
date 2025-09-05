@@ -1,0 +1,243 @@
+sha,message,author_name,author_email,date,comment_count,verification,html_url,message_length,is_merge
+4cd5088297479ae63bab2a63e581a6d1b871eaf1,"Automated Code Change
+
+PiperOrigin-RevId: 803327698",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-05T06:02:35Z,0,False,https://github.com/tensorflow/tensorflow/commit/4cd5088297479ae63bab2a63e581a6d1b871eaf1,51,False
+4905554655ac0444680d9b27217562e3fc062d63,"[xla:pjrt] Add PjRtFuture::MoveOnlyPromise as helper type for MakePromise() migration
+
+Avoid accidental copies of a promise returned from PjRtFuture::MakePromise(), as in the end we want to make PjRtFuture::Promise a move-only type.
+
+PiperOrigin-RevId: 803306283",Eugene Zhulenev,ezhulenev@google.com,2025-09-05T04:43:02Z,0,False,https://github.com/tensorflow/tensorflow/commit/4905554655ac0444680d9b27217562e3fc062d63,262,False
+bf1425bdfde1253b9bf106ffb40e9cd2fb14f645,"[XLA:GPU] add special handling for NCCL grouped send and recv
+
+PiperOrigin-RevId: 803301109",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-05T04:23:26Z,0,False,https://github.com/tensorflow/tensorflow/commit/bf1425bdfde1253b9bf106ffb40e9cd2fb14f645,91,False
+1249a60ba862a4a7de592912f4f59a53652f6bc4,"[xla:ifrt] Migrate from deprecated PjRtFuture::CreatePromise API
+
+PiperOrigin-RevId: 803288703",Eugene Zhulenev,ezhulenev@google.com,2025-09-05T03:29:43Z,0,False,https://github.com/tensorflow/tensorflow/commit/1249a60ba862a4a7de592912f4f59a53652f6bc4,94,False
+990bf57a50f489601b48fd7af7167196a0692092,"Remove `explicit_pinning_mode` from MSA options. As of now `explicit_pinning_mode` only makes sense when used along side block allcations.
+
+PiperOrigin-RevId: 803285783",Subhankar Shah,subhankarshah@google.com,2025-09-05T03:18:58Z,0,False,https://github.com/tensorflow/tensorflow/commit/990bf57a50f489601b48fd7af7167196a0692092,168,False
+0f72faa176ba8f9747098e71806a3ceb8b0cba8b,"[xla] Add PjRtFuture<T>::MakePromise()
+
+Migrate PjRtFuture test and implementation to new API and deprecate CreatePromise().
+
+PiperOrigin-RevId: 803273778",Eugene Zhulenev,ezhulenev@google.com,2025-09-05T02:36:22Z,0,False,https://github.com/tensorflow/tensorflow/commit/0f72faa176ba8f9747098e71806a3ceb8b0cba8b,154,False
+7905d805c88e034c314baba0a00a216ea202f4ee,"Add (nan value) skipped trace metadata to xplane stats
+
+PiperOrigin-RevId: 803270278",Yin Zhang,yinzz@google.com,2025-09-05T02:21:56Z,0,False,https://github.com/tensorflow/tensorflow/commit/7905d805c88e034c314baba0a00a216ea202f4ee,84,False
+9f36960bfadf11777292dc4235bfc0c7c2f96525,"Dynamic update slice should propagate memspace to op 0
+
+PiperOrigin-RevId: 803248969",Michael Voznesensky,mvoz@google.com,2025-09-05T01:05:27Z,0,False,https://github.com/tensorflow/tensorflow/commit/9f36960bfadf11777292dc4235bfc0c7c2f96525,84,False
+48b901bac0dd494df732e85aa1fbdccc4e3138a1,"[XLA:GPU] Add 16 host variants for Llama 3.1 405B and 70B
+
+PiperOrigin-RevId: 803231925",Frederik Gossen,frgossen@google.com,2025-09-05T00:03:46Z,0,False,https://github.com/tensorflow/tensorflow/commit/48b901bac0dd494df732e85aa1fbdccc4e3138a1,87,False
+3bdfb1ec3d53e91bebf4f096072548f19850566b,"Enable the test after CUDA driver update to v.580.
+
+PiperOrigin-RevId: 803225747",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-04T23:43:30Z,0,False,https://github.com/tensorflow/tensorflow/commit/3bdfb1ec3d53e91bebf4f096072548f19850566b,80,False
+361c256e3065836c00b65fe3d941694e5b3c58ae,"Allow disabling WLICP via frontend attribute.
+
+PiperOrigin-RevId: 803223545",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-04T23:36:57Z,0,False,https://github.com/tensorflow/tensorflow/commit/361c256e3065836c00b65fe3d941694e5b3c58ae,75,False
+4238cea5d3394bc2d7a9c53f7890db34daf4feca,"[XLA:GPU] Update Llama 405B HLOs
+
+PiperOrigin-RevId: 803219625",Frederik Gossen,frgossen@google.com,2025-09-04T23:26:07Z,0,False,https://github.com/tensorflow/tensorflow/commit/4238cea5d3394bc2d7a9c53f7890db34daf4feca,62,False
+72e6b1fe96be8a66b429d55f32a95abd9cb33118,"Disable `betainc_op_test`.
+
+The `betainc_op_test` is being disabled by adding the ""disabled"" tag to its BUILD rule.
+
+PiperOrigin-RevId: 803204058",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-04T22:43:51Z,0,False,https://github.com/tensorflow/tensorflow/commit/72e6b1fe96be8a66b429d55f32a95abd9cb33118,145,False
+5dd7021d7cf83048bd937e3369acf6c1fa8a02c2,"Integrate LLVM at llvm/llvm-project@a6da68ed36d7
+
+Updates LLVM usage to match
+[a6da68ed36d7](https://github.com/llvm/llvm-project/commit/a6da68ed36d7)
+
+PiperOrigin-RevId: 803177684",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-04T21:30:47Z,0,False,https://github.com/tensorflow/tensorflow/commit/5dd7021d7cf83048bd937e3369acf6c1fa8a02c2,180,False
+000c71d56d0563aff78f0c663dae654615408ec0,"[XLA:CPU] Don't run the full optimization pipeline in the tree reduction test.
+
+PiperOrigin-RevId: 803171404",Will Froom,willfroom@google.com,2025-09-04T21:16:20Z,0,False,https://github.com/tensorflow/tensorflow/commit/000c71d56d0563aff78f0c663dae654615408ec0,108,False
+71613fe89370f9ccdbb1a1c4be8c03a2fa58dde8,"Add verification for XNNPACK weight cache buffer list.
+
+PiperOrigin-RevId: 803156746",Mohammadreza Heydary,mheydary@google.com,2025-09-04T20:39:15Z,0,False,https://github.com/tensorflow/tensorflow/commit/71613fe89370f9ccdbb1a1c4be8c03a2fa58dde8,84,False
+6e7d4fa21126121477f9dea103087f153257013b,"[XLA:CPU] Don't hoist small while loops containing an fft.
+
+Fixes https://github.com/jax-ml/jax/issues/31374
+
+PiperOrigin-RevId: 803153482",Will Froom,willfroom@google.com,2025-09-04T20:31:52Z,0,False,https://github.com/tensorflow/tensorflow/commit/6e7d4fa21126121477f9dea103087f153257013b,138,False
+270107534f9511b354bbe4df36a25b263168ce1a,"[XLA:CPU] Set fast math flags on llvm module in fusion compiler.
+
+PiperOrigin-RevId: 803151298",Will Froom,willfroom@google.com,2025-09-04T20:27:04Z,0,False,https://github.com/tensorflow/tensorflow/commit/270107534f9511b354bbe4df36a25b263168ce1a,94,False
+c43ad193a48a51288f3a3643aa26aa1441223179,"Deprecate `tsl::strings::AlphaNum` in favor of `absl::AlphaNum`.
+
+This change affects the precision of the float/double to string conversion. Legacy behavior can be retained using `strings::LegacyPrecision`. E.g. `absl::StrCat(strings::LegacyPrecision(float))`.
+
+PiperOrigin-RevId: 803142759",Allan Renucci,allanrenucci@google.com,2025-09-04T20:04:57Z,0,False,https://github.com/tensorflow/tensorflow/commit/c43ad193a48a51288f3a3643aa26aa1441223179,291,False
+158be92dbc04a9a93f09190d1eae674f879fd4ca,"Update `rules_ml_toolchain` to the latest version with llvm aarch64 tar archive download fix.
+
+PiperOrigin-RevId: 803139288",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-04T19:53:57Z,0,False,https://github.com/tensorflow/tensorflow/commit/158be92dbc04a9a93f09190d1eae674f879fd4ca,123,False
+98865cd6d0cb263e365e5a46f9ba6f9e1ec997e0,"Autotune reductions and transposes between the BlockLevelEmitter & the NativeEmitter
+
+As there are still some bugs to work out, we are launching this behind a flag. In the mean time, nucleo and others can test this for themselves using the flag --xla_gpu_experimental_enable_fusion_autotuner
+
+PiperOrigin-RevId: 803139264",Tori Baker,vwbaker@google.com,2025-09-04T19:53:51Z,0,False,https://github.com/tensorflow/tensorflow/commit/98865cd6d0cb263e365e5a46f9ba6f9e1ec997e0,321,False
+dac7e6eb6a193f95222aaba4b218a19ba712f5f8,"Short-circuit `Map` and `TryMap` when we know the result will be unused
+
+PiperOrigin-RevId: 803135798",Junwhan Ahn,junwhan@google.com,2025-09-04T19:42:26Z,0,False,https://github.com/tensorflow/tensorflow/commit/dac7e6eb6a193f95222aaba4b218a19ba712f5f8,101,False
+a7ba218910e0e68f62c264de21a29b50928a3528,"Add explicit executor to tf conversion pass
+
+PiperOrigin-RevId: 803134247",Deqiang Chen,deqiangc@google.com,2025-09-04T19:38:41Z,0,False,https://github.com/tensorflow/tensorflow/commit/a7ba218910e0e68f62c264de21a29b50928a3528,73,False
+0fbfec0ba9de193527100b261ad8b6627f927e3b,"[XLA] Remove pad_alignment as no users of this class are setting a non-default pad alignment
+
+PiperOrigin-RevId: 803120262",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-04T19:02:07Z,0,False,https://github.com/tensorflow/tensorflow/commit/0fbfec0ba9de193527100b261ad8b6627f927e3b,122,False
+cc24f50f8c2665b4b5d553b8a03c37293aa0afd5,"Update TFRT dependency to use revision
+http://github.com/tensorflow/runtime/commit/4ecc3a44a32c832b748328bed3f9a599f795ca8d.
+
+PiperOrigin-RevId: 803114580",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-04T18:48:00Z,0,False,https://github.com/tensorflow/tensorflow/commit/cc24f50f8c2665b4b5d553b8a03c37293aa0afd5,154,False
+98a6b660cd144a077c60d94007a922f723e91d28,"[XLA:HLO Diff] Consolidate the diff enums.
+
+The `DiffCode` and `DiffType` enums are now consolidated into a single `DiffType` enum.
+
+This change improves the code's clarity and reduces redundancies.
+
+PiperOrigin-RevId: 803112761",Daniel Chen,chencm@google.com,2025-09-04T18:42:58Z,0,False,https://github.com/tensorflow/tensorflow/commit/98a6b660cd144a077c60d94007a922f723e91d28,228,False
+227679f7fddc80c34dc395de4d00fa35dcdf6d0b,"[xla] Fix PjRtFuture::GetReadyFuture
+
+PiperOrigin-RevId: 803101220",Eugene Zhulenev,ezhulenev@google.com,2025-09-04T18:14:26Z,0,False,https://github.com/tensorflow/tensorflow/commit/227679f7fddc80c34dc395de4d00fa35dcdf6d0b,66,False
+60d6e810b0b0ce358488590dfeacb5e52f20d5c3,"[XLA:HLO Diff] Add diff codes to diff result.
+
+Add diff codes to diff result to be able to use them in summary.
+Move the diff code enum to hlo_diff_result.h.
+Move the helper functions to update the diff result to the class.
+
+PiperOrigin-RevId: 803087034",Daniel Chen,chencm@google.com,2025-09-04T17:39:32Z,0,False,https://github.com/tensorflow/tensorflow/commit/60d6e810b0b0ce358488590dfeacb5e52f20d5c3,253,False
+604991290bc0b0cb87b86f7245583946a16dbf01,"Merge pull request #99046 from stevemcgregory:fix/gpu-shared-mem-alignment
+
+PiperOrigin-RevId: 803065740",TensorFlower Gardener,gardener@tensorflow.org,2025-09-04T17:10:55Z,0,False,https://github.com/tensorflow/tensorflow/commit/604991290bc0b0cb87b86f7245583946a16dbf01,104,True
+7b4ce312f61533c82ad85a9ef58e3a070102c48b,"PR #30718: [XLA/GPU] Apply size threshold only to AllReduce ops in CollectiveBackendAssigner
+
+Imported from GitHub PR https://github.com/openxla/xla/pull/30718
+
+📝 Summary of Changes
+This PR removes size threshold for CollectivePermute ops in CollectiveBackendAssigner.
+
+🎯 Justification
+Size-based backend selection is unnecessary for CollectivePermute, since NVSHMEM uses copy engines and delivers consistent performance regardless of message size, unlike AllReduce where scaling overhead justifies thresholds.
+
+🚀 Kind of Contribution
+⚡️ Performance Improvement
+
+📊 Benchmark (for Performance Improvements)
+No NVSHMEM performance tracking in
+`compiler/xla/tools/benchmarks/hlo/`.
+
+We evaluated back-to-back CollectivePermute ops using multihost-hlo-runner, measuring nvshmemx_float_put_nbi_on_stream kernel execution times across data sizes from 1KB to 32MB. NVSHMEM maintained ~5.6-7.5μs latency across all data sizes. This demonstrates scalability for CollectivePermute operations, maintaining constant low latency regardless of data size.
+
+🧪 Unit Tests:
+Updated an existing unit test.
+
+🧪 Execution Tests:
+N/A
+
+Copybara import of the project:
+
+--
+f8caddd9dbe23eab5dea7d9756c6619a73764e67 by Sevin Varoglu <svaroglu@nvidia.com>:
+
+[XLA/GPU] Apply size threshold only to AllReduce ops in CollectiveBackendAssigner
+
+Merging this change closes #30718
+
+PiperOrigin-RevId: 803065028",Sevin Fide Varoglu,svaroglu@nvidia.com,2025-09-04T16:47:36Z,0,False,https://github.com/tensorflow/tensorflow/commit/7b4ce312f61533c82ad85a9ef58e3a070102c48b,1376,False
+cf7f0e3ae370b8cdf2365d2bfa04d542e16febc2,"Rename cuda wheel suffix placeholder.
+
+PiperOrigin-RevId: 803055243",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-04T16:19:29Z,0,False,https://github.com/tensorflow/tensorflow/commit/cf7f0e3ae370b8cdf2365d2bfa04d542e16febc2,67,False
+3582f8928873adf1290a285932e42a369f404c0f,"Merge pull request #81283 from linux-on-ibm-z:TF_fix
+
+PiperOrigin-RevId: 803054541",TensorFlower Gardener,gardener@tensorflow.org,2025-09-04T16:24:15Z,0,False,https://github.com/tensorflow/tensorflow/commit/3582f8928873adf1290a285932e42a369f404c0f,82,True
+6e36572acefc144d62cbaea05930c8c18a124920,"[Autotuner] Remove unused `ProfileWithSharedBuffers` method from profiler.
+
+_ It was replaced by a combination of CreateBuffer and a Profile call which accept buffers.
+
+PiperOrigin-RevId: 803046168",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-04T15:55:20Z,0,False,https://github.com/tensorflow/tensorflow/commit/6e36572acefc144d62cbaea05930c8c18a124920,197,False
+63f17e590d3c74254ce88f8eb5fa6e6aacf4403a,"Rename CreateTFExecutorToTFInvariantOptimizationPipelineHelper to CreateTfInvariantOptimizationPipelineHelper
+
+PiperOrigin-RevId: 803042299",Deqiang Chen,deqiangc@google.com,2025-09-04T15:42:16Z,0,False,https://github.com/tensorflow/tensorflow/commit/63f17e590d3c74254ce88f8eb5fa6e6aacf4403a,139,False
+7b13dec4cf443a3d391af7e8c6cf6ca220bfccb5,"Return StatusOr rather than CHECK in SymbolicTilingAnalysis
+
+We expect this to sometimes fail as we are autotuning & this should not crash the compiler, but rather fail gracefully in a way that allows the autotuning backend to simply dismiss the fusion.
+
+PiperOrigin-RevId: 803040775",Tori Baker,vwbaker@google.com,2025-09-04T15:37:31Z,0,False,https://github.com/tensorflow/tensorflow/commit/7b13dec4cf443a3d391af7e8c6cf6ca220bfccb5,283,False
+60a8f83e9183e42a34701ebc7363c4c6fb5a23d0,"[XLA:GPU] Add `kScaledDot` to the mixed precision list of HLO ops and update test.
+
+the scaled-dot op is mixed precision by design.
+
+PiperOrigin-RevId: 803022105",Ilya Tikhonovskiy,loislo@google.com,2025-09-04T14:43:31Z,0,False,https://github.com/tensorflow/tensorflow/commit/60a8f83e9183e42a34701ebc7363c4c6fb5a23d0,161,False
+62930700b980b41cf2f604f5b28b502e77df57cc,"[XLA:GPU] Register memory range only once.
+
+PiperOrigin-RevId: 803021720",A. Unique TensorFlower,gardener@tensorflow.org,2025-09-04T14:42:05Z,0,False,https://github.com/tensorflow/tensorflow/commit/62930700b980b41cf2f604f5b28b502e77df57cc,72,False
+c1d3c1bf632f628e8cd2eaa234c2cf29ce702ca9,"Removes GemmAlgorithmPicker in favor of new Autotuner.
+
+PiperOrigin-RevId: 803021012",Dirk Hornung,dirkh@google.com,2025-09-04T14:39:43Z,0,False,https://github.com/tensorflow/tensorflow/commit/c1d3c1bf632f628e8cd2eaa234c2cf29ce702ca9,84,False
+571197f99d65143834525d6b2c3ecf4e3a9466f7,"[XLA:GPU] Extend symbolic tile analysis to support `kScaledDot`.
+
+This change introduces a helper function `IsSomeDot` to check for both `kDot` and `kScaledDot` opcodes. The analysis is updated to correctly handle the operand indices and dimension numbers for `kScaledDot` when determining contracting dimensions and extracting symbols from affine maps.
+
+PiperOrigin-RevId: 803018163",Ilya Tikhonovskiy,loislo@google.com,2025-09-04T14:30:15Z,0,False,https://github.com/tensorflow/tensorflow/commit/571197f99d65143834525d6b2c3ecf4e3a9466f7,383,False
+7e17b9516d383f55423da32abcf0e67022955cb2,"Merge pull request #99322 from Ma-gi-cian:sparse-math-ops
+
+PiperOrigin-RevId: 803016202",TensorFlower Gardener,gardener@tensorflow.org,2025-09-04T14:48:23Z,0,False,https://github.com/tensorflow/tensorflow/commit/7e17b9516d383f55423da32abcf0e67022955cb2,87,True
+b4b51eecf568bca331a857bfd042304928a843c5,"Merge pull request #99597 from tensorflow:dependabot/github_actions/github-actions-f33d008e0c
+
+PiperOrigin-RevId: 803013956",TensorFlower Gardener,gardener@tensorflow.org,2025-09-04T14:40:07Z,0,False,https://github.com/tensorflow/tensorflow/commit/b4b51eecf568bca331a857bfd042304928a843c5,123,True
+15d0ef1dbba968d988b8cc02785adc56daf1fd4a,"[XLA:GPU]: Add triton_xla.get_tid operation.
+
+get_tid returns the thread id in the X dimension by using the PTX instrinsic.
+
+PiperOrigin-RevId: 803013913",Sohaib Iftikhar,sohaibiftikhar@google.com,2025-09-04T14:16:56Z,0,False,https://github.com/tensorflow/tensorflow/commit/15d0ef1dbba968d988b8cc02785adc56daf1fd4a,153,False
+55565ccfd9b02e42a9c2e8608de24365b6be0728,"[XLA:GPU] Simplify triton support test for bitcast that changes element type.
+
+PiperOrigin-RevId: 803009739",Adrian Kuegel,akuegel@google.com,2025-09-04T14:03:35Z,0,False,https://github.com/tensorflow/tensorflow/commit/55565ccfd9b02e42a9c2e8608de24365b6be0728,107,False
+666523412a6fbad8c8ff4283d970693eed0dd4eb,"#sdy Make sure the named scope of shard maps is preserved.
+
+There was a bug that, due to the MLIR inliner not fusing location information, but the XLA inliner fusing it, the final optimized HLO didn't have the entire call stack for operations inside the `shard_map`.
+
+For example after JAX lowering the stack for the shard map was `jit(train)/transformer/attention/` and then inside an operation would have `foo/add`. After inlining the operation would just have `foo/add`. But it should be `jit(train)/transformer/attention/foo/add`.
+
+NOTE: this changes the behavior of how ManualComputations are exported out of ShardyXLA. They will now always be FullToShard/ShardToFull with a call instruction - never inlined. As we need the XLA inliner to merge the location info.
+PiperOrigin-RevId: 803000362",Bart Chrzaszcz,bartchr@google.com,2025-09-04T13:30:23Z,0,False,https://github.com/tensorflow/tensorflow/commit/666523412a6fbad8c8ff4283d970693eed0dd4eb,797,False
+0480c2983aa44cede43b97ee24cf83f88bed94fa,"PR #30856: Let bitcast decomposition fail on element count mismatches.
+
+Imported from GitHub PR https://github.com/openxla/xla/pull/30856
+
+Copybara import of the project:
+
+--
+0d91b66ac409a26c2b6595b227a8135722029261 by Ilia Sergachev <isergachev@nvidia.com>:
+
+Let bitcast decomposition fail on bitwidth mismatches.
+
+Merging this change closes #30856
+
+PiperOrigin-RevId: 802983139",Ilia Sergachev,isergachev@nvidia.com,2025-09-04T12:26:57Z,0,False,https://github.com/tensorflow/tensorflow/commit/0480c2983aa44cede43b97ee24cf83f88bed94fa,379,False
+a1ddb463057984e7d9367de6d1813aa31c4a618d,"[XLA:GPU] Rename `IsSupportedFusion` to `IsTritonSupportedFusion`.
+
+This makes the function name more specific to its purpose within the Triton codegen backend.
+
+PiperOrigin-RevId: 802983001",Ilya Tikhonovskiy,loislo@google.com,2025-09-04T12:26:20Z,0,False,https://github.com/tensorflow/tensorflow/commit/a1ddb463057984e7d9367de6d1813aa31c4a618d,190,False
+aeb53525b8214e94e3cd64a0342ac384a052b5f3,"[XLA:GPU] Change template parameter on vector size in bytes.
+
+Instead of passing a primitive type. This way the kernel can be more flexible and in the future we'll be able to make a decision of we want bigger vector size or unrolling.
+
+PiperOrigin-RevId: 802982408",Oleg Shyshkov,shyshkov@google.com,2025-09-04T12:23:41Z,0,False,https://github.com/tensorflow/tensorflow/commit/aeb53525b8214e94e3cd64a0342ac384a052b5f3,264,False
+bb4e7f5f1a6e390944ac15afee3a6c6c98461da9,"[Autotuner]Noop: Reuse the primary stream from the allocator instead of creating a new stream when profiling autotuning results. WeRunning cuBLAS on multiple streams concurrently is currently not supported.
+
+PiperOrigin-RevId: 802978813",Dirk Hornung,dirkh@google.com,2025-09-04T12:09:39Z,0,False,https://github.com/tensorflow/tensorflow/commit/bb4e7f5f1a6e390944ac15afee3a6c6c98461da9,236,False
+e386ac4e788791dacc2d9ac04d991ca825bf37c5,"[XLA:GPU] Disable deterministic scatter expander.
+
+There is a bug reported that seems to be caused by this pass:
+
+https://github.com/jax-ml/jax/issues/27796
+
+PiperOrigin-RevId: 802954287",Adrian Kuegel,akuegel@google.com,2025-09-04T10:46:34Z,0,False,https://github.com/tensorflow/tensorflow/commit/e386ac4e788791dacc2d9ac04d991ca825bf37c5,186,False
+db41bc3216a0e0b1342ebd22a9a18d804a0a3748,"[XLA:GPU] add the test case for the `scaled-dot` HLO.
+
+Now we have the test but still do not have the triton lowering support for it.
+
+PiperOrigin-RevId: 802953434",Ilya Tikhonovskiy,loislo@google.com,2025-09-04T10:43:50Z,0,False,https://github.com/tensorflow/tensorflow/commit/db41bc3216a0e0b1342ebd22a9a18d804a0a3748,163,False

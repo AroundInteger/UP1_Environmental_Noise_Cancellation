@@ -1,0 +1,52 @@
+Log-Transformation SEF Improvement Analysis Report
+================================================
+Generated: 05-Sep-2025 20:58:33
+
+SUMMARY:
+========
+Total metrics analyzed: 24
+Valid comparisons: 24
+Mean improvement ratio: 1.007
+Median improvement ratio: 1.006
+Std improvement ratio: 0.089
+
+IMPROVEMENT CATEGORIES:
+======================
+Metrics with improvement > 1.0: 14/24 (58.3%)
+Metrics with improvement > 1.1: 1/24 (4.2%)
+Metrics with improvement > 1.2: 1/24 (4.2%)
+Metrics with improvement > 1.3: 1/24 (4.2%)
+Metrics with improvement > 1.5: 0/24 (0.0%)
+
+METRICS REQUIRING LOG-TRANSFORMATION:
+=====================================
+1. rucks_won: 1.369 (36.9% improvement)
+
+DETAILED COMPARISON:
+===================
+Metric Name          | Original SEF | Log SEF | Improvement | % Change
+---------------------+-------------+---------+------------+---------
+carries              |       0.894 |   0.904 |      1.011 |      1.1%
+metres_made          |       0.909 |   0.926 |      1.020 |      2.0%
+defenders_beaten     |       0.982 |   0.989 |      1.007 |      0.7%
+clean_breaks         |       0.975 |   1.024 |      1.051 |      5.1%
+offloads             |       1.199 |   1.086 |      0.906 |     -9.4%
+passes               |       0.870 |   0.894 |      1.027 |      2.7%
+turnovers_conceded   |       1.077 |   1.065 |      0.989 |     -1.1%
+turnovers_won        |       1.080 |   1.085 |      1.004 |      0.4%
+kicks_from_hand      |       2.328 |   2.026 |      0.871 |    -12.9%
+kick_metres          |       2.653 |   2.362 |      0.890 |    -11.0%
+scrums_won           |       0.911 |   0.921 |      1.011 |      1.1%
+rucks_won            |       7.313 |  10.008 |      1.369 |     36.9%
+lineout_throws_lost  |       1.011 |   0.979 |      0.969 |     -3.1%
+lineout_throws_won   |       0.820 |   0.821 |      1.001 |      0.1%
+tackles              |       0.903 |   0.924 |      1.023 |      2.3%
+missed_tackles       |       0.981 |   0.988 |      1.007 |      0.7%
+penalties_conceded   |       0.964 |   0.978 |      1.015 |      1.5%
+scrum_pens_conceded  |       0.917 |   0.962 |      1.049 |      4.9%
+lineout_pens_conceded |       1.007 |   0.992 |      0.985 |     -1.5%
+general_play_pens_conceded |       1.008 |   1.024 |      1.016 |      1.6%
+free_kicks_conceded  |       1.082 |   1.081 |      0.999 |     -0.1%
+ruck_maul_tackle_pen_con |       1.057 |   1.006 |      0.952 |     -4.8%
+red_cards            |       1.082 |   1.082 |      1.000 |      0.0%
+yellow_cards         |       0.969 |   0.963 |      0.994 |     -0.6%

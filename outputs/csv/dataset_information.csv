@@ -1,0 +1,12 @@
+property,value,description
+total_matches,1128,Total number of matches analyzed
+total_seasons,4,Number of seasons
+total_teams,16,Number of teams
+season_range,2021/22-2024/25,Season range
+team_a_mean,112.773936170213,Team A mean performance
+team_a_std,28.1690194899819,Team A standard deviation
+team_b_mean,361.718085106383,Team B mean performance
+team_b_std,115.399019766827,Team B standard deviation
+correlation,0.565243244021995,Environmental correlation
+baseline_sef,1.35214587370296,Baseline SEF value
+analysis_date,05-Sep-2025 19:29:37,Analysis completion date

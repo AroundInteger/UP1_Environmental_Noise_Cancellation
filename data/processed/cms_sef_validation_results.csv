@@ -1,0 +1,5 @@
+Measure,Mayo_Rate,Cleveland_Rate,Delta,Kappa,Rho,SEF,Improvement_Percent,Log_Transformed
+"Falls and Trauma (Includes fractures, dislocations, intracranial injuries, crushing injuries, burns, other injuries)",0.682,0.36,0.32200000000000006,,0.0,inf,inf,False
+Air Embolism,0.0,0.0,0.0,,0.0,inf,inf,False
+Blood Incompatibility,0.0,0.0,0.0,,0.0,inf,inf,False
+Foreign Object Retained After Surgery,0.0,0.0,0.0,,0.0,inf,inf,False

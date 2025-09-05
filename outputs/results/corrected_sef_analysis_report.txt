@@ -1,0 +1,40 @@
+Corrected SEF Sensitivity Analysis Report
+Generated: 05-Sep-2025 20:42:12
+
+DATASET OVERVIEW:
+  Total matches: 564
+  Metrics analyzed: 24
+  Valid SEF calculations: 24
+
+SEF SUMMARY STATISTICS:
+  Mean SEF: 1.375
+  Median SEF: 0.995
+  Std SEF: 1.337
+  Min SEF: 0.820
+  Max SEF: 7.313
+
+METRIC DETAILS:
+  carries: SEF = 0.894, κ = 0.919, ρ = -0.118, δ = 2.197
+  metres_made: SEF = 0.909, κ = 0.925, ρ = -0.100, δ = 1.918
+  defenders_beaten: SEF = 0.982, κ = 0.807, ρ = -0.018, δ = 0.658
+  clean_breaks: SEF = 0.975, κ = 0.992, ρ = -0.026, δ = 0.053
+  offloads: SEF = 1.199, κ = 1.082, ρ = 0.166, δ = 0.094
+  passes: SEF = 0.870, κ = 0.950, ρ = -0.149, δ = 1.633
+  turnovers_conceded: SEF = 1.077, κ = 0.902, ρ = 0.072, δ = 0.287
+  turnovers_won: SEF = 1.080, κ = 1.042, ρ = 0.074, δ = 0.160
+  kicks_from_hand: SEF = 2.328, κ = 1.079, ρ = 0.571, δ = 0.062
+  kick_metres: SEF = 2.653, κ = 1.101, ρ = 0.624, δ = 9.660
+  scrums_won: SEF = 0.911, κ = 0.963, ρ = -0.098, δ = 0.117
+  rucks_won: SEF = 7.313, κ = 0.924, ρ = 0.864, δ = 0.732
+  lineout_throws_lost: SEF = 1.011, κ = 1.005, ρ = 0.011, δ = 0.028
+  lineout_throws_won: SEF = 0.820, κ = 1.123, ρ = -0.220, δ = 0.161
+  tackles: SEF = 0.903, κ = 1.053, ρ = -0.107, δ = 3.209
+  missed_tackles: SEF = 0.981, κ = 1.237, ρ = -0.019, δ = 0.658
+  penalties_conceded: SEF = 0.964, κ = 0.916, ρ = -0.038, δ = 0.126
+  scrum_pens_conceded: SEF = 0.917, κ = 1.026, ρ = -0.091, δ = 0.113
+  lineout_pens_conceded: SEF = 1.007, κ = 1.204, ρ = 0.007, δ = 0.011
+  general_play_pens_conceded: SEF = 1.008, κ = 0.956, ρ = 0.008, δ = 0.106
+  free_kicks_conceded: SEF = 1.082, κ = 1.075, ρ = 0.076, δ = 0.043
+  ruck_maul_tackle_pen_con: SEF = 1.057, κ = 1.059, ρ = 0.054, δ = 0.105
+  red_cards: SEF = 1.082, κ = 1.094, ρ = 0.076, δ = 0.005
+  yellow_cards: SEF = 0.969, κ = 1.047, ρ = -0.032, δ = 0.014

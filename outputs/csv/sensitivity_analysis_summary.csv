@@ -1,0 +1,12 @@
+metric,value,description
+min_sample_size,50,Minimum sample size for convergence
+seasonal_cv,0.0218426163793157,Seasonal coefficient of variation
+temporal_trend,-0.00324266614155351,Temporal trend slope
+kappa_sensitivity,1,Kappa parameter sensitivity index
+rho_sensitivity,1,Rho parameter sensitivity index
+outlier_sensitivity,0.00770190707711428,Outlier sensitivity index
+noise_sensitivity,0.00327675552513885,Noise sensitivity index
+p_value,0,P-value for SEF > 1
+mean_sef,1.3532271557853,Mean SEF value
+se_95_lower,1.31424685435585,95% CI lower bound
+ci_95_upper,1.3962350270487,95% CI upper bound

@@ -1,0 +1,2 @@
+test_type,p_value,significant,effect_size,confidence_level,mean_sef,std_sef,ci_95_lower,ci_95_upper,ci_99_lower,ci_99_upper
+bootstrap_significance,0,1,16.4420788229333,0.95,1.3532271557853,0.0214831202057381,1.31424685435585,1.3962350270487,1.30313113271895,1.40989485887308

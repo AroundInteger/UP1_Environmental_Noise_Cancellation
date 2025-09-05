@@ -1,0 +1,35 @@
+Log-Transformed SEF Analysis Comparison Report
+Generated: 05-Sep-2025 20:47:02
+
+SUMMARY STATISTICS:
+  Original SEF - Mean: 1.375, Median: 0.995, Std: 1.337
+  Log SEF - Mean: 1.462, Median: 0.990, Std: 1.854
+  Improvement Ratio - Mean: 1.007, Median: 1.006, Std: 0.089
+
+METRIC COMPARISON:
+Metric Name | Original SEF | Log SEF | Improvement Ratio
+--------------------------------------------------------
+carries              |       0.894 |   0.904 |           1.011
+metres_made          |       0.909 |   0.926 |           1.020
+defenders_beaten     |       0.982 |   0.989 |           1.007
+clean_breaks         |       0.975 |   1.024 |           1.051
+offloads             |       1.199 |   1.086 |           0.906
+passes               |       0.870 |   0.894 |           1.027
+turnovers_conceded   |       1.077 |   1.065 |           0.989
+turnovers_won        |       1.080 |   1.085 |           1.004
+kicks_from_hand      |       2.328 |   2.026 |           0.871
+kick_metres          |       2.653 |   2.362 |           0.890
+scrums_won           |       0.911 |   0.921 |           1.011
+rucks_won            |       7.313 |  10.008 |           1.369
+lineout_throws_lost  |       1.011 |   0.979 |           0.969
+lineout_throws_won   |       0.820 |   0.821 |           1.001
+tackles              |       0.903 |   0.924 |           1.023
+missed_tackles       |       0.981 |   0.988 |           1.007
+penalties_conceded   |       0.964 |   0.978 |           1.015
+scrum_pens_conceded  |       0.917 |   0.962 |           1.049
+lineout_pens_conceded |       1.007 |   0.992 |           0.985
+general_play_pens_conceded |       1.008 |   1.024 |           1.016
+free_kicks_conceded  |       1.082 |   1.081 |           0.999
+ruck_maul_tackle_pen_con |       1.057 |   1.006 |           0.952
+red_cards            |       1.082 |   1.082 |           1.000
+yellow_cards         |       0.969 |   0.963 |           0.994

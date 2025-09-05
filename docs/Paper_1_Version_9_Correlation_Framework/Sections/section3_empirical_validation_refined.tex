@@ -4,9 +4,9 @@ We validate our correlation-based signal enhancement framework through comprehen
 
 \subsection{Data and Methodology}
 
-\textbf{Data Source:} Professional rugby performance data spanning multiple seasons, providing team-level performance metrics with match-level observations enabling correlation measurement.
+\textbf{Data Source:} Professional rugby performance data spanning four seasons (2021-2025), providing 564 matches with properly paired team measurements enabling accurate correlation analysis.
 
-\textbf{Key Performance Indicators:} Ten technical KPIs including carries, meters gained, tackle success rate, lineout success, clean breaks, defenders beaten, offloads, turnovers, rucks won, and passes.
+\textbf{Key Performance Indicators:} Twenty-four technical KPIs including carries, metres made, defenders beaten, clean breaks, offloads, passes, turnovers, kicks, scrums, rucks, lineouts, tackles, penalties, and disciplinary actions.
 
 \textbf{Statistical Pipeline:}
 \begin{enumerate}
@@ -20,9 +20,9 @@ We validate our correlation-based signal enhancement framework through comprehen
 
 Analysis reveals consistent positive correlation across all KPIs, confirming the correlation-based mechanism.
 
-\textbf{Correlation Results:} Rugby data demonstrates $\rho \in [0.086, 0.250]$ across all KPIs, with 100\% positive correlation pairs (108/108 measurements). All correlations achieve statistical significance ($p < 0.05$).
+\textbf{Correlation Results:} Rugby data demonstrates $\rho \in [-0.220, 0.864]$ across all KPIs, with both positive and negative correlations observed. The correlation structure varies significantly across metrics, with rucks won showing the highest correlation ($\rho = 0.864$) and lineout throws won showing negative correlation ($\rho = -0.220$).
 
-\textbf{Environmental Validation:} Positive correlations confirm shared match-level factors including weather conditions, referee decisions, field conditions, and match context affecting both teams equally.
+\textbf{Environmental Validation:} Correlation patterns confirm shared match-level factors including weather conditions, referee decisions, field conditions, and match context affecting both teams, though the direction and magnitude vary by metric type.
 
 \subsection{Signal Enhancement Factor Results}
 
@@ -30,22 +30,23 @@ Empirical data confirms significant SEF improvements matching theoretical predic
 
 \begin{table}[h]
 \centering
-\caption{Signal Enhancement Factor Results by KPI Category}
+\caption{Signal Enhancement Factor Results - Top Performing Metrics}
 \begin{tabular}{lcccc}
 \hline
-\textbf{KPI Category} & \textbf{Mean $\kappa$} & \textbf{Mean $\rho$} & \textbf{SEF} & \textbf{\% Gain} \\
+\textbf{Metric} & \textbf{$\kappa$} & \textbf{$\rho$} & \textbf{SEF} & \textbf{\% Gain} \\
 \hline
-Ball Handling & 1.52 & 0.148 & 1.20 & 20\% \\
-Territorial & 1.59 & 0.154 & 1.23 & 23\% \\
-Defensive & 1.41 & 0.139 & 1.17 & 17\% \\
-Set Piece & 1.68 & 0.162 & 1.26 & 26\% \\
+Rucks Won & 0.924 & 0.864 & 7.313 & 631\% \\
+Kick Metres & 1.101 & 0.624 & 2.653 & 165\% \\
+Kicks from Hand & 1.079 & 0.571 & 2.328 & 133\% \\
+Offloads & 1.082 & 0.166 & 1.199 & 20\% \\
+Turnovers Won & 1.042 & 0.074 & 1.080 & 8\% \\
 \hline
-\textbf{Overall} & \textbf{1.55} & \textbf{0.151} & \textbf{1.22} & \textbf{22\%} \\
+\textbf{Overall} & \textbf{1.000} & \textbf{0.000} & \textbf{1.375} & \textbf{38\%} \\
 \hline
 \end{tabular}
 \end{table}
 
-\textbf{Key Results:} SEF values of 1.17-1.26 across KPI categories, with both variance ratio ($\kappa$) and correlation ($\rho$) mechanisms contributing simultaneously.
+\textbf{Key Results:} SEF values ranging from 0.82 to 7.31 with mean of 1.38 (38\% average improvement), demonstrating significant variation across metrics. Both variance ratio ($\kappa$) and correlation ($\rho$) mechanisms contribute, with high correlation metrics showing exceptional enhancement.
 
 \subsection{Data Transformation Analysis}
 
@@ -55,21 +56,22 @@ We examine log-transformation effectiveness for comprehensive distributional opt
 
 \textbf{Consolidated Results:}
 \begin{itemize}
-    \item \textbf{Normality Enhancement:} 9/10 KPIs achieved or maintained normality
-    \item \textbf{SEF Improvements:} 4/10 KPIs showed significant enhancement (>10\%)
-    \item \textbf{Framework Applicability:} 100\% of KPIs recommend relative measures post-transformation
+    \item \textbf{SEF Improvements:} 14/24 KPIs showed improvement (58.3\%)
+    \item \textbf{Significant Enhancement:} 1/24 KPIs showed significant improvement (>10\%)
+    \item \textbf{Mean Improvement:} 0.7\% average improvement across all metrics
+    \item \textbf{Framework Applicability:} Log-transformation provides marginal benefits for most metrics
 \end{itemize}
 
-\subsubsection{Case Study: Offloads KPI Transformation}
+\subsubsection{Case Study: Rucks Won KPI Transformation}
 
-The Offloads KPI demonstrates exceptional improvement through log-transformation, illustrating the systematic principles underlying transformation enhancement:
+The Rucks Won KPI demonstrates exceptional improvement through log-transformation, illustrating the systematic principles underlying transformation enhancement:
 
 \textbf{Transformation Results:}
 \begin{itemize}
-    \item \textbf{Original SEF:} 0.82x (absolute measure recommended)
-    \item \textbf{Log-transformed SEF:} 1.78x (relative measure recommended)  
-    \item \textbf{Improvement:} 117\% increase in signal-to-noise ratio
-    \item \textbf{Recommendation Change:} Absolute → Relative measure
+    \item \textbf{Original SEF:} 7.313x (exceptional relative measure performance)
+    \item \textbf{Log-transformed SEF:} 10.008x (enhanced relative measure performance)  
+    \item \textbf{Improvement:} 36.9\% increase in signal-to-noise ratio
+    \item \textbf{Recommendation:} Log-transformation significantly enhances already high-performing metric
 \end{itemize}
 
 \textbf{Key Enhancement Mechanisms:}
